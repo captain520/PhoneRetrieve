@@ -310,7 +310,8 @@
                              @"code" : [CPUserInfoModel shareInstance].loginModel.cp_code,
                              @"idcard1url" : self.IDFrontBT.imageUrl,
                              @"idcard2url" : self.IDBackBT.imageUrl,
-                             @"password" :self.confirmTF.text
+                             @"password" :self.confirmTF.text,
+                             @"code" : @([CPUserInfoModel shareInstance].loginModel.ID)
                              };
     
     [CPAddMemberResultModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/shopCreateDY"
@@ -336,7 +337,8 @@
                              @"idcard1url" : self.IDFrontBT.imageUrl,
                              @"ophone" : self.IDBackBT.imageUrl,
                              @"idcard2url" : self.IDBackBT.imageUrl,
-                             @"password" : self.confirmTF.text
+                             @"password" : self.confirmTF.text,
+                             @"code" : @(self.model.ID)
                              };
     
     [CPBaseModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/update4"
