@@ -78,9 +78,12 @@
             break;
         case CPMainActionTypeRetrieveFlow:
         {
-            [self getConfigUrl:@"102" block:^(NSString *url, NSString *title) {
-                [weakSelf push2WebView:url title:title];
-            }];
+            // 故障机评估
+            [CPUserInfoModel shareInstance].repaircfg = @"2";
+            [self push2ShopGoodsListVC:0];
+//            [self getConfigUrl:@"102" block:^(NSString *url, NSString *title) {
+//                [weakSelf push2WebView:url title:title];
+//            }];
         }
             break;
         case CPMainActionTypeAssistantManger:
@@ -91,10 +94,16 @@
         }
             break;
         case CPMainActionTypePhoneRetrieve:
+        {
+            [CPUserInfoModel shareInstance].repaircfg = @"1";
             [self push2ShopGoodsListVC:0];
+        }
             break;
         case CPMainActionTypePadRetrieve:
+        {
+            [CPUserInfoModel shareInstance].repaircfg = @"1";
             [self push2ShopGoodsListVC:1];
+        }
             break;
         case  CPMainActionTypeRetrieveCart:
             [self push2CartVC];

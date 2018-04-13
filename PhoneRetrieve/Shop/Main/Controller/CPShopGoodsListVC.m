@@ -120,14 +120,13 @@
     self.dataTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         DDLogInfo(@"------------------------------");
         self.currentPage = 1;
-        [self.dataTableView.mj_header endRefreshing];
         [self loadGoodList];
     }];
     
     self.dataTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         DDLogInfo(@"------------------------------");
         self.currentPage++;
-        [self.dataTableView.mj_footer endRefreshing];
+//        [self.dataTableView.mj_footer endRefreshing];
         
         [self loadGoodList];
     }];
@@ -447,6 +446,7 @@
                             @"brandid" : @(self.selectBrandIndex),
                             @"typeid" : @(tempModel.ID),
                             @"currentpage" : @(self.currentPage),
+                            @"repaircfg" : [CPUserInfoModel shareInstance].repaircfg,
                             @"pagesize" : @(10)
                             };
 
@@ -461,8 +461,7 @@
 
 - (void)handleLoadGoodListBlock:(NSArray <CPGoodModel *> *)result {
     
-    [self.dataTableView.mj_header endRefreshing];
-    
+
     if (!result || ![result isKindOfClass:[NSArray class]]) {
         
         [self.goods removeAllObjects];
@@ -471,6 +470,8 @@
         return;
     }
     
+//    [self.dataTableView.mj_footer endRefreshingWithNoMoreData];
+    [self.dataTableView.mj_header endRefreshing];
     if (result.count < 10) {
         [self.dataTableView.mj_footer endRefreshingWithNoMoreData];
     } else {

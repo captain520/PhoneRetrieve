@@ -58,8 +58,8 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     if (nil == self.accountTF) {
         self.accountTF = [UITextField new];
         self.accountTF.placeholder = @"请输入您的手机号码/会员编号";
-//        self.accountTF.text = @"15814099327";
-        self.accountTF.text = @"18033446838";
+        self.accountTF.text = @"15814099327";
+//        self.accountTF.text = @"18033446838";
         self.accountTF.borderStyle = UITextBorderStyleRoundedRect;
 //        self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
         self.accountTF.font = [UIFont systemFontOfSize:15.0f];

@@ -313,7 +313,7 @@
                                     @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID),
                                     @"username" : [CPUserInfoModel shareInstance].loginModel.linkname,
                                     @"goodsid" : self.goodid,
-                                    @"repaircfg" : @"1",
+                                    @"repaircfg" : [CPUserInfoModel shareInstance].repaircfg,//@"1",
                                     @"resultjson" : jsonStr
                                     }.mutableCopy;
     
