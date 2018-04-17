@@ -29,4 +29,6 @@
 
 @property (nonatomic, copy) NSString *repaircfg;
 
+@property (nonatomic, copy) NSString *push_token;
+
 @end

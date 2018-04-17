@@ -183,6 +183,11 @@
     DDLogInfo(@"%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
                       stringByReplacingOccurrencesOfString: @">" withString: @""]
                      stringByReplacingOccurrencesOfString: @" " withString: @""]);
+    NSString *push_token = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                             stringByReplacingOccurrencesOfString: @">" withString: @""]
+                            stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    [CPUserInfoModel shareInstance].push_token = push_token;
 }
 
 @end
