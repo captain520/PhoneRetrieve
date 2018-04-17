@@ -143,7 +143,7 @@
 
 - (void)handleLoadDataBlock:(CPOrderListPageModel*)result {
     
-    if (!result || result.cp_data.count == 0) {
+    if (!result || ![result isKindOfClass:[CPOrderListPageModel class]]||result.cp_data.count == 0) {
         return;
     }
 

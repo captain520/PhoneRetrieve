@@ -333,6 +333,7 @@
     CPEvaluatedPriceVC *vc = [[CPEvaluatedPriceVC alloc] init];
     vc.model = result;
     vc.itemDicts = items;
+    vc.title = @"评估价格";
     
     [self.navigationController pushViewController:vc animated:YES];
 }

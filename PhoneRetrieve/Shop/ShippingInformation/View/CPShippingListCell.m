@@ -107,7 +107,7 @@
     _model = logistModel;
 
     orderNoLB.text = [NSString stringWithFormat:@"交易单号：%@",_model.ordersn];//@"交易单号：983732974892";
-    stateLB.text = _model.finishcfg ? @"已签收" : @"未签收";
+    stateLB.text = _model.finishcfg ? @"已签收" : @"在途";
     stateLB.textColor = _model.finishcfg? MainColor: CPERROR_COLOR;
     countLB.text = [NSString stringWithFormat:@"总共%ld件商品",_model.goodscount];
     NSString *price = [NSString stringWithFormat:@"¥:%.2f",_model.totalprice];

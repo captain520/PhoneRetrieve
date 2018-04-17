@@ -79,7 +79,8 @@
     CPNavigationController *aboutNav = [[CPNavigationController alloc] initWithRootViewController:aboutVC];
 
     if (type == CPTabVCTypeShop) {
-        self.viewControllers = @[homeNav,orderNav,shippingNav,aboutNav];
+//        self.viewControllers = @[homeNav,orderNav,shippingNav,aboutNav];
+        self.viewControllers = @[homeNav,orderNav,aboutNav];
     } else if (type == CPTabVCTypeAssistant) {
         
 //        CPGoodOrderListVC *assistantOrderVC = [[CPGoodOrderListVC alloc] init];

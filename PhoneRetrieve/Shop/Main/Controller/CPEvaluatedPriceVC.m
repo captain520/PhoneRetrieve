@@ -29,12 +29,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.dataArray = @[
-                       @[@""],
-                       @[@"",@"",@""],
-                       @[@"备份手机数据",@"接触ID锁",@"回复出厂设置"]
-                       ];
+    if ([CPUserInfoModel shareInstance].repaircfg.integerValue == 1) {
+        self.dataArray = @[
+                           @[@""],
+                           @[@"",@"",@""],
+                           @[@"备份手机数据",@"接触ID锁",@"回复出厂设置"]
+                           ];
+        
+    } else if ([CPUserInfoModel shareInstance].repaircfg.integerValue == 2) {
+        self.dataArray = @[
+                           @[@""],
+                           @[@"",@"",@""]
+                           ];
+        
+    }
     
+
     self.selectedIndexPath = @[].mutableCopy;
     
     self.dataTableView.allowsMultipleSelection = YES;
@@ -59,7 +69,7 @@
         [_nextButton setBackgroundColor:MainColor];
         [_nextButton setTitleColor:UIColor.whiteColor forState:0];
 
-        _nextButton.enabled = NO;
+        _nextButton.enabled = [[CPUserInfoModel shareInstance].repaircfg isEqualToString:@"2"];
         [_nextButton setBackgroundImage:CPEnableImage forState:UIControlStateNormal];
         [_nextButton setBackgroundImage:CPDisableImage forState:UIControlStateDisabled];
         
@@ -316,7 +326,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    NSArray <NSString * > *contents = self.dataArray[indexPath.section];
+//    NSArray <NSString * > *contents = self.dataArray[indexPath.section];
     cell.hasSelected = [self.selectedIndexPath containsObject:indexPath];
 //    cell.content = [contents objectAtIndex:indexPath.row];
     cell.content = [CPUserInfoModel shareInstance].operationDes;

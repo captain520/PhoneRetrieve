@@ -201,7 +201,7 @@
                                                          return @(self.accountTF.text.length > 0
                                                          && self.codeTF.text.length > 0
                                                          && self.passwdTF.text.length > 0
-                                                         && self.confirmTF.text.length > 0
+                                                         && (self.confirmTF.text.length > 0 || [CPUserInfoModel shareInstance].repaircfg.integerValue == 2)
 //                                                         && ([self.confirmTF.text isEqualToString: self.passwdTF.text])
                                                          && self.agreeProtocol);
                                                      }];
@@ -215,7 +215,8 @@
     self.nextBT.enabled = self.accountTF.text.length > 0
     && self.codeTF.text.length > 0
     && self.passwdTF.text.length > 0
-    && self.confirmTF.text.length > 0
+    && (self.confirmTF.text.length > 0 || [CPUserInfoModel shareInstance].repaircfg.integerValue == 2)
+//    && self.confirmTF.text.length > 0
 //    && (self.confirmTF.text == self.accountTF.text)
     && self.agreeProtocol;
 }
@@ -237,7 +238,7 @@
                              @"id" : self.model.ID,
                              @"customname" : self.accountTF.text,
                              @"customphone" : self.codeTF.text,
-                             @"customimei" : self.confirmTF.text,
+                             @"customimei" : self.confirmTF.text ? self.confirmTF.text : @" ",
                              @"sms" : self.passwdTF.text,
                              @"resultno" : self.model.resultno
                              };

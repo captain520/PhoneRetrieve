@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2563B39ED964848BF4F11BEA /* libPods-PhoneRetrieve.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80101F10FBFA099B5D1A391E /* libPods-PhoneRetrieve.a */; };
 		7BCAC56D4A6D2FA90CC72666 /* libPods-PhoneRetrieve.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80101F10FBFA099B5D1A391E /* libPods-PhoneRetrieve.a */; };
 		9C039DE92063D90500AAAA50 /* CPUserOperationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C039DE82063D90500AAAA50 /* CPUserOperationModel.m */; };
 		9C039DEA2063D90500AAAA50 /* CPUserOperationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C039DE82063D90500AAAA50 /* CPUserOperationModel.m */; };
@@ -168,6 +169,13 @@
 		9C1A1F952047E3AA00CA23C8 /* CPMainActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1F942047E3AA00CA23C8 /* CPMainActionButton.m */; };
 		9C1A1F982048E44D00CA23C8 /* CPAssistantDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1F972048E44D00CA23C8 /* CPAssistantDetailVC.m */; };
 		9C1A1F9B2048F17800CA23C8 /* CPIDIV.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A1F9A2048F17800CA23C8 /* CPIDIV.m */; };
+		9C1CBD57208587C300CFC722 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD56208587C300CFC722 /* UMCommon.framework */; };
+		9C1CBD59208587D000CFC722 /* UMPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD58208587D000CFC722 /* UMPush.framework */; };
+		9C1CBD5B208587F900CFC722 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD5A208587F900CFC722 /* CoreTelephony.framework */; };
+		9C1CBD5D2085880000CFC722 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD5C2085880000CFC722 /* SystemConfiguration.framework */; };
+		9C1CBD5F2085880A00CFC722 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD5E2085880A00CFC722 /* libsqlite3.tbd */; };
+		9C1CBD612085881200CFC722 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD602085881200CFC722 /* libz.tbd */; };
+		9C1CBD632085882A00CFC722 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD622085882A00CFC722 /* UserNotifications.framework */; };
 		9C2DE68E205B529F005C0F26 /* CPFlowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE68D205B529F005C0F26 /* CPFlowModel.m */; };
 		9C2DE68F205B529F005C0F26 /* CPFlowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE68D205B529F005C0F26 /* CPFlowModel.m */; };
 		9C2DE692205B576E005C0F26 /* CPFlowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE691205B576E005C0F26 /* CPFlowVC.m */; };
@@ -458,8 +466,6 @@
 		9CE934B6206CBFA7009946B4 /* CPError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C16EABD204D122F007BE6FE /* CPError.m */; };
 		9CE934B7206CBFA7009946B4 /* CPFlowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE68D205B529F005C0F26 /* CPFlowModel.m */; };
 		9CE934B8206CBFA7009946B4 /* CPShopShippingResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C039DFC2064ED2600AAAA50 /* CPShopShippingResultModel.m */; };
-		9CE934BA206CBFA7009946B4 /* libPods-PhoneRetrieve.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80101F10FBFA099B5D1A391E /* libPods-PhoneRetrieve.a */; };
-		9CE934BB206CBFA7009946B4 /* libPods-PhoneRetrieve.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80101F10FBFA099B5D1A391E /* libPods-PhoneRetrieve.a */; };
 		9CE934BD206CBFA7009946B4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E275920240C10003E32E7 /* Launch Screen.storyboard */; };
 		9CE934BE206CBFA7009946B4 /* Apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8B8620297DB70053C50B /* Apple.png */; };
 		9CE934BF206CBFA7009946B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C070346202404520080856C /* Assets.xcassets */; };
@@ -487,7 +493,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2EC049F5F8E823FD6FC12809 /* Pods-PhoneRetrieve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneRetrieve.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhoneRetrieve/Pods-PhoneRetrieve.release.xcconfig"; sourceTree = "<group>"; };
+		5CFDD5FC5A7ED18B4D82933F /* Pods-PhoneRetrieve.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneRetrieve.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhoneRetrieve/Pods-PhoneRetrieve.release.xcconfig"; sourceTree = "<group>"; };
 		80101F10FBFA099B5D1A391E /* libPods-PhoneRetrieve.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhoneRetrieve.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C039DE72063D90500AAAA50 /* CPUserOperationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUserOperationModel.h; sourceTree = "<group>"; };
 		9C039DE82063D90500AAAA50 /* CPUserOperationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPUserOperationModel.m; sourceTree = "<group>"; };
@@ -558,6 +564,14 @@
 		9C1A1F972048E44D00CA23C8 /* CPAssistantDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAssistantDetailVC.m; sourceTree = "<group>"; };
 		9C1A1F992048F17800CA23C8 /* CPIDIV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPIDIV.h; sourceTree = "<group>"; };
 		9C1A1F9A2048F17800CA23C8 /* CPIDIV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPIDIV.m; sourceTree = "<group>"; };
+		9C1CBD56208587C300CFC722 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		9C1CBD58208587D000CFC722 /* UMPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMPush.framework; sourceTree = "<group>"; };
+		9C1CBD5A208587F900CFC722 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		9C1CBD5C2085880000CFC722 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9C1CBD5E2085880A00CFC722 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		9C1CBD602085881200CFC722 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9C1CBD622085882A00CFC722 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		9C1CBD642085883900CFC722 /* PhoneRetrieve.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhoneRetrieve.entitlements; sourceTree = "<group>"; };
 		9C2DE68C205B529F005C0F26 /* CPFlowModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPFlowModel.h; sourceTree = "<group>"; };
 		9C2DE68D205B529F005C0F26 /* CPFlowModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPFlowModel.m; sourceTree = "<group>"; };
 		9C2DE690205B576E005C0F26 /* CPFlowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPFlowVC.h; sourceTree = "<group>"; };
@@ -808,7 +822,7 @@
 		9CFCCE9C2057764F00A31D74 /* CPTBTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPTBTestVC.m; sourceTree = "<group>"; };
 		9CFCCE9E2057A77600A31D74 /* CPOrderTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPOrderTypeCell.h; sourceTree = "<group>"; };
 		9CFCCE9F2057A77600A31D74 /* CPOrderTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPOrderTypeCell.m; sourceTree = "<group>"; };
-		A20D2C45DD0974FA59455266 /* Pods-PhoneRetrieve.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneRetrieve.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhoneRetrieve/Pods-PhoneRetrieve.debug.xcconfig"; sourceTree = "<group>"; };
+		E4EB3B422FFBD7B7A979422D /* Pods-PhoneRetrieve.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneRetrieve.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhoneRetrieve/Pods-PhoneRetrieve.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -816,8 +830,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1CBD632085882A00CFC722 /* UserNotifications.framework in Frameworks */,
+				9C1CBD612085881200CFC722 /* libz.tbd in Frameworks */,
+				9C1CBD5F2085880A00CFC722 /* libsqlite3.tbd in Frameworks */,
+				9C1CBD5D2085880000CFC722 /* SystemConfiguration.framework in Frameworks */,
+				9C1CBD5B208587F900CFC722 /* CoreTelephony.framework in Frameworks */,
+				9C1CBD57208587C300CFC722 /* UMCommon.framework in Frameworks */,
 				7BCAC56D4A6D2FA90CC72666 /* libPods-PhoneRetrieve.a in Frameworks */,
+				9C1CBD59208587D000CFC722 /* UMPush.framework in Frameworks */,
 				DA62A1A30C3160EA5EA8557A /* libPods-PhoneRetrieve.a in Frameworks */,
+				2563B39ED964848BF4F11BEA /* libPods-PhoneRetrieve.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,8 +854,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CE934BA206CBFA7009946B4 /* libPods-PhoneRetrieve.a in Frameworks */,
-				9CE934BB206CBFA7009946B4 /* libPods-PhoneRetrieve.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,6 +863,13 @@
 		45894F02D28E85BC52D540C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C1CBD622085882A00CFC722 /* UserNotifications.framework */,
+				9C1CBD602085881200CFC722 /* libz.tbd */,
+				9C1CBD5E2085880A00CFC722 /* libsqlite3.tbd */,
+				9C1CBD5C2085880000CFC722 /* SystemConfiguration.framework */,
+				9C1CBD5A208587F900CFC722 /* CoreTelephony.framework */,
+				9C1CBD58208587D000CFC722 /* UMPush.framework */,
+				9C1CBD56208587C300CFC722 /* UMCommon.framework */,
 				80101F10FBFA099B5D1A391E /* libPods-PhoneRetrieve.a */,
 			);
 			name = Frameworks;
@@ -873,6 +900,7 @@
 		9C07033C202404520080856C /* PhoneRetrieve */ = {
 			isa = PBXGroup;
 			children = (
+				9C1CBD642085883900CFC722 /* PhoneRetrieve.entitlements */,
 				9CDD92FB205F8E0A0072A6C1 /* Asistant */,
 				9C5C8B72202977170053C50B /* Shop */,
 				9C5E276220240DC6003E32E7 /* Test */,
@@ -1331,13 +1359,13 @@
 			isa = PBXGroup;
 			children = (
 				9C5E275C20240CB5003E32E7 /* CPBaseTableVC.h */,
-				9C5E275D20240CB5003E32E7 /* CPBaseVC.h */,
 				9C5E275E20240CB5003E32E7 /* CPBaseTableVC.m */,
+				9C5E275D20240CB5003E32E7 /* CPBaseVC.h */,
 				9C5E275F20240CB5003E32E7 /* CPBaseVC.m */,
-				9C5C8B7A202978760053C50B /* CPTabBarController.h */,
-				9C5C8B7B202978760053C50B /* CPTabBarController.m */,
 				9C5C8B80202979FA0053C50B /* CPNavigationController.h */,
 				9C5C8B81202979FA0053C50B /* CPNavigationController.m */,
+				9C5C8B7A202978760053C50B /* CPTabBarController.h */,
+				9C5C8B7B202978760053C50B /* CPTabBarController.m */,
 				9C5C8B99202990D00053C50B /* CPWebVC.h */,
 				9C5C8B9A202990D00053C50B /* CPWebVC.m */,
 			);
@@ -1483,8 +1511,8 @@
 		DD4D04B97AC3941413B1BC32 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A20D2C45DD0974FA59455266 /* Pods-PhoneRetrieve.debug.xcconfig */,
-				2EC049F5F8E823FD6FC12809 /* Pods-PhoneRetrieve.release.xcconfig */,
+				E4EB3B422FFBD7B7A979422D /* Pods-PhoneRetrieve.debug.xcconfig */,
+				5CFDD5FC5A7ED18B4D82933F /* Pods-PhoneRetrieve.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1533,12 +1561,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CE934C7206CBFA7009946B4 /* Build configuration list for PBXNativeTarget "PhoneRetrieveDelegate" */;
 			buildPhases = (
-				9CE93423206CBFA7009946B4 /* [CP] Check Pods Manifest.lock */,
 				9CE93424206CBFA7009946B4 /* Sources */,
 				9CE934B9206CBFA7009946B4 /* Frameworks */,
 				9CE934BC206CBFA7009946B4 /* Resources */,
-				9CE934C5206CBFA7009946B4 /* [CP] Embed Pods Frameworks */,
-				9CE934C6206CBFA7009946B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1561,7 +1586,15 @@
 				TargetAttributes = {
 					9C070339202404510080856C = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					9C167F7F20493F4D0017A525 = {
 						ProvisioningStyle = Automatic;
@@ -1641,59 +1674,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		0EE8BD030DB76D98B0C52360 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PhoneRetrieve/Pods-PhoneRetrieve-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
-				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhoneRetrieve/Pods-PhoneRetrieve-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9CE93423206CBFA7009946B4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PhoneRetrieve-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9CE934C5206CBFA7009946B4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhoneRetrieve/Pods-PhoneRetrieve-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9CE934C6206CBFA7009946B4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2339,14 +2319,19 @@
 		};
 		9C070351202404520080856C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A20D2C45DD0974FA59455266 /* Pods-PhoneRetrieve.debug.xcconfig */;
+			baseConfigurationReference = E4EB3B422FFBD7B7A979422D /* Pods-PhoneRetrieve.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PhoneRetrieve/PhoneRetrieve.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: tingting zhu (DXR694BTZ4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tingting zhu (DXR694BTZ4)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5646F3X3S2;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Configure/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2358,22 +2343,27 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiji.leshouzhan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "28ecb140-b129-4c0b-bbd0-77c69dcb5a59";
-				PROVISIONING_PROFILE_SPECIFIER = "leshouzhan-dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		9C070352202404520080856C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EC049F5F8E823FD6FC12809 /* Pods-PhoneRetrieve.release.xcconfig */;
+			baseConfigurationReference = 5CFDD5FC5A7ED18B4D82933F /* Pods-PhoneRetrieve.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PhoneRetrieve/PhoneRetrieve.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: tingting zhu (DXR694BTZ4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: tingting zhu (DXR694BTZ4)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5646F3X3S2;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Configure/PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2385,8 +2375,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiji.leshouzhan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "033b9847-f8b9-4423-864a-dcca009124e8";
-				PROVISIONING_PROFILE_SPECIFIER = "leshouzhan-dev";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -2439,7 +2429,6 @@
 		};
 		9CE934C8206CBFA7009946B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A20D2C45DD0974FA59455266 /* Pods-PhoneRetrieve.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2464,7 +2453,6 @@
 		};
 		9CE934C9206CBFA7009946B4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2EC049F5F8E823FD6FC12809 /* Pods-PhoneRetrieve.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

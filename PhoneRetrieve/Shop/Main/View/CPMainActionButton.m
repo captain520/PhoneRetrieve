@@ -27,7 +27,7 @@
     
     imageIV = [UIImageView new];
     imageIV.image = CPImage(@"hme_iphone");
-    imageIV.contentMode = UIViewContentModeCenter;
+    imageIV.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:imageIV];
     [imageIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(cellSpaceOffset);
@@ -63,6 +63,7 @@
         {
             title = @"回收车";
             logoName = @"home_car";
+//            logoName = @"logo";
         }
             break;
         case CPMainActionButtonTypeAssisManager:
