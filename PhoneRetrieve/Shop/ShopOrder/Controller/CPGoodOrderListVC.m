@@ -221,6 +221,10 @@
 
 - (void)handleLoadDataSuccessBlock:(CPAssistantOrderListPageModel *)result {
     
+    if (!result || ![result isKindOfClass:[CPAssistantOrderListPageModel class]]) {
+        return;
+    }
+    
     self.result = result;
     
     if (!result || result.total == 0 ) {

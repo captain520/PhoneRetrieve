@@ -26,5 +26,7 @@
 
 @property (nonatomic, copy) NSString *brandname;
 
+@property (nonatomic, copy) NSString *goodsname;
+
 @end
 
