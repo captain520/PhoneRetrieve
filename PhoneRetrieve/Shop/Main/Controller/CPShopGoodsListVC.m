@@ -413,8 +413,10 @@
     
     __weak CPShopGoodsListVC *weakSelf = self;
     
+    CPGoodTypeModel *tempModel = self.goodTypes[self.selecteTypeIndex];
+    
     [CPBrandModel modelRequestWith:CPURL_SHOP_BRAND_TYPE
-                        parameters:@{@"type" : @(self.selecteTypeIndex + 1)}
+                        parameters:@{@"typeid" : @(tempModel.ID)}
                              block:^(id result) {
                                  [weakSelf handleBrandTypeBlock:result];
                              } fail:^(CPError *error) {
