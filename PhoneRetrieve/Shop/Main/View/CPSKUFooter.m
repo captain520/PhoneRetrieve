@@ -12,7 +12,7 @@
 @implementation CPSKUFooter {
     CPLabel *hintLB;
     SDCycleScrollView *sv;
-    UIWebView *webView;
+    UIWebView *cpwebView;
     
     CPCommonButtn *wwwBT;
 }
@@ -32,12 +32,12 @@
     }
     
     {
-        webView = [UIWebView new];
-        webView.backgroundColor = [UIColor clearColor];
-        webView.dataDetectorTypes = UIDataDetectorTypeAll;
-        webView.delegate = self;
-        [self.contentView addSubview:webView];
-        [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        cpwebView = [UIWebView new];
+        cpwebView.backgroundColor = [UIColor clearColor];
+        cpwebView.dataDetectorTypes = UIDataDetectorTypeAll;
+        cpwebView.delegate = self;
+        [self.contentView addSubview:cpwebView];
+        [cpwebView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(hintLB.mas_bottom).offset(cellSpaceOffset);
             make.left.mas_equalTo(cellSpaceOffset);
             make.right.mas_equalTo(-cellSpaceOffset);
@@ -53,7 +53,7 @@
         sv.currentPageDotColor = MainColor;
         [self.contentView addSubview:sv];
         [sv mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(webView.mas_bottom).offset(cellSpaceOffset);
+            make.top.mas_equalTo(cpwebView.mas_bottom).offset(cellSpaceOffset);
             make.left.mas_equalTo(cellSpaceOffset);
             make.right.mas_equalTo(-cellSpaceOffset);
 //            make.bottom.mas_equalTo(-cellSpaceOffset);
@@ -66,7 +66,7 @@
         [wwwBT addTarget:self action:@selector(buttonAction:) forControlEvents:64];
         [self.contentView addSubview:wwwBT];
         [wwwBT mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(sv.mas_bottom).offset(CELL_HEIGHT_F);
+            make.top.mas_equalTo(sv.mas_bottom).offset(cellSpaceOffset);
             make.left.mas_equalTo(cellSpaceOffset);
             make.right.mas_equalTo(-cellSpaceOffset);
         }];
@@ -83,16 +83,17 @@
     _model = model;
     
     if (!model.Description || model.Description.length == 0) {
-        webView.hidden = YES;
+        cpwebView.hidden = YES;
     } else {
-        webView.hidden = NO;
-        [webView loadHTMLString:htmlEntityDecode(_model.Description) baseURL:nil];
+        cpwebView.hidden = NO;
+        [cpwebView loadHTMLString:htmlEntityDecode(_model.Description) baseURL:nil];
+        DDLogInfo(@"--------------------%f:",cpwebView.pageLength);
     }
     
     if (!_model.images || _model.images.count == 0) {
         sv.hidden = YES;
         [sv mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(webView.mas_bottom).offset(cellSpaceOffset);
+            make.top.mas_equalTo(cpwebView.mas_bottom).offset(cellSpaceOffset);
             make.left.mas_equalTo(cellSpaceOffset);
             make.right.mas_equalTo(-cellSpaceOffset);
             //            make.bottom.mas_equalTo(-cellSpaceOffset);
@@ -134,5 +135,33 @@
     
     return YES;
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+
+{
+    CGFloat webViewHeight=[webView.scrollView contentSize].height;
+    CGRect newFrame = webView.frame;
+    newFrame.size.height = webViewHeight;
+    webView.frame = newFrame;
+    
+    [cpwebView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(webViewHeight);
+    }];
+    
+    !self.actionBlock ? : self.actionBlock(webViewHeight + 140 + 80);
+    
+//    [sv mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(cpwebView.mas_bottom).offset(cellSpaceOffset);
+//        make.left.mas_equalTo(cellSpaceOffset);
+//        make.right.mas_equalTo(-cellSpaceOffset);
+//        //            make.bottom.mas_equalTo(-cellSpaceOffset);
+//        make.height.mas_equalTo(140);
+//    }];
+//    [self setNeedsUpdateConstraints];
+//    [self updateConstraints];
+//    [cpwebView updateConstraints];
+//    [sv updateConstraints];
+}
+
 
 @end

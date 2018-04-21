@@ -15,4 +15,6 @@
 //@property (nonatomic, strong) Skuproperties *model;
 @property (nonatomic, strong) CPFlowModel *model;
 
+@property (nonatomic, copy) void (^actionBlock)(CGFloat height);
+
 @end

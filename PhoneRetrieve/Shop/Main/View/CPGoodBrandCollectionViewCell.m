@@ -50,8 +50,8 @@
 //        brandIV.image = CPImage(@"apple");
 //        brandIV.backgroundColor = UIColor.redColor;
 //        brandIV.backgroundColor = UIColor.redColor;
-//        brandIV.contentMode = UIViewContentModeScaleAspectFit;
-        brandIV.contentMode = UIViewContentModeScaleAspectFill;
+        brandIV.contentMode = UIViewContentModeScaleAspectFit;
+//        brandIV.contentMode = UIViewContentModeScaleAspectFill;
 
         [self.contentView addSubview:brandIV];
 

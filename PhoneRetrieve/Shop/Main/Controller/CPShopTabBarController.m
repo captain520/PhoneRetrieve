@@ -19,6 +19,7 @@
 #import "CPAssistantManagerVC.h"
 #import "CPWebVC.h"
 #import "CPShopAccountManagerVC.h"
+#import "CPHelpCenterVC.h"
 
 @interface CPShopTabBarController ()
 
@@ -61,15 +62,16 @@
     orderVC.tabBarItem = [self createTabBarItemWithTitle:@"店员管理" imageName:@"tab_shopassistan_default" selectedImage:@"tab_shopassistant-pressed"];
     CPNavigationController *orderNav = [[CPNavigationController alloc] initWithRootViewController:orderVC];
     
-    CPWebVC *shippingVC = [[CPWebVC alloc] init];
-    //    webVC.urlStr = url;
-    shippingVC.shouldHomeItem = NO;
-    shippingVC.contentStr = [CPUserInfoModel shareInstance].helpHtml;
-    shippingVC.title = @"帮助中心";
-//    CPShippingInformationListVC *shippingVC = [[CPShippingInformationListVC alloc] init];
-//    shippingVC.tabbarType = CPTabBarTypeShippingState;
-    shippingVC.tabBarItem = [self createTabBarItemWithTitle:@"帮助中心" imageName:@"tab_help_default" selectedImage:@"tab_help_pressed"];
-    CPNavigationController *shippingNav = [[CPNavigationController alloc] initWithRootViewController:shippingVC];
+    CPHelpCenterVC *helpVC = [[CPHelpCenterVC alloc] init];
+//    CPWebVC *shippingVC = [[CPWebVC alloc] init];
+//    //    webVC.urlStr = url;
+//    shippingVC.shouldHomeItem = NO;
+//    shippingVC.contentStr = [CPUserInfoModel shareInstance].helpHtml;
+////    shippingVC.title = @"帮助中心";
+////    CPShippingInformationListVC *shippingVC = [[CPShippingInformationListVC alloc] init];
+////    shippingVC.tabbarType = CPTabBarTypeShippingState;
+    helpVC.tabBarItem = [self createTabBarItemWithTitle:@"帮助中心" imageName:@"tab_help_default" selectedImage:@"tab_help_pressed"];
+    CPNavigationController *shippingNav = [[CPNavigationController alloc] initWithRootViewController:helpVC];
     
     
 //    CPShopAboutVC *aboutVC = [[CPShopAboutVC alloc] init];
@@ -79,8 +81,8 @@
     CPNavigationController *aboutNav = [[CPNavigationController alloc] initWithRootViewController:aboutVC];
 
     if (type == CPTabVCTypeShop) {
-//        self.viewControllers = @[homeNav,orderNav,shippingNav,aboutNav];
-        self.viewControllers = @[homeNav,orderNav,aboutNav];
+        self.viewControllers = @[homeNav,orderNav,shippingNav,aboutNav];
+//        self.viewControllers = @[homeNav,orderNav,aboutNav];
     } else if (type == CPTabVCTypeAssistant) {
         
 //        CPGoodOrderListVC *assistantOrderVC = [[CPGoodOrderListVC alloc] init];

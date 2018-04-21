@@ -23,6 +23,7 @@
 @property (nonatomic, strong) CPRetrieveFlowProgressView *stepView;
 @property (nonatomic, strong) NSMutableDictionary <NSString *, NSArray *> *selecteItems;
 @property (nonatomic, strong) UIButton *nextButton;
+@property (nonatomic, assign) CGFloat footerHeight;
 
 @end
 
@@ -130,7 +131,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 350.0f;
+    return 370.0f;
+//    return self.footerHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -141,6 +143,12 @@
     if (!footer) {
         footer = [[CPSKUFooter alloc] initWithReuseIdentifier:footerIdneitify];
         footer.contentView.backgroundColor = UIColor.clearColor;
+//        footer.contentView.backgroundColor = UIColor.redColor;
+        footer.clipsToBounds = NO;
+        footer.actionBlock = ^(CGFloat height) {
+//            self.footerHeight = height;
+//            [tableView reloadData];
+        };
     }
     
     footer.model = self.currentModel;

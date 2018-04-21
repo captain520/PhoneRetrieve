@@ -84,7 +84,8 @@
     
         NSString *htmlTitle = @"document.title";
         NSString *titleHtmlInfo = [webView stringByEvaluatingJavaScriptFromString:htmlTitle];
-        [self setTitle:titleHtmlInfo];
+//        [self setTitle:titleHtmlInfo];
+    self.navigationItem.title = titleHtmlInfo;
 
     [self performSelector:@selector(hideProgress) withObject:nil afterDelay:1.0f];
 }
