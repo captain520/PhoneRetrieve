@@ -195,7 +195,8 @@
             weakSelf.currentPage = 0;
             [weakSelf.goods removeAllObjects];
             
-            [weakSelf loadGoodList];
+//            [weakSelf loadGoodList];
+            [weakSelf loadBrand];
         };
 
         [self.view addSubview:_tabbarView];
@@ -398,13 +399,27 @@
                                     
                                 }];
     
+//    [CPBrandModel modelRequestWith:CPURL_SHOP_BRAND_TYPE
+//                           parameters:nil
+//                                block:^(id result) {
+//                                    [weakSelf handleBrandTypeBlock:result];
+//                                } fail:^(CPError *error) {
+//
+//                                }];
+    [self loadBrand];
+}
+
+- (void)loadBrand {
+    
+    __weak CPShopGoodsListVC *weakSelf = self;
+    
     [CPBrandModel modelRequestWith:CPURL_SHOP_BRAND_TYPE
-                           parameters:nil
-                                block:^(id result) {
-                                    [weakSelf handleBrandTypeBlock:result];
-                                } fail:^(CPError *error) {
-                                    
-                                }];
+                        parameters:@{@"type" : @(self.selecteTypeIndex + 1)}
+                             block:^(id result) {
+                                 [weakSelf handleBrandTypeBlock:result];
+                             } fail:^(CPError *error) {
+                                 
+                             }];
 }
 
 - (void)handleGoodTypeBlock:(NSArray <CPGoodTypeModel *> *)result {
@@ -431,6 +446,8 @@
     self.selectBrandIndex = 0;
 
     [self.brandCV reloadData];
+    
+    [self loadGoodList];
 }
 
 - (void)loadGoodList{
