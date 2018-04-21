@@ -34,6 +34,8 @@
     {
         webView = [UIWebView new];
         webView.backgroundColor = [UIColor clearColor];
+        webView.dataDetectorTypes = UIDataDetectorTypeAll;
+        webView.delegate = self;
         [self.contentView addSubview:webView];
         [webView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(hintLB.mas_bottom).offset(cellSpaceOffset);
@@ -89,6 +91,13 @@
     
     if (!_model.images || _model.images.count == 0) {
         sv.hidden = YES;
+        [sv mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(webView.mas_bottom).offset(cellSpaceOffset);
+            make.left.mas_equalTo(cellSpaceOffset);
+            make.right.mas_equalTo(-cellSpaceOffset);
+            //            make.bottom.mas_equalTo(-cellSpaceOffset);
+            make.height.mas_equalTo(0);
+        }];
     } else {
         sv.hidden = NO;
         sv.imageURLStringsGroup = _model.images;
@@ -98,13 +107,32 @@
     
 //    _model.descriptionclickurl = model//@"https://www.baidu.com";
     wwwBT.hidden = _model.descriptionclickurl.length == 0;
-    [wwwBT setTitle:_model.descriptionclickurl forState:0];
+    
+    NSString *title = [NSString stringWithFormat:@"相关网址：%@",_model.descriptionclickurl];
+    
+    NSAttributedString *attr = [[NSAttributedString alloc] initWithString:title
+                                                               attributes:@{
+                                                                            NSForegroundColorAttributeName : MainColor,
+                                                                            NSUnderlineStyleAttributeName : @1
+                                                                            }];
+    
+    [wwwBT setAttributedTitle:attr forState:0];
+//    [wwwBT setTitle:title forState:0];
 }
 
 - (void)buttonAction:(UIButton *)sender {
     if([[UIApplication sharedApplication] canOpenURL:CPUrl(_model.descriptionclickurl)]) {
         [[UIApplication sharedApplication] openURL:CPUrl(_model.descriptionclickurl)];
     }
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

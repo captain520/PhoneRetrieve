@@ -435,6 +435,7 @@
 
     [CPRegistParam shareInstance].aliname    = self.alipayNameTF.text;
     [CPRegistParam shareInstance].alinum     = self.alipayAccountTF.text;
+    [CPRegistParam shareInstance].type       = @"2";
 
     if ([self.paymethodTF.text isEqualToString:@"银行卡"]) {
         [CPRegistParam shareInstance].paycfg = @"1";

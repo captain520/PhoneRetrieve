@@ -13,6 +13,7 @@
 #import "CPOrderListPageModel.h"
 #import "CPOrderSearchVC.h"
 #import "CPConsignResultVC.h"
+#import "CPWebVC.h"
 
 @interface CPShippingStateVC ()
 
@@ -93,8 +94,8 @@
         cell.actionBT.hidden = NO;
         cell.title = @"物流单号：";
         //        cell.content = @"92881828q12";
-        cell.actionBT.hidden = YES;
-//        [cell.actionBT addTarget:self action:@selector(push2ShippingStatesVC) forControlEvents:64];
+//        cell.actionBT.hidden = YES;
+        [cell.actionBT addTarget:self action:@selector(push2ShippingStatesVC) forControlEvents:64];
         
         [footer.contentView addSubview:cell];
     }
@@ -160,6 +161,24 @@
     vc.type = CPOrderSearchTypeShipping;
 
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)push2ShippingStatesVC {
+    
+    NSString *url = @"http://www.sf-express.com/mobile/cn/sc/dynamic_function/waybill/waybill_query_by_billno.html";
+    
+    if (url == nil) {
+        url = @"https://www.baidu.com";
+    }
+    
+    CPWebVC *webVC = [[CPWebVC alloc] init];
+    webVC.hidesBottomBarWhenPushed = YES;
+        webVC.urlStr = url;
+//    webVC.contentStr = @"";
+//    webVC.title = title;
+    
+    [self.navigationController pushViewController:webVC animated:YES];
+    
 }
 
 @end

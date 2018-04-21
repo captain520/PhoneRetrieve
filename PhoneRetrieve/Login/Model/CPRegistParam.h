@@ -18,6 +18,9 @@
 
 @property (nonatomic, copy) NSString *bname,*bankname, *banknum, *bankbranch, *wxname, *wxnum, *aliname, *alinum, *paycfg;
 
+@property (nonatomic, copy) NSString *push_token;
+@property (nonatomic, copy) NSString *type;
+
 + (instancetype)shareInstance;
 
 @end

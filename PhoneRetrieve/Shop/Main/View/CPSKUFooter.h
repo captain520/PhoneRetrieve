@@ -10,7 +10,7 @@
 #import "CPRetrieveFlowModel.h"
 #import "CPFlowModel.h"
 
-@interface CPSKUFooter : CPHeaderFooter
+@interface CPSKUFooter : CPHeaderFooter<UIWebViewDelegate>
 
 //@property (nonatomic, strong) Skuproperties *model;
 @property (nonatomic, strong) CPFlowModel *model;

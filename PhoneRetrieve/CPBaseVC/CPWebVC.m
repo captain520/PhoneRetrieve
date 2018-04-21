@@ -47,6 +47,7 @@
 - (UIWebView *)webView {
     if (_webView == nil) {
         _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        _webView.dataDetectorTypes = UIDataDetectorTypeAll;
         
         _webView.delegate = self;
         
@@ -79,11 +80,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.progress setProgress:1 animated:YES];
     
-    //获取网页title
-    //
-    //    NSString *htmlTitle = @"document.title";
-    //    NSString *titleHtmlInfo = [webView stringByEvaluatingJavaScriptFromString:htmlTitle];
-    //    [self setTitle:titleHtmlInfo];
+//    获取网页title
+    
+        NSString *htmlTitle = @"document.title";
+        NSString *titleHtmlInfo = [webView stringByEvaluatingJavaScriptFromString:htmlTitle];
+        [self setTitle:titleHtmlInfo];
 
     [self performSelector:@selector(hideProgress) withObject:nil afterDelay:1.0f];
 }
@@ -91,6 +92,10 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [self.progress setProgress:1 animated:YES];
     [self performSelector:@selector(hideProgress) withObject:nil afterDelay:1.0f];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    return YES;
 }
 
 - (void)hideProgress {

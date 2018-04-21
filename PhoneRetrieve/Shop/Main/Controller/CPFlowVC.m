@@ -130,14 +130,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10.0f;
+    return 350.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
     NSString *footerIdneitify = @"CPSKUFooter";
     
-    CPSKUFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerIdneitify];
+    CPSKUFooter *footer = nil;//[tableView dequeueReusableHeaderFooterViewWithIdentifier:footerIdneitify];
     if (!footer) {
         footer = [[CPSKUFooter alloc] initWithReuseIdentifier:footerIdneitify];
         footer.contentView.backgroundColor = UIColor.clearColor;
@@ -234,6 +234,11 @@
     }
     
     self.models = result;
+    
+//    [self.models enumerateObjectsUsingBlock:^(CPFlowModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        obj.descriptionclickurl = @"https://www.baidu.com";
+//    }];
+    
     self.currentStep = 0;
 
     [self cp_updateUI];
