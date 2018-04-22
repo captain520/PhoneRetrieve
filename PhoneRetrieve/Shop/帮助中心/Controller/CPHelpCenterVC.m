@@ -228,7 +228,19 @@
 
 - (void)handleLoadDataBlock:(NSArray <CPHelpListModel *> *)result {
     
-    self.dataModels = result.mutableCopy;
+    if (self.dataModels) {
+        [self.dataModels removeAllObjects];
+    } else {
+        self.dataModels = @[].mutableCopy;
+    }
+    
+    [result enumerateObjectsUsingBlock:^(CPHelpListModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.ID != 8 && obj.ID != 9) {
+            [self.dataModels addObject:obj];
+        }
+    }];
+
+//    self.dataModels = result.mutableCopy;
     
     [self.dataTableView reloadData];
 }
