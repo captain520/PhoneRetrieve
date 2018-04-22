@@ -52,4 +52,10 @@
 //    }];
 }
 
+- (void)setImageName:(NSString *)imageName {
+    _imageName = imageName;
+    
+    cp_imageView.image = CPImage(_imageName);
+}
+
 @end

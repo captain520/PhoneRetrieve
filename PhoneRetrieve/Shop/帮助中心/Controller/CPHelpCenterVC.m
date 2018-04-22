@@ -70,7 +70,7 @@
     return 44.0f;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.000000001f;
+    return cellSpaceOffset/2;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -127,6 +127,12 @@
         cell = [[CPFullImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdenitify];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.shouldShowBottomLine = NO;
+    }
+    
+    if (indexPath.section == 0) {
+        cell.imageName = @"回收流程";
+    } else if (indexPath.section == 1) {
+        cell.imageName = @"发货流程";
     }
     
     return cell;

@@ -318,7 +318,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
 
 - (void)handleLoginBlock:(CPLoginModel *)result {
     
-//    result.Typeid = 3;
+//    result.Typeid = 4;
     if (!result.linkname) {
         result.linkname = @"匿名用户";
     }

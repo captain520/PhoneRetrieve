@@ -10,4 +10,6 @@
 
 @interface CPFullImageCell : CPBaseCell
 
+@property (nonatomic, copy) NSString *imageName;
+
 @end

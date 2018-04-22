@@ -110,13 +110,14 @@
             break;
         case CPMainActionTypeOther:
         {
-            [CPConfigUrlModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/getHelpDetail"
-                                    parameters:@{@"id" : @"7"}
-                                         block:^(CPConfigUrlModel *result) {
-                                             [self push2WebView:result.Description title:result.title];
-                                         } fail:^(CPError *error) {
-                                             
-                                         }];
+            [self push2VCWith:@"CPHelpCenterVC" title:@"帮助中心"];
+//            [CPConfigUrlModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/getHelpDetail"
+//                                    parameters:@{@"id" : @"7"}
+//                                         block:^(CPConfigUrlModel *result) {
+//                                             [self push2WebView:result.Description title:result.title];
+//                                         } fail:^(CPError *error) {
+//
+//                                         }];
         }
             break;
         default:
