@@ -16,13 +16,18 @@
 #import "CPAssistantOrderListPageModel.h"
 #import "CPAssistantOrderListPageModel.h"
 #import "CPGoodOrderListVC.h"
+#import "CPMemeberListModel.h"
 
-@interface CPOrderSearchVC ()<UISearchBarDelegate>
+@interface CPOrderSearchVC ()<UISearchBarDelegate,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) CPDatePickerTF *begintInputTF, *endInputTF;
 @property (nonatomic, strong) CPLabel *beginLB, *endLB;
 @property (nonatomic, strong) CPButton *nextActionBT;
+@property (nonatomic, strong) CPTextField *shopSelectedTF;
+@property (nonatomic, strong) NSArray *shopsModels;
+@property (nonatomic, strong) CPMemeberListModel *selectedShopModel;
+@property (nonatomic, strong) UIPickerView *pickerView;
 
 //@property (nonatomic, strong) UIDatePicker *datePicker;
 
@@ -34,6 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupUI];
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +50,38 @@
 - (void)setType:(CPOrderSearchType)type {
     
     _type = type;
+}
+
+- (UIPickerView *)pickerView {
+    
+    if (nil == _pickerView) {
+        _pickerView = [UIPickerView new];
+        _pickerView.delegate = self;
+    }
+    
+    return _pickerView;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return self.shopsModels.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    
+    CPMemeberListModel *model = self.shopsModels[row];
+    
+    return model.linkname;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    NSInteger row =  [self.pickerView selectedRowInComponent:0];
+    self.selectedShopModel = self.shopsModels[row];
+    textField.text = self.selectedShopModel.linkname ? self.selectedShopModel.linkname : @"全部店员";
 }
 
 - (void)setupUI {
@@ -73,6 +111,21 @@
         make.height.mas_offset(CELL_HEIGHT_F);
     }];
     
+//    self.shopSelectedTF = [CPTextField new];
+//    self.shopSelectedTF.text                 = @"全部店员";
+//    self.shopSelectedTF.delegate             = self;
+//    self.shopSelectedTF.actionType           = CPTextFieldActionTypeRightAction;
+//    self.shopSelectedTF.rightActionImageName = @"home_down";
+//    self.shopSelectedTF.inputView            = self.pickerView;
+//
+//    [self.view addSubview:self.shopSelectedTF];
+//    [self.shopSelectedTF mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(_searchBar.mas_bottom).offset(cellSpaceOffset);
+//        make.left.mas_equalTo(cellSpaceOffset);
+//        make.right.mas_equalTo(-cellSpaceOffset);
+//        make.height.mas_equalTo(CELL_HEIGHT_F);
+//    }];
+    
     
     _beginLB = [CPLabel new];
     _beginLB.font      = CPFont_S;
@@ -82,7 +135,7 @@
     [self.view addSubview:_beginLB];
     
     [_beginLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_searchBar.mas_bottom).offset(cellSpaceOffset);
+        make.top.mas_equalTo(self.searchBar.mas_bottom).offset(cellSpaceOffset);
         make.left.mas_equalTo(cellSpaceOffset);
     }];
 
@@ -326,5 +379,40 @@
 
     [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+
+- (void)loadData {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSDictionary *params = @{
+                             @"typeid" : @"4",
+                             @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)
+                             };
+    
+    [CPMemeberListModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/findUserList"
+                              parameters:params
+                                   block:^(id result) {
+                                       [weakSelf handleLoadDataBlock:result];
+                                   } fail:^(CPError *error) {
+                                       
+                                   }];
+}
+
+- (void)handleLoadDataBlock:(NSArray <CPMemeberListModel *> *)result {
+    if (!result || ![result isKindOfClass:[NSArray class]]) {
+        
+        CPBaseModel *emptyModel = (CPBaseModel *)result;
+        
+        [self.view makeToast:emptyModel.msg duration:1.0f position:CSToastPositionCenter];
+        
+        return;
+    }
+    
+    self.shopsModels = result;
+
+    [self.pickerView reloadAllComponents];
+    
 }
 @end

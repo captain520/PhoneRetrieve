@@ -280,6 +280,7 @@
 		9C5E27802024609C003E32E7 /* CPRegisterTypeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E277F2024609C003E32E7 /* CPRegisterTypeListVC.m */; };
 		9C5E2783202462C1003E32E7 /* CPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E2782202462C1003E32E7 /* CPButton.m */; };
 		9C5E278620246A29003E32E7 /* CPShopRegistLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E278520246A29003E32E7 /* CPShopRegistLoginVC.m */; };
+		9C699AFF208C951700CBE81D /* CPHelpDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C699AFE208C951700CBE81D /* CPHelpDetailModel.m */; };
 		9C7F64AE204D0E170029B193 /* CPLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F64AD204D0E170029B193 /* CPLoginModel.m */; };
 		9C7F64AF204D0E170029B193 /* CPLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F64AD204D0E170029B193 /* CPLoginModel.m */; };
 		9C81F390202C1D4000837D96 /* CPAssistantInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C81F38F202C1D4000837D96 /* CPAssistantInfoCell.m */; };
@@ -293,6 +294,9 @@
 		9C9ED91E202A9C4700532826 /* CPShopHelpHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED91D202A9C4700532826 /* CPShopHelpHeader.m */; };
 		9C9ED921202AA0D500532826 /* CPImageLeftRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED920202AA0D500532826 /* CPImageLeftRightCell.m */; };
 		9C9ED924202AABB900532826 /* CPAssistantManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED923202AABB900532826 /* CPAssistantManagerVC.m */; };
+		9CA7ABBB208B43DD00994DAC /* CPHelpCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7ABBA208B43DD00994DAC /* CPHelpCenterVC.m */; };
+		9CA7ABBE208B464000994DAC /* CPHelpListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7ABBD208B464000994DAC /* CPHelpListModel.m */; };
+		9CA7ABC1208B4F1E00994DAC /* CPFullImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7ABC0208B4F1E00994DAC /* CPFullImageCell.m */; };
 		9CAB3975206AA55D005F4D5F /* CPShippingStateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */; };
 		9CAB3976206AA55D005F4D5F /* CPShippingStateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */; };
 		9CCE377B2046453F00DBF147 /* CPShopCartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE377A2046453F00DBF147 /* CPShopCartVC.m */; };
@@ -740,6 +744,8 @@
 		9C5E2782202462C1003E32E7 /* CPButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPButton.m; sourceTree = "<group>"; };
 		9C5E278420246A29003E32E7 /* CPShopRegistLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopRegistLoginVC.h; sourceTree = "<group>"; };
 		9C5E278520246A29003E32E7 /* CPShopRegistLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopRegistLoginVC.m; sourceTree = "<group>"; };
+		9C699AFD208C951700CBE81D /* CPHelpDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPHelpDetailModel.h; sourceTree = "<group>"; };
+		9C699AFE208C951700CBE81D /* CPHelpDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPHelpDetailModel.m; sourceTree = "<group>"; };
 		9C7F64AC204D0E170029B193 /* CPLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPLoginModel.h; sourceTree = "<group>"; };
 		9C7F64AD204D0E170029B193 /* CPLoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPLoginModel.m; sourceTree = "<group>"; };
 		9C81F38E202C1D4000837D96 /* CPAssistantInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAssistantInfoCell.h; sourceTree = "<group>"; };
@@ -764,6 +770,12 @@
 		9C9ED920202AA0D500532826 /* CPImageLeftRightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPImageLeftRightCell.m; sourceTree = "<group>"; };
 		9C9ED922202AABB900532826 /* CPAssistantManagerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAssistantManagerVC.h; sourceTree = "<group>"; };
 		9C9ED923202AABB900532826 /* CPAssistantManagerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAssistantManagerVC.m; sourceTree = "<group>"; };
+		9CA7ABB9208B43DD00994DAC /* CPHelpCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPHelpCenterVC.h; sourceTree = "<group>"; };
+		9CA7ABBA208B43DD00994DAC /* CPHelpCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPHelpCenterVC.m; sourceTree = "<group>"; };
+		9CA7ABBC208B464000994DAC /* CPHelpListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPHelpListModel.h; sourceTree = "<group>"; };
+		9CA7ABBD208B464000994DAC /* CPHelpListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPHelpListModel.m; sourceTree = "<group>"; };
+		9CA7ABBF208B4F1E00994DAC /* CPFullImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPFullImageCell.h; sourceTree = "<group>"; };
+		9CA7ABC0208B4F1E00994DAC /* CPFullImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPFullImageCell.m; sourceTree = "<group>"; };
 		9CAB3973206AA55D005F4D5F /* CPShippingStateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShippingStateVC.h; sourceTree = "<group>"; };
 		9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShippingStateVC.m; sourceTree = "<group>"; };
 		9CCE37792046453F00DBF147 /* CPShopCartVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopCartVC.h; sourceTree = "<group>"; };
@@ -900,6 +912,7 @@
 		9C07033C202404520080856C /* PhoneRetrieve */ = {
 			isa = PBXGroup;
 			children = (
+				9CA7ABB5208B43C200994DAC /* 帮助中心 */,
 				9C1CBD642085883900CFC722 /* PhoneRetrieve.entitlements */,
 				9CDD92FB205F8E0A0072A6C1 /* Asistant */,
 				9C5C8B72202977170053C50B /* Shop */,
@@ -1429,6 +1442,46 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		9CA7ABB5208B43C200994DAC /* 帮助中心 */ = {
+			isa = PBXGroup;
+			children = (
+				9CA7ABB6208B43C200994DAC /* Controller */,
+				9CA7ABB7208B43C200994DAC /* Model */,
+				9CA7ABB8208B43C200994DAC /* View */,
+			);
+			name = "帮助中心";
+			path = "Shop/帮助中心";
+			sourceTree = "<group>";
+		};
+		9CA7ABB6208B43C200994DAC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9CA7ABB9208B43DD00994DAC /* CPHelpCenterVC.h */,
+				9CA7ABBA208B43DD00994DAC /* CPHelpCenterVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9CA7ABB7208B43C200994DAC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CA7ABBC208B464000994DAC /* CPHelpListModel.h */,
+				9CA7ABBD208B464000994DAC /* CPHelpListModel.m */,
+				9C699AFD208C951700CBE81D /* CPHelpDetailModel.h */,
+				9C699AFE208C951700CBE81D /* CPHelpDetailModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9CA7ABB8208B43C200994DAC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9CA7ABBF208B4F1E00994DAC /* CPFullImageCell.h */,
+				9CA7ABC0208B4F1E00994DAC /* CPFullImageCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9CCE37972046ABA000DBF147 /* ShippingInformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1734,6 +1787,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C9ED921202AA0D500532826 /* CPImageLeftRightCell.m in Sources */,
+				9CA7ABC1208B4F1E00994DAC /* CPFullImageCell.m in Sources */,
 				9C5E274E20240983003E32E7 /* CPStartView.m in Sources */,
 				9CD61C03206746C000CF863C /* CPProviceCityAreaModel.m in Sources */,
 				9CCE3790204691A100DBF147 /* CPConsignResultVC.m in Sources */,
@@ -1836,6 +1890,7 @@
 				9C16EAC1204D1D6F007BE6FE /* CPProgress.m in Sources */,
 				9C168000204ACDA20017A525 /* CPAssistantModifyPhoneVC.m in Sources */,
 				9CCE377B2046453F00DBF147 /* CPShopCartVC.m in Sources */,
+				9CA7ABBE208B464000994DAC /* CPHelpListModel.m in Sources */,
 				9C81F393202C277800837D96 /* CPAssistantEditVC.m in Sources */,
 				9C3774ED204414370001B961 /* CPGuaranteeListVC.m in Sources */,
 				9C3774E72043F8F80001B961 /* CPDevieInfoListVC.m in Sources */,
@@ -1857,6 +1912,7 @@
 				9C5E276020240CB5003E32E7 /* CPBaseTableVC.m in Sources */,
 				9C2DE692205B576E005C0F26 /* CPFlowVC.m in Sources */,
 				9CCE37842046593200DBF147 /* CPConsignDetailVC.m in Sources */,
+				9CA7ABBB208B43DD00994DAC /* CPHelpCenterVC.m in Sources */,
 				9C167F7E204925E90017A525 /* CPUserInfoModel.m in Sources */,
 				9C5E277720243925003E32E7 /* UIImage+Category.m in Sources */,
 				9C5E274020240983003E32E7 /* CPBaseModel.m in Sources */,
@@ -1868,6 +1924,7 @@
 				9C5C8B9B202990D00053C50B /* CPWebVC.m in Sources */,
 				9CCE379320469CFD00DBF147 /* CPConsignStateVC.m in Sources */,
 				9C37751520454EE40001B961 /* CPShopOrderVC.m in Sources */,
+				9C699AFF208C951700CBE81D /* CPHelpDetailModel.m in Sources */,
 				9C377505204524000001B961 /* CPDeviceOwnerInfoVC.m in Sources */,
 				9C039DE92063D90500AAAA50 /* CPUserOperationModel.m in Sources */,
 				9C5E278620246A29003E32E7 /* CPShopRegistLoginVC.m in Sources */,

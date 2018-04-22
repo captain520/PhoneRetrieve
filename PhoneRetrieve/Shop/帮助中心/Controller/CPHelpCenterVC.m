@@ -11,6 +11,7 @@
 #import "CPWebVC.h"
 #import "CPImageCell.h"
 #import "CPFullImageCell.h"
+#import "CPHelpDetailModel.h"
 
 @interface CPHelpCenterVC ()
 
@@ -169,8 +170,48 @@
         
         [self.navigationController pushViewController:webVC animated:YES];
         
+    } else if (indexPath.section == 0) {
+        
+        [self loadHelpDetail:@"8"];
+
+    } else if (indexPath.section == 1) {
+        
+        [self loadHelpDetail:@"9"];
     }
 }
+
+- (void)loadHelpDetail:(NSString *)code {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [CPHelpDetailModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/getHelpDetail"
+                             parameters:@{@"id" : code}
+                                  block:^(CPHelpDetailModel *result) {
+                                      [weakSelf handleLoadHelpDetailBlock:result];
+                                  } fail:^(CPError *error) {
+                                      
+                                  }];
+    
+}
+
+- (void)handleLoadHelpDetailBlock:(CPHelpDetailModel *)result {
+    if (!result || ![result isKindOfClass:[CPHelpDetailModel class]]) {
+        
+        [self.view makeToast:result.msg duration:1.0f position:@"center"];
+        
+        return;
+    }
+    
+    CPWebVC *webVC = [[CPWebVC alloc] init];
+    webVC.title                    = result.title;
+    webVC.contentStr               = result.Description;
+    webVC.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:webVC animated:YES];
+
+}
+
+#pragma mark - Private method
 
 - (void)loadData {
     

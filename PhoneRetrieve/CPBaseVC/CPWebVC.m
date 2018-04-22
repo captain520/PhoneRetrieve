@@ -48,7 +48,8 @@
     if (_webView == nil) {
         _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
         _webView.dataDetectorTypes = UIDataDetectorTypeAll;
-        
+//        _webView.scalesPageToFit   = YES;
+
         _webView.delegate = self;
         
         [self.view addSubview:_webView];
@@ -67,9 +68,26 @@
 
 - (void)setContentStr:(NSString *)contentStr {
     
-    _contentStr = contentStr;
+    _contentStr = [self webImageFitToDeviceSize:contentStr.mutableCopy];
+
+//    _contentStr = contentStr;
     
     [self.webView loadHTMLString:_contentStr baseURL:nil];
+}
+
+- (NSMutableString *)webImageFitToDeviceSize:(NSMutableString *)strContent
+{
+    [strContent appendString:@"<html>"];
+    [strContent appendString:@"<head>"];
+    [strContent appendString:@"<meta charset=\"utf-8\">"];
+    [strContent appendString:@"<meta id=\"viewport\" name=\"viewport\" content=\"width=device-width*0.9,initial-scale=1.0,maximum-scale=1.0,user-scalable=false\" />"];
+    [strContent appendString:@"<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />"];
+    [strContent appendString:@"<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" />"];
+    [strContent appendString:@"<meta name=\"black\" name=\"apple-mobile-web-app-status-bar-style\" />"];
+    [strContent appendString:@"<style>img{width:100%;}</style>"];
+    [strContent appendString:@"<style>table{width:100%;}</style>"];
+    [strContent appendString:@"<title>webview</title>"];
+    return strContent;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
@@ -85,7 +103,9 @@
         NSString *htmlTitle = @"document.title";
         NSString *titleHtmlInfo = [webView stringByEvaluatingJavaScriptFromString:htmlTitle];
 //        [self setTitle:titleHtmlInfo];
-    self.navigationItem.title = titleHtmlInfo;
+    if (titleHtmlInfo && titleHtmlInfo.length > 0) {
+        self.navigationItem.title = titleHtmlInfo;
+    }
 
     [self performSelector:@selector(hideProgress) withObject:nil afterDelay:1.0f];
 }
