@@ -310,11 +310,11 @@
                              @"code" : [CPUserInfoModel shareInstance].loginModel.cp_code,
                              @"idcard1url" : self.IDFrontBT.imageUrl,
                              @"idcard2url" : self.IDBackBT.imageUrl,
-                             @"password" :self.confirmTF.text,
+                             @"password" :cp_md5(self.confirmTF.text),
                              @"code" : @([CPUserInfoModel shareInstance].loginModel.ID)
                              };
     
-    [CPAddMemberResultModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/shopCreateDY"
+    [CPAddMemberResultModel modelRequestWith:@"http://api.leshouzhan.com/api/user/shopCreateDY"
                                   parameters:params
                                        block:^(CPAddMemberResultModel *result) {
                                            [weakSelf handleAction:result];
@@ -337,11 +337,11 @@
                              @"idcard1url" : self.IDFrontBT.imageUrl,
                              @"ophone" : self.IDBackBT.imageUrl,
                              @"idcard2url" : self.IDBackBT.imageUrl,
-                             @"password" : self.confirmTF.text,
+                             @"password" : cp_md5(self.confirmTF.text),
                              @"code" : @(self.model.ID)
                              };
     
-    [CPBaseModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/update4"
+    [CPBaseModel modelRequestWith:@"http://api.leshouzhan.com/api/user/update4"
                        parameters:params
                             block:^(id result) {
                                 [weakSelf handleUpdateActionNBlock:result];

@@ -376,7 +376,7 @@
     [CPAssistantRegisterParam shareInstance].code = self.shopCodeTF.text;
     [CPAssistantRegisterParam shareInstance].phone = self.accountTF.text;
     [CPAssistantRegisterParam shareInstance].sms = self.codeTF.text;
-    [CPAssistantRegisterParam shareInstance].password = self.confirmTF.text;
+    [CPAssistantRegisterParam shareInstance].password = cp_md5(self.confirmTF.text);
     [CPAssistantRegisterParam shareInstance].idcard1url = self.IDFrontBT.imageUrl;
     [CPAssistantRegisterParam shareInstance].idcard2url = self.IDBackBT.imageUrl;
     

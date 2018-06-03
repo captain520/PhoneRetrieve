@@ -184,7 +184,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPHelpDetailModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/getHelpDetail"
+    [CPHelpDetailModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getHelpDetail"
                              parameters:@{@"id" : code}
                                   block:^(CPHelpDetailModel *result) {
                                       [weakSelf handleLoadHelpDetailBlock:result];
@@ -217,7 +217,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPHelpListModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/findSysConfigByCode?code=122"
+    [CPHelpListModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/findSysConfigByCode?code=122"
                            parameters:nil
                                 block:^(id result) {
                                     [weakSelf handleLoadDataBlock:result];

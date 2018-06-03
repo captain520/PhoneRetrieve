@@ -149,8 +149,8 @@
 
     NSDictionary *params = @{
                              @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID),
-                             @"oldpassword" : self.accountTF.text,
-                             @"password" : self.passwdTF.text
+                             @"oldpassword" : cp_md5(self.accountTF.text),
+                             @"password" : cp_md5(self.passwdTF.text)
                              };
     [CPBaseModel modelRequestWith:CPURL_ASSISTANT_UPDATE_USER_PASSWD
                        parameters:params

@@ -199,7 +199,7 @@
         
         __weak typeof(self) weakSelf = self;
 
-        [CPBaseModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/deleteUser"
+        [CPBaseModel modelRequestWith:@"http://api.leshouzhan.com/api/user/deleteUser"
                            parameters:@{@"userid" : model.ID}
                                 block:^(id result) {
                                     [weakSelf handleDeleteSuccessBlock:result];
@@ -237,7 +237,7 @@
                              @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)
                              };
     
-    [CPMemeberListModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/findUserList"
+    [CPMemeberListModel modelRequestWith:@"http://api.leshouzhan.com/api/user/findUserList"
                        parameters:params
                             block:^(id result) {
                                 [weakSelf handleLoadDataBlock:result];

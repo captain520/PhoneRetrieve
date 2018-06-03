@@ -240,7 +240,7 @@
     
     [CPRegistParam shareInstance].phone = self.accountTF.text;
     [CPRegistParam shareInstance].sms = self.codeTF.text;
-    [CPRegistParam shareInstance].password = self.confirmTF.text;
+    [CPRegistParam shareInstance].password = cp_md5(self.confirmTF.text);
 
     [self push2VCWith:@"CPShopRegistInfoTBVC" title:@"门店注册"];
 }

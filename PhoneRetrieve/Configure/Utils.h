@@ -58,5 +58,7 @@ NSString *cp_int2String(NSInteger value) ;
 
 ////  将对象转为jsonstring
 //NSString *cp_jsonString(id object) ;
+NSString * cp_md5(NSString *input);
+
 
 @end

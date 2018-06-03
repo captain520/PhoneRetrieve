@@ -450,7 +450,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPShopRegisterModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/register3"
+    [CPShopRegisterModel modelRequestWith:@"http://api.leshouzhan.com/api/user/register3"
                                parameters:paramsDict
                                     block:^(id result) {
                                         [weakSelf handleRegiterBlock:result];

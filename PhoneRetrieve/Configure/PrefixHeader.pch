@@ -9,6 +9,14 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#define RUN_EVN     0       //  0:Test   1:Product
+
+#if RRN_EVN
+#define DOMAIN_ADDRESS
+#else
+#define DOMAIN_ADDRESS
+#endif
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import <Masonry.h>
@@ -50,7 +58,7 @@ static const int ddLogLevel = DDLogLevelError;
 #define CPEnableColor       [UIImage imageWithColor:MainColor]
 #define CPEnableImage       CPImageWithColr(MainColor)//[UIImage imageWithColor:MainColor]
 #define CPDisableColor      [UIImage imageWithColor:C33]
-#define CPDisableImage      CPImageWithColr(C33)//[UIImage imageWithColor:C33]
+#define CPDisableImage      CPImageWithColr(C66)//[UIImage imageWithColor:C33]
 #define CPBoardColor        C99
 
 #define CPFont(x)           [UIFont systemFontOfSize:x]

@@ -296,7 +296,7 @@
         [params setObject:@(paycfg) forKey:@"paycfg"];
     }
 
-    [CPOrderListPageModel modelRequestWith:@"http://leshouzhan.platline.com/api/Order/findOrderList"
+    [CPOrderListPageModel modelRequestWith:@"http://api.leshouzhan.com/api/Order/findOrderList"
                                 parameters:params
                                      block:^(CPOrderListPageModel *result) {
                                          [weakSelf handlequeryShopPayStateVCBlock:result];
@@ -391,7 +391,7 @@
                              @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)
                              };
     
-    [CPMemeberListModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/findUserList"
+    [CPMemeberListModel modelRequestWith:@"http://api.leshouzhan.com/api/user/findUserList"
                               parameters:params
                                    block:^(id result) {
                                        [weakSelf handleLoadDataBlock:result];

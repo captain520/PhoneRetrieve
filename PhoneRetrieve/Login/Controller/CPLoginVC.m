@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     if (nil == self.accountTF) {
         self.accountTF = [UITextField new];
         self.accountTF.placeholder = @"请输入您的手机号码/会员编号";
-        self.accountTF.text = @"15814099327";
+//        self.accountTF.text = @"15814099327";
 //        self.accountTF.text = @"18033446838";
         self.accountTF.borderStyle = UITextBorderStyleRoundedRect;
 //        self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
@@ -102,7 +102,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     if (nil == self.passwdTF) {
         self.passwdTF = [UITextField new];
         self.passwdTF.placeholder = @"请输入您的登陆密码";
-        self.passwdTF.text = @"123456";
+//        self.passwdTF.text = @"123456";
         self.passwdTF.borderStyle = UITextBorderStyleRoundedRect;
 //        self.passwdTF.keyboardType = UIKeyboardTypeNumberPad;
         self.passwdTF.font = [UIFont systemFontOfSize:15.0f];
@@ -256,7 +256,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     
     NSDictionary *params = @{
                              @"phone" : self.accountTF.text,
-                             @"password" : self.passwdTF.text,
+                             @"password" : cp_md5(self.passwdTF.text),
                              @"type" : @"2",
                              @"push_token" : [CPUserInfoModel shareInstance].push_token ? [CPUserInfoModel shareInstance].push_token : @""
                              };
@@ -273,7 +273,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     }
 
 //    DDLogInfo(@"------------------------------");
-//    [CPBaseModel modelRequestWith:@"http://leshouzhan.platline.com/api/user/getDetailUserInfo"
+//    [CPBaseModel modelRequestWith:@"http://api.leshouzhan.com/api/user/getDetailUserInfo"
 //                       parameters:@{@"userid" : @1}
 //                            block:^(id result) {
 //                                NSLog(@"%@",result);
@@ -291,7 +291,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
                                  
                              }];
     
-    [CPUserOperationModel modelRequestWith:@"http://leshouzhan.platline.com/api/Goodsoperation/findGoodsOperation"
+    [CPUserOperationModel modelRequestWith:@"http://api.leshouzhan.com/api/Goodsoperation/findGoodsOperation"
                        parameters:nil
                             block:^(CPUserOperationModel *result) {
                                 [CPUserInfoModel shareInstance].operationDes = result.result;
@@ -299,7 +299,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
                                 
                             }];
     
-    [CPCustomerHelpModel modelRequestWith:@"http://leshouzhan.platline.com/api/Sysinfo/getSysInfo"
+    [CPCustomerHelpModel modelRequestWith:@"http://api.leshouzhan.com/api/Sysinfo/getSysInfo"
                                parameters:nil
                                     block:^(CPCustomerHelpModel *result) {
                                         [CPUserInfoModel shareInstance].customerHelpModel = result;
@@ -307,7 +307,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
                                         
                                     }];
     
-    [CPConfigUrlModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/getSysConfigByCode"
+    [CPConfigUrlModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getSysConfigByCode"
                             parameters:@{@"code" : @"100"}
                                  block:^(CPConfigUrlModel *result) {
 //                                     [CPUserInfoModel shareInstance].helpHtml = result.Description;

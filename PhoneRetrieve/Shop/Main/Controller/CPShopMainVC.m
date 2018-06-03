@@ -111,7 +111,7 @@
         case CPMainActionTypeOther:
         {
             [self push2VCWith:@"CPHelpCenterVC" title:@"帮助中心"];
-//            [CPConfigUrlModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/getHelpDetail"
+//            [CPConfigUrlModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getHelpDetail"
 //                                    parameters:@{@"id" : @"7"}
 //                                         block:^(CPConfigUrlModel *result) {
 //                                             [self push2WebView:result.Description title:result.title];
@@ -127,7 +127,7 @@
 
 //- (void)getConfigUrl:(NSString *)code block:(void (^)(NSString *url,NSString *title))block {
 //
-//    [CPConfigUrlModel modelRequestWith:@"http://leshouzhan.platline.com/api/sysconfig/getSysConfigByCode"
+//    [CPConfigUrlModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getSysConfigByCode"
 //                            parameters:@{@"code" : code}
 //                                 block:^(CPConfigUrlModel *result) {
 //                                     !block ? : block(result.Description, result.title);
