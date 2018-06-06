@@ -25,10 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    self.dataArray = @[
+//                       @[@"中国农业银行(8731)"],
+//                       @[@"胡小小(1581****1234)"],
+//                       @[@"captain_2012(158****2123)"]
+//                       ];
     self.dataArray = @[
-                       @[@"中国农业银行(8731)"],
-                       @[@"胡小小(1581****1234)"],
-                       @[@"captain_2012(158****2123)"]
+                       @[[NSString stringWithFormat:@"%@(%@)",[CPUserInfoModel shareInstance].userDetaiInfoModel.bankname,[CPUserInfoModel shareInstance].userDetaiInfoModel.banknum]],
+                       @[[NSString stringWithFormat:@"%@(%@)",[CPUserInfoModel shareInstance].userDetaiInfoModel.aliname,[CPUserInfoModel shareInstance].userDetaiInfoModel.alinum]],
+                       @[[NSString stringWithFormat:@"%@(%@)",[CPUserInfoModel shareInstance].userDetaiInfoModel.wxname,[CPUserInfoModel shareInstance].userDetaiInfoModel.wxnum]]
                        ];
     
     self.paycfg = [CPUserInfoModel shareInstance].userDetaiInfoModel.paycfg;
@@ -224,7 +229,7 @@
                              @"paycfg" : @(self.paycfg)
                              };
     
-    [CPBaseModel modelRequestWith:@"http://api.leshouzhan.com/api/user/updatePay"
+    [CPBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/updatePay"
                        parameters:params
                             block:^(id result) {
                                 [weakSelf handleSaveActionSuccessBlock:weakSelf];

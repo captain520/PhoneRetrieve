@@ -48,7 +48,7 @@
             make.right.mas_equalTo(-cellSpaceOffset);
             make.height.mas_equalTo(CELL_HEIGHT_F);
         }];
-        
+
     }
     
     if (nil == self.accountTF) {
@@ -58,7 +58,7 @@
         self.accountTF.borderStyle = UITextBorderStyleRoundedRect;
         self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
         self.accountTF.rightViewMode = UITextFieldViewModeAlways;
-        
+
         [self.view addSubview:self.accountTF];
         
         [self.accountTF mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,7 +76,7 @@
         [self.sendCodeBT setBackgroundImage:CPEnableImage forState:UIControlStateNormal];
         [self.sendCodeBT setBackgroundImage:CPDisableImage forState:UIControlStateDisabled];
         [self.sendCodeBT setTitle:@"获取验证码" forState:UIControlStateNormal];
-        
+
         [self.accountTF addSubview:self.sendCodeBT];
         
         [self.sendCodeBT mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -85,6 +85,12 @@
             make.bottom.mas_offset(-5);
             make.width.mas_equalTo(120.0f);
         }];
+        
+        RAC(self.sendCodeBT,enabled) = [RACSignal combineLatest:@[self.codeTF.rac_textSignal]
+                                                         reduce:^id{
+                                                             self.sendCodeBT.phoneNumber = self.codeTF.text;
+                                                             return @(CheckPhone(self.codeTF.text));
+                                                         }];
     }
     
 

@@ -71,7 +71,7 @@
 
 - (void)getConfigUrl:(NSString *)code block:(void (^)(NSString *url,NSString *title))block {
     
-    [CPConfigUrlModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getSysConfigByCode"
+    [CPConfigUrlModel modelRequestWith:DOMAIN_ADDRESS@"/api/sysconfig/getSysConfigByCode"
                             parameters:@{@"code" : code}
                                  block:^(CPConfigUrlModel *result) {
                                      !block ? : block(result.Description, result.title);

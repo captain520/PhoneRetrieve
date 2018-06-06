@@ -65,6 +65,8 @@
                                ];
     }
     
+    self.navigationItem.rightBarButtonItem = nil;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -269,7 +271,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (2 == section) {
+    if ((IS_ASSISTANT && 1 == section ) || (2 == section)) {
         return 60.0f;
     }
     return 10;
@@ -277,7 +279,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    if (2 == section) {
+    if ( (IS_ASSISTANT && 1 == section) || 2 == section) {
         NSString *headerIdenitfier = @"footer";
         
         UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdenitfier];
@@ -369,7 +371,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPUserDetailInfoModel modelRequestWith:@"http://api.leshouzhan.com/api/user/getDetailUserInfo"
+    [CPUserDetailInfoModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/getDetailUserInfo"
                                  parameters:@{@"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)}
                                       block:^(CPUserDetailInfoModel *result) {
                                           [weakSelf handleLoadDataSuccessBlock:result];

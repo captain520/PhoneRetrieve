@@ -34,6 +34,11 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"search") style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
     }
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"right-arrow") style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+    
+}
+- (void)back:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,7 +134,7 @@
 
     __weak typeof(self) weakSelf = self;
     
-    [CPOrderListPageModel modelRequestWith:@"http://api.leshouzhan.com/api/Order/findOrderList"
+    [CPOrderListPageModel modelRequestWith:DOMAIN_ADDRESS@"/api/Order/findOrderList"
                                   parameters:@{
                                                @"typeid" : @([CPUserInfoModel shareInstance].loginModel.Typeid),
                                                @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)

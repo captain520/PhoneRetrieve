@@ -306,7 +306,7 @@
     }
     
     CPGoodModel *good = self.goods[indexPath.row];
-    cell.no = [NSString stringWithFormat:@"%02ld",(long)indexPath.row];
+    cell.no = [NSString stringWithFormat:@"%02ld",(long)indexPath.row + 1];
     cell.content = good.name;
 
     return cell;

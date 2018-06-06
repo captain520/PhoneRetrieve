@@ -476,7 +476,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPProviceCityAreaModel modelRequestWith:@"http://api.leshouzhan.com/api/area/findData?parentcode=0"
+    [CPProviceCityAreaModel modelRequestWith:DOMAIN_ADDRESS@"/api/area/findData?parentcode=0"
                                   parameters:nil
                                        block:^(id result) {
                                            [weakSelf handleLoadProviceBlock:result];
@@ -499,7 +499,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPProviceCityAreaModel modelRequestWith:@"http://api.leshouzhan.com/api/area/findData"
+    [CPProviceCityAreaModel modelRequestWith:DOMAIN_ADDRESS@"/api/area/findData"
                                   parameters:@{@"parentcode" : paramCode}
                                        block:^(id result) {
                                            [weakSelf handleLoadCityBlock:result];
@@ -522,7 +522,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPProviceCityAreaModel modelRequestWith:@"http://api.leshouzhan.com/api/area/findData"
+    [CPProviceCityAreaModel modelRequestWith:DOMAIN_ADDRESS@"/api/area/findData"
                                   parameters:@{@"parentcode" : paramCode}
                                        block:^(id result) {
                                            [weakSelf handleLoadAreaBlock:result];

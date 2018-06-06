@@ -186,7 +186,7 @@
 
 //    NSString *url = @"http://test.iviov.com:8088/app/sns/v1/uploadResource";
 //    NSString *url = @"http://maintenance.piaoliusan.com:81/app/upload/image";
-    NSString *url = @"http://api.leshouzhan.com/api/Upload/uploadImage";
+    NSString *url = DOMAIN_ADDRESS@"/api/Upload/uploadImage";
     
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer]
                                     multipartFormRequestWithMethod:@"POST"
@@ -289,6 +289,102 @@
                 
                 if ([dictObject.allKeys containsObject:@"totalprice"]) {
                     DDLogInfo(@"------------------------------需要结构体");
+                }
+                
+                id object = [dictObject valueForKey:@"data"];
+                
+                //  数组
+                if ([object isKindOfClass:[NSArray class]]) {
+                    
+                    !successBlock ? : successBlock([[self class] mj_objectArrayWithKeyValuesArray:object]);
+                    //  字典
+                } else if([object isKindOfClass:[NSDictionary class]]) {
+                    
+                    !successBlock ? : successBlock([[self class] mj_objectWithKeyValues:object]);
+                    
+                    //  字符串
+                } else if ([object isKindOfClass:[NSString class]]) {
+                    
+                    !successBlock ? : successBlock([[self class] mj_objectWithKeyValues:object]);
+                    
+                } else {
+                    !successBlock ? : successBlock([CPBaseModel mj_objectWithKeyValues:dictObject]);
+                }
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [[CPProgress Instance] hidden];
+        [[CPProgress Instance] showToast:[UIApplication sharedApplication].keyWindow message:[error localizedDescription]];
+        !failBlock ? : failBlock([[CPError alloc] initWithError:error]);
+    }];
+    
+}
+
++ (void)orderModelRequestWith:(NSString *)url
+              parameters:(NSDictionary *)parameters
+                   block:(void (^)(id result))successBlock
+                    fail:(void (^)(CPError *error))failBlock {
+    
+    [[CPProgress Instance] showLoading:[UIApplication sharedApplication].keyWindow message:nil];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        [[CPProgress Instance] hidden];
+        
+        NSError *error = nil;
+        
+        if (error) {
+            CPError *cp_error = [[CPError alloc] initWithError:error];
+            !failBlock ? : failBlock(cp_error);
+        } else {
+            
+            NSDictionary *dictObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&error];
+            
+            DDLogWarn(@"%@",dictObject);
+            
+            if (error) {
+                CPError *cp_error = [[CPError alloc] initWithError:error];
+                !failBlock ? : failBlock(cp_error);
+            } else {
+                
+                NSInteger code = [dictObject[@"code"] integerValue];
+                
+                if (code != 200) {
+                    
+                    CPError *error = [[CPError alloc] init];
+                    error.cp_msg = dictObject[@"msg"];
+                    error.cp_code = [dictObject[@"code"] integerValue];
+                    
+                    [[CPProgress Instance] showToast:[UIApplication sharedApplication].keyWindow message:error.cp_msg];
+                    !failBlock ? : failBlock(error);
+                    
+                    
+                    return;
+                }
+                
+                if ([dictObject.allKeys containsObject:@"totalprice"]) {
+                    DDLogInfo(@"------------------------------需要结构体");
+                    id data = dictObject[@"data"];
+                    if (data) {
+                        if ([data isKindOfClass:[NSArray class]]) {
+                            !successBlock ? : successBlock([[self class] mj_objectArrayWithKeyValuesArray:data]);
+                        } else {
+                            !successBlock ? : successBlock([[self class] mj_objectWithKeyValues:data]);
+                        }
+                        
+                    }
+//                    else {
+//
+//                        !successBlock ? : successBlock([[self class] mj_objectWithKeyValues:dictObject]);
+//                    }
+                    return;
                 }
                 
                 id object = [dictObject valueForKey:@"data"];

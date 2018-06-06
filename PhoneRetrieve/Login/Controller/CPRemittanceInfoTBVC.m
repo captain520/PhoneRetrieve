@@ -31,11 +31,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    self.dataArray = @[
-//                       @[@"收款人名称",@"银行账号",@"开户支行"],
-//                       @[@"微信名称",@"微信账号"],
-//                       @[@"支付宝名称",@"支付宝账号"]
-//                       ];
+    //    self.dataArray = @[
+    //                       @[@"收款人名称",@"银行账号",@"开户支行"],
+    //                       @[@"微信名称",@"微信账号"],
+    //                       @[@"支付宝名称",@"支付宝账号"]
+    //                       ];
     
     self.dataArray = @[@[@""]];
     
@@ -99,7 +99,7 @@
         make.right.mas_equalTo(0);
         make.height.mas_equalTo(0.5f);
     }];
-
+    
     
     if (nil == self.bankOwerTF) {
         
@@ -109,7 +109,7 @@
         self.bankOwerTF.borderStyle = UITextBorderStyleRoundedRect;
         
         [cell.contentView addSubview:self.bankOwerTF];
-         
+        
         [self.bankOwerTF mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(bankSectionLB.mas_bottom).offset(cellSpaceOffset);
             make.left.mas_equalTo(cellSpaceOffset);
@@ -280,7 +280,7 @@
         }];
     }
     
-
+    
     UIView *paymethodSepLine = [UIView new];
     paymethodSepLine.backgroundColor = C99;
     
@@ -324,13 +324,13 @@
         _paymethodTF.font = CPFont_M;
         _paymethodTF.inputView = consignCompanyPicker;
         [cell.contentView addSubview:_paymethodTF];
-    
+        
         CGFloat width = 120.0f;
-//
-//        self.paymethodTF = [[CPSelectTextField alloc] initWithFrame:CGRectMake(0, 0, width, CELL_HEIGHT_F)];
-//
-//        [cell.contentView addSubview:self.paymethodTF];
-//
+        //
+        //        self.paymethodTF = [[CPSelectTextField alloc] initWithFrame:CGRectMake(0, 0, width, CELL_HEIGHT_F)];
+        //
+        //        [cell.contentView addSubview:self.paymethodTF];
+        //
         [self.paymethodTF mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(paymethodLB.mas_top);
             make.right.mas_equalTo(-cellSpaceOffset);
@@ -339,7 +339,7 @@
         }];
         
     }
-
+    
     if (nil == self.nextAction) {
         self.nextAction = [[CPButton alloc] initWithFrame:CGRectZero];
         [self.nextAction setTitle:@"注册" forState:0];
@@ -367,22 +367,14 @@
                                                                   ]
                                                          reduce:^id{
                                                              return @(
-                                                             self.bankOwerTF.text.length > 0
-                                                             && self.bankAccountTF.text.length > 0
-                                                             && self.bankAreaTF.text.length > 0
-                                                             && self.wechatNameTF.text.length > 0
-                                                             && self.wechatAccountTF.text.length > 0
-                                                             && self.alipayNameTF.text.length > 0
-                                                             && self.alipayAccountTF.text.length > 0
-                                                             && self.paymethodTF.text.length > 0
-                                                             && self.bankBranchTF.text.length > 0
+                                                             [self validPayMethodInfo]
                                                              );
                                                              
                                                          }];
         
     }
     
-
+    
     return cell;
 }
 
@@ -419,24 +411,67 @@
     
     NSString *content = consignCompanys[[consignCompanyPicker selectedRowInComponent:0]];
     self.paymethodTF.text = content;
+    
+    self.nextAction.enabled = [self validPayMethodInfo];
+}
+
+- (BOOL)validPayMethodInfo {
+    
+    BOOL valied = NO;
+    NSInteger row = [consignCompanyPicker selectedRowInComponent:0];
+    switch (row) {
+        case 0:
+        {
+            valied = (
+                      self.bankOwerTF.text.length > 0
+                      && self.bankAccountTF.text.length > 0
+                      && self.bankAreaTF.text.length > 0
+                      && self.bankBranchTF.text.length > 0
+                      );
+        }
+            break;
+        case 1:
+        {
+            
+            valied = (
+                      self.wechatNameTF.text.length > 0
+                      && self.wechatAccountTF.text.length > 0
+                      );
+        }
+            break;
+        case 2:
+        {
+            
+            valied = (
+                      self.alipayNameTF.text.length > 0
+                      && self.alipayAccountTF.text.length > 0
+                      );
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return valied;
 }
 
 #pragma mark - private method
 
 - (void)nextAction:(UIButton *)sender {
-
+    
     [CPRegistParam shareInstance].bname      = self.bankOwerTF.text;
     [CPRegistParam shareInstance].banknum    = self.bankAccountTF.text;
     [CPRegistParam shareInstance].bankname   = self.bankAccountTF.text;
     [CPRegistParam shareInstance].bankbranch = self.bankBranchTF.text;
-
+    
     [CPRegistParam shareInstance].wxname     = self.wechatNameTF.text;
     [CPRegistParam shareInstance].wxnum      = self.wechatAccountTF.text;
-
+    
     [CPRegistParam shareInstance].aliname    = self.alipayNameTF.text;
     [CPRegistParam shareInstance].alinum     = self.alipayAccountTF.text;
     [CPRegistParam shareInstance].type       = @"2";
-
+    
     if ([self.paymethodTF.text isEqualToString:@"银行卡"]) {
         [CPRegistParam shareInstance].paycfg = @"1";
     } else if ([self.paymethodTF.text isEqualToString:@"微信"]) {
@@ -444,13 +479,13 @@
     } else if ([self.paymethodTF.text isEqualToString:@"支付宝"]) {
         [CPRegistParam shareInstance].paycfg = @"3";
     }
-
+    
     CPRegistParam *params = [CPRegistParam shareInstance];
     NSDictionary *paramsDict = [params mj_keyValues];
     
     __weak typeof(self) weakSelf = self;
     
-    [CPShopRegisterModel modelRequestWith:@"http://api.leshouzhan.com/api/user/register3"
+    [CPShopRegisterModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/register3"
                                parameters:paramsDict
                                     block:^(id result) {
                                         [weakSelf handleRegiterBlock:result];
@@ -466,7 +501,7 @@
     }
     
     [[CPProgress Instance] showSuccess:self.view message:@"注册成功" finish:^(BOOL finished) {
-//        [self.navigationController popToRootViewControllerAnimated:YES];
+        //        [self.navigationController popToRootViewControllerAnimated:YES];
         
         [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass: [CPLoginVC class]]) {

@@ -60,5 +60,8 @@ NSString *cp_int2String(NSInteger value) ;
 //NSString *cp_jsonString(id object) ;
 NSString * cp_md5(NSString *input);
 
+//  获取沙盒路径
+NSString  *cp_documentFilePath(NSString *fileName);
+
 
 @end

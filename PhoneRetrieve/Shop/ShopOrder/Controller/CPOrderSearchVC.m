@@ -235,7 +235,7 @@
         [params setObject:self.endInputTF.text forKey:@"endtime"];
     }
     
-    [CPAssistanteOrderDetailModel modelRequestWith:CPURL_ASSISTANT_GET_RETRIEVE_ORDER
+    [CPAssistanteOrderDetailModel orderModelRequestWith:CPURL_ASSISTANT_GET_RETRIEVE_ORDER
                                         parameters:params
                                              block:^(NSArray <CPAssistanteOrderDetailModel *> *result) {
                                                  [weakSelf handleLoadDataSuccessBlock:result];
@@ -296,7 +296,7 @@
         [params setObject:@(paycfg) forKey:@"paycfg"];
     }
 
-    [CPOrderListPageModel modelRequestWith:@"http://api.leshouzhan.com/api/Order/findOrderList"
+    [CPOrderListPageModel modelRequestWith:DOMAIN_ADDRESS@"/api/Order/findOrderList"
                                 parameters:params
                                      block:^(CPOrderListPageModel *result) {
                                          [weakSelf handlequeryShopPayStateVCBlock:result];
@@ -349,6 +349,18 @@
                                     @"statuscfg" : statuscfg
                                     }.mutableCopy;
     
+    if (self.searchBar.text.length > 0) {
+        [params setObject:self.searchBar.text forKey:@"resultno"];
+    }
+    
+    if (self.begintInputTF.text.length > 0 ) {
+        [params setObject:self.begintInputTF.text forKey:@"starttime"];
+    }
+    
+    if (self.endInputTF.text.length > 0 ) {
+        [params setObject:self.endInputTF.text forKey:@"endtime"];
+    }
+    
     [CPAssistantOrderListPageModel modelRequestWith:CPURL_ASSISTANT_GET_RETRIEVE_ORDER
                                          parameters:params
                                               block:^(CPAssistantOrderListPageModel *result) {
@@ -391,7 +403,7 @@
                              @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)
                              };
     
-    [CPMemeberListModel modelRequestWith:@"http://api.leshouzhan.com/api/user/findUserList"
+    [CPMemeberListModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/findUserList"
                               parameters:params
                                    block:^(id result) {
                                        [weakSelf handleLoadDataBlock:result];
@@ -405,7 +417,7 @@
         
         CPBaseModel *emptyModel = (CPBaseModel *)result;
         
-        [self.view makeToast:emptyModel.msg duration:1.0f position:CSToastPositionCenter];
+//        [self.view makeToast:emptyModel.msg duration:1.0f position:CSToastPositionCenter];
         
         return;
     }
@@ -415,4 +427,6 @@
     [self.pickerView reloadAllComponents];
     
 }
+
+
 @end

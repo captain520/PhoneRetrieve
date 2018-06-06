@@ -111,7 +111,7 @@
         case CPMainActionTypeOther:
         {
             [self push2VCWith:@"CPHelpCenterVC" title:@"帮助中心"];
-//            [CPConfigUrlModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getHelpDetail"
+//            [CPConfigUrlModel modelRequestWith:DOMAIN_ADDRESS@"/api/sysconfig/getHelpDetail"
 //                                    parameters:@{@"id" : @"7"}
 //                                         block:^(CPConfigUrlModel *result) {
 //                                             [self push2WebView:result.Description title:result.title];
@@ -127,7 +127,7 @@
 
 //- (void)getConfigUrl:(NSString *)code block:(void (^)(NSString *url,NSString *title))block {
 //
-//    [CPConfigUrlModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getSysConfigByCode"
+//    [CPConfigUrlModel modelRequestWith:DOMAIN_ADDRESS@"/api/sysconfig/getSysConfigByCode"
 //                            parameters:@{@"code" : code}
 //                                 block:^(CPConfigUrlModel *result) {
 //                                     !block ? : block(result.Description, result.title);
@@ -138,7 +138,7 @@
 #pragma mark - UITableview Deleagte && datesource method
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 4 * CELL_HEIGHT_F + 2 *CELL_HEIGHT_F * [CPUserInfoModel shareInstance].isShop;
+    return (4 * CELL_HEIGHT_F + 2 *CELL_HEIGHT_F * [CPUserInfoModel shareInstance].isShop) * 1.25;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

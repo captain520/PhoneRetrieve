@@ -31,6 +31,8 @@
     // Do any additional setup after loading the view.
     
     [self setupUI];
+    
+    [self setTitle:@"客户信息"];
 }
 
 - (void)setupUI {
@@ -40,7 +42,7 @@
         self.accountTF.font = [UIFont systemFontOfSize:13.0f];
         self.accountTF.placeholder = @"客户姓名";
         self.accountTF.borderStyle = UITextBorderStyleRoundedRect;
-        self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
+//        self.accountTF.keyboardType = UIKeyboardTypeNumberPad;
         
         [self.view addSubview:self.accountTF];
         
@@ -112,7 +114,7 @@
         self.confirmTF.keyboardType = UIKeyboardTypeNumberPad;
         self.confirmTF.font = [UIFont systemFontOfSize:13.0];
         self.confirmTF.borderStyle = UITextBorderStyleRoundedRect;
-        self.confirmTF.placeholder = @"IMEI标识";
+        self.confirmTF.placeholder = @"IMEI标识（15位）";
         
         [self.view addSubview:self.confirmTF];
         
@@ -201,7 +203,7 @@
                                                          return @(self.accountTF.text.length > 0
                                                          && self.codeTF.text.length > 0
                                                          && self.passwdTF.text.length > 0
-                                                         && (self.confirmTF.text.length > 0 || [CPUserInfoModel shareInstance].repaircfg.integerValue == 2)
+                                                         && (self.confirmTF.text.length == 15 || [CPUserInfoModel shareInstance].repaircfg.integerValue == 2)
 //                                                         && ([self.confirmTF.text isEqualToString: self.passwdTF.text])
                                                          && self.agreeProtocol);
                                                      }];

@@ -52,13 +52,13 @@
     
     _no = no;
     
-    if ([no isEqualToString:@"1"]) {
+    if ([no isEqualToString:@"01"]) {
         noLB.backgroundColor = [UIColor redColor];
         
-    } else if ([no isEqualToString:@"2"]) {
-        noLB.backgroundColor = [UIColor yellowColor];
+    } else if ([no isEqualToString:@"02"]) {
+        noLB.backgroundColor = [UIColor orangeColor];
         
-    } else if ([no isEqualToString:@"3"]) {
+    } else if ([no isEqualToString:@"03"]) {
         noLB.backgroundColor = MainColor;
         
     } else {

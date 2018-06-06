@@ -24,12 +24,18 @@
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"search") style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
     
-    [self loadData];
+//    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self loadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -113,7 +119,7 @@
                              
 //                             };
     
-    [CPAssistanteOrderDetailModel modelRequestWith:CPURL_ASSISTANT_GET_RETRIEVE_ORDER
+    [CPAssistanteOrderDetailModel orderModelRequestWith:CPURL_ASSISTANT_GET_RETRIEVE_ORDER
                        parameters:params
                             block:^(id result) {
                                 [weakSelf handleLoadDataSuccessBlock:result];
@@ -139,5 +145,10 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+- (void)back {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 @end

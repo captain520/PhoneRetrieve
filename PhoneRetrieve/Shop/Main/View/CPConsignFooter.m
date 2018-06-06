@@ -48,7 +48,7 @@
     
     consignNoLB = [CPTextField new];
 //    consignNoLB.text = @"物流单号";
-    consignNoLB.placeholder = @"物流单号";
+    consignNoLB.placeholder = @"物流单号（12位）";
     consignNoLB.font = CPFont_M;
     consignNoLB.borderStyle = UITextBorderStyleRoundedRect;
     consignNoLB.tintColor = [UIColor clearColor];
@@ -130,7 +130,7 @@
     }];
     
     RAC(actionBT,enabled) = [RACSignal combineLatest:@[consignNoLB.rac_textSignal] reduce:^id{
-        return @(consignNoLB.text.length > 0
+        return @(consignNoLB.text.length == 12
         && self.IDFrontBT.imageUrl.length > 0);
     }];
 }

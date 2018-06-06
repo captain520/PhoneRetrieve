@@ -28,6 +28,8 @@
     self.navigationItem.title = @"帮助中心";
 
     [self loadData];
+    
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -184,7 +186,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPHelpDetailModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/getHelpDetail"
+    [CPHelpDetailModel modelRequestWith:DOMAIN_ADDRESS@"/api/sysconfig/getHelpDetail"
                              parameters:@{@"id" : code}
                                   block:^(CPHelpDetailModel *result) {
                                       [weakSelf handleLoadHelpDetailBlock:result];
@@ -217,7 +219,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    [CPHelpListModel modelRequestWith:@"http://api.leshouzhan.com/api/sysconfig/findSysConfigByCode?code=122"
+    [CPHelpListModel modelRequestWith:DOMAIN_ADDRESS@"/api/sysconfig/findSysConfigByCode?code=122"
                            parameters:nil
                                 block:^(id result) {
                                     [weakSelf handleLoadDataBlock:result];

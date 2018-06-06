@@ -27,7 +27,7 @@
     
     imageIV = [UIImageView new];
     imageIV.image = CPImage(@"hme_iphone");
-    imageIV.contentMode = UIViewContentModeScaleToFill;
+    imageIV.contentMode = UIViewContentModeScaleAspectFit;//UIViewContentModeScaleToFill;
     [self addSubview:imageIV];
     [imageIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(cellSpaceOffset);

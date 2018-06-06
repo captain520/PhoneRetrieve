@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhoneRetrieve/Shop/Main/Controller/CPGoodSearchResultVC.m"
-            timestampString = "546006261.184387"
+            filePath = "PhoneRetrieve/Shop/ShopInfo/Controller/CPShopAccountManagerVC.m"
+            timestampString = "549870655.437839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-configActionCell:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhoneRetrieve/Login/Controller/CPAssistantRegisterVC.m"
-            timestampString = "549634539.278486"
+            filePath = "PhoneRetrieve/CPBaseVC/CPBaseVC.m"
+            timestampString = "549873889.784665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
-            landmarkName = "-nextAction:"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-back"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,13 +99,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhoneRetrieve/Login/Controller/CPAssistantRegisterVC.m"
-            timestampString = "549634539.2788121"
+            filePath = "PhoneRetrieve/Shop/ShopOrder/Controller/CPOrderSearchVC.m"
+            timestampString = "549875332.036971"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
-            landmarkName = "-nextAction:"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "-handleQueryOrderStateSuccessBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -115,46 +115,78 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PhoneRetrieve/Login/Controller/CPAssistantRegisterVC.m"
-            timestampString = "549634539.279029"
+            filePath = "PhoneRetrieve/Shop/ShopOrder/Controller/CPOrderSearchVC.m"
+            timestampString = "549875332.0375119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
-            landmarkName = "-nextAction:"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "-handleLoadDataSuccessBlock:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhoneRetrieve/Shop/ShopOrder/Controller/CPOrderSearchVC.m"
+            timestampString = "549875332.037805"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
+            landmarkName = "-handlequeryShopPayStateVCBlock:"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[CPAssistantRegisterVC nextAction:]"
+                  symbolName = "-[CPOrderSearchVC handlequeryShopPayStateVCBlock:]"
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///mnt/Project/PhoneRetrieve/Code/PhoneRetrieve/PhoneRetrieve/Login/Controller/CPAssistantRegisterVC.m"
-                  timestampString = "549633738.513968"
+                  urlString = "file:///mnt/Project/PhoneRetrieve/Code/PhoneRetrieve/PhoneRetrieve/Shop/ShopOrder/Controller/CPOrderSearchVC.m"
+                  timestampString = "549875238.4897209"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "388"
-                  endingLineNumber = "388"
-                  offsetFromSymbolStart = "1509">
+                  startingLineNumber = "322"
+                  endingLineNumber = "322"
+                  offsetFromSymbolStart = "677">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__36-[CPAssistantRegisterVC nextAction:]_block_invoke"
+                  symbolName = "-[CPOrderSearchVC handlequeryShopPayStateVCBlock:]"
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///mnt/Project/PhoneRetrieve/Code/PhoneRetrieve/PhoneRetrieve/Login/Controller/CPAssistantRegisterVC.m"
-                  timestampString = "549633738.516806"
+                  urlString = "file:///mnt/Project/PhoneRetrieve/Code/PhoneRetrieve/PhoneRetrieve/Shop/ShopOrder/Controller/CPOrderSearchVC.m"
+                  timestampString = "549875238.492389"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "389"
-                  endingLineNumber = "389"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "322"
+                  endingLineNumber = "322"
+                  offsetFromSymbolStart = "685">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhoneRetrieve/Shop/ShopOrder/Controller/CPOrderSearchVC.m"
+            timestampString = "549875332.038242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-handlequeryShopPayStateVCBlock:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

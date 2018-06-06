@@ -37,4 +37,11 @@
 + (void)uploadImages:(UIImage *)image block:(void (^)(NSString *filePath))block;
 
 
++ (void)orderModelRequestWith:(NSString *)url
+                   parameters:(NSDictionary *)parameters
+                        block:(void (^)(id result))successBlock
+                         fail:(void (^)(CPError *error))failBlock ;
+
+
+
 @end

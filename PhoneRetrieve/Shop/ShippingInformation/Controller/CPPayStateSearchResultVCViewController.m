@@ -22,6 +22,19 @@
     // Do any additional setup after loading the view.
     
     [self loadData];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"right-arrow") style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+}
+
+- (void)back:(id)sender {
+    //    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([NSStringFromClass(obj.class) isEqualToString:@"CPShopOrderVC"]) {
+            [self.navigationController popToViewController:obj animated:YES];
+            *stop = YES;
+        }
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +51,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return 70;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

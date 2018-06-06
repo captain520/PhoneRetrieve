@@ -107,6 +107,7 @@
         self.passwdTF.font = [UIFont systemFontOfSize:13.0];
         self.passwdTF.borderStyle = UITextBorderStyleRoundedRect;
         self.passwdTF.placeholder = @"设置登录密码";
+        self.passwdTF.secureTextEntry = YES;
         
         [self.view addSubview:self.passwdTF];
         
@@ -125,6 +126,7 @@
         self.confirmTF.font = [UIFont systemFontOfSize:13.0];
         self.confirmTF.borderStyle = UITextBorderStyleRoundedRect;
         self.confirmTF.placeholder = @"确认登陆密码";
+        self.confirmTF.secureTextEntry = YES;
         
         [self.view addSubview:self.confirmTF];
         
@@ -163,7 +165,7 @@
         };
         
         self.checkBox.showHintBlock = ^{
-            [weakSelf getConfigUrl:@"210" block:^(NSString *url, NSString *title) {
+            [weakSelf getConfigUrl:@"200" block:^(NSString *url, NSString *title) {
                 CPWebVC *webVC = [[CPWebVC alloc] init];
                 //        webVC.urlStr = @"https://www.baidu.com";
                 webVC.contentStr = url;
