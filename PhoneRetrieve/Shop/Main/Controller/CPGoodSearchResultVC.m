@@ -8,6 +8,7 @@
 
 #import "CPGoodSearchResultVC.h"
 #import "CPGoodModel.h"
+#import "CPFlowVC.h"
 
 @interface CPGoodSearchResultVC ()<UISearchBarDelegate>
 
@@ -97,7 +98,8 @@
     __weak typeof(self) weakSelf = self;
     
     NSDictionary *params= @{
-                            @"name" : self.searchBar.text
+                            @"name" : self.searchBar.text,
+                            @"repaircfg" : @"1"
                             };
     
     [CPGoodModel modelRequestWith:CPURL_SHOP_GOOD_LIST
@@ -125,7 +127,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self push2VCWith:@"CPFlowVC" title:@"手机是否存在以下问题？"];
+    CPGoodModel *model = self.dataArray[indexPath.section][indexPath.row];
+
+    CPFlowVC *flowVC = [[CPFlowVC alloc] init];
+    flowVC.title = @"手机是否存在以下问题？";
+    flowVC.goodid = model.ID;
+    
+    [self.navigationController pushViewController:flowVC animated:YES];
+    
 }
 
 @end

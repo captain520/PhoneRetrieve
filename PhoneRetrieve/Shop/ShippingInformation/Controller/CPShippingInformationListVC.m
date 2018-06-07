@@ -230,7 +230,12 @@
 
 - (void)searchAction:(id)sender {
     
+    __weak typeof(self) weakSelf = self;
+    
     CPOrderSearchVC *vc = [[CPOrderSearchVC alloc] init];
+    vc.payFilterBlock = ^(id result) {
+        [weakSelf handleLoadDataBlock:result];
+    };
     vc.hidesBottomBarWhenPushed = YES;
     if (self.currentTabIndex == 0) {
         vc.type = CPOrderSearchTypeShopUnpaidOrder;

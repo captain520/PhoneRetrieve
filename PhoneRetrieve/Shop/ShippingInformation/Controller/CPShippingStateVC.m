@@ -14,8 +14,12 @@
 #import "CPOrderSearchVC.h"
 #import "CPConsignResultVC.h"
 #import "CPWebVC.h"
+#import "CPTabBarView.h"
 
 @interface CPShippingStateVC ()
+
+@property (nonatomic, strong) CPTabBarView *tabbarView;
+@property (nonatomic, assign) NSInteger currentTabIndex;
 
 @end
 
@@ -25,14 +29,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.tabbarView.dataArray = @[@"在途",@"已签收"];
+    
+    self.dataTableView.frame = CGRectMake(0, NAV_HEIGHT + self.tabbarView.bounds.size.height, SCREENWIDTH, SCREENHEIGHT - NAV_HEIGHT - self.tabbarView.bounds.size.height);
+    
     if (self.dataArray && self.dataArray.count > 0) {
         [self.dataTableView reloadData];
     } else {
         
-        [self loadData];
+        [self loadData:0];
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"search") style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
     }
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"search") style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"right-arrow") style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
     
@@ -44,6 +53,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (CPTabBarView *)tabbarView {
+    
+    if (_tabbarView == nil) {
+        
+        __weak typeof(self) weakSelf = self;
+        
+        _tabbarView = [[CPTabBarView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, CELL_HEIGHT_F)];
+        _tabbarView.backgroundColor = [UIColor whiteColor];
+        _tabbarView.selectBlock = ^(NSInteger index) {
+            //TODO: 切换选择刷新
+            weakSelf.currentTabIndex = index;
+            [weakSelf loadData:index];
+        };
+        
+        [self.view addSubview:_tabbarView];
+    }
+    
+    return _tabbarView;
 }
 
 #pragma mark - TableView datasource && delegate
@@ -130,15 +159,15 @@
 
 #pragma mark - private method
 
-- (void)loadData {
+- (void)loadData:(NSUInteger )index {
 
     __weak typeof(self) weakSelf = self;
     
     [CPOrderListPageModel modelRequestWith:DOMAIN_ADDRESS@"/api/Order/findOrderList"
                                   parameters:@{
                                                @"typeid" : @([CPUserInfoModel shareInstance].loginModel.Typeid),
-                                               @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)
-//                                               @"paycfg" : @(1)
+                                               @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID),
+                                               @"finishcfg" : @(self.currentTabIndex)
                                                }
                                        block:^(CPOrderListPageModel *result) {
                                            [weakSelf handleLoadDataBlock:result];
@@ -150,20 +179,25 @@
 - (void)handleLoadDataBlock:(CPOrderListPageModel*)result {
     
     if (!result || ![result isKindOfClass:[CPOrderListPageModel class]]||result.cp_data.count == 0) {
-        return;
+        self.dataArray = nil;
+    } else {
+        self.dataArray = result.cp_data;
     }
-
-    self.dataArray = result.cp_data;
 
     [self.dataTableView reloadData];
 }
 
 - (void)searchAction:(id)sender {
     
+    __weak typeof(self) weakSelf = self;
+    
     CPOrderSearchVC *vc = [[CPOrderSearchVC alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
     vc.title = @"订单物流信息查询";
-    vc.type = CPOrderSearchTypeShipping;
+    vc.type = self.currentTabIndex ? CPOrderSearchTypeShippingFinished : CPOrderSearchTypeShippingOnWay;
+    vc.payFilterBlock = ^(id result) {
+        [weakSelf handleLoadDataBlock:result];
+    };
 
     [self.navigationController pushViewController:vc animated:YES];
 }

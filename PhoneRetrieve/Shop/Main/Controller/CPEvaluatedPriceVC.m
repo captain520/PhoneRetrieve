@@ -153,15 +153,19 @@
 
 - (void)revalueAction:(id)sender {
     
+    !self.revalueActionBlock ? : self.revalueActionBlock();
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
 //    [self.navigationController popToRootViewControllerAnimated:YES];
-    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[CPShopGoodsListVC class]]) {
-            
-            [self.navigationController popToViewController:obj animated:YES];
-
-            *stop = YES;
-        }
-    }];
+//    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([obj isKindOfClass:[CPShopGoodsListVC class]]) {
+//
+//            [self.navigationController popToViewController:obj animated:YES];
+//
+//            *stop = YES;
+//        }
+//    }];
     
 }
 

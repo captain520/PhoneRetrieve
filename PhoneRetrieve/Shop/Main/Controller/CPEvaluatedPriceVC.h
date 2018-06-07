@@ -15,4 +15,6 @@
 
 @property (nonatomic, strong) NSArray <NSDictionary *> *itemDicts;
 
+@property (nonatomic, copy) void (^revalueActionBlock)(void);
+
 @end

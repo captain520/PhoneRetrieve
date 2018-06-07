@@ -52,6 +52,7 @@
     consignNoLB.font = CPFont_M;
     consignNoLB.borderStyle = UITextBorderStyleRoundedRect;
     consignNoLB.tintColor = [UIColor clearColor];
+    consignNoLB.keyboardType = UIKeyboardTypeNumberPad;
     [self.contentView addSubview:consignNoLB];
     
     [consignNoLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -178,7 +179,7 @@
             DDLogError(@">>>>>>>>>>>>>>>>>>>>%@",filePath);
             sender.imageUrl = filePath;
             [[CPProgress Instance] hidden];
-            actionBT.enabled = consignNoLB.text.length > 0;
+            actionBT.enabled = consignNoLB.text.length == 12;
         }];
     }];
 

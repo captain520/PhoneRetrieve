@@ -129,6 +129,13 @@ CGRect cp_getTextFrame(NSString *text ,CGFloat width, NSDictionary <NSString *, 
     return frame;
 }
 
+CGSize cp_getHtmlStringSize(NSString *htmlString) {
+    
+    NSAttributedString *attr = attributedStringWithHTMLString(htmlString);
+    
+    return [attr boundingRectWithSize:CGSizeMake(SCREENWIDTH - 2 * cellSpaceOffset, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;//针对富文本
+}
+
 //  获取富文本的Size
 CGSize cp_getTextSize(NSString *text ,CGFloat width, NSDictionary <NSString *, id> *options) {
     return cp_getTextFrame(text, width, options).size;

@@ -10,7 +10,8 @@
 #import "CPOrderListPageModel.h"
 
 typedef NS_ENUM(NSUInteger,CPOrderSearchType) {
-    CPOrderSearchTypeShipping,
+    CPOrderSearchTypeShippingOnWay,
+    CPOrderSearchTypeShippingFinished,
     CPOrderSearchTypeOrder,
     CPOrderSearchTypeOther,
     CPOrderSearchTypeShopPaidOrder,
@@ -22,5 +23,7 @@ typedef NS_ENUM(NSUInteger,CPOrderSearchType) {
 @interface CPOrderSearchVC : CPBaseVC
 
 @property (nonatomic, assign) CPOrderSearchType type;
+
+@property (nonatomic, copy) void (^payFilterBlock)(id result);
 
 @end

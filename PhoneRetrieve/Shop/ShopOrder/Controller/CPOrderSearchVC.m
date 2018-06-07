@@ -202,7 +202,7 @@
     
     if (self.type == CPOrderSearchTypeShopPaidOrder
         || self.type == CPOrderSearchTypeShopUnpaidOrder
-        || self.type == CPOrderSearchTypeShipping
+        || self.type == CPOrderSearchTypeShippingOnWay || self.type == CPOrderSearchTypeShippingFinished
         ) {
         
         [self queryShopPayStateVC];
@@ -282,18 +282,39 @@
     }
     
     if (self.type == CPOrderSearchTypeShopUnpaidOrder
-        || self.type == CPOrderSearchTypeShipping ||
-        self.type == CPOrderSearchTypeShopPaidOrder
+        || self.type == CPOrderSearchTypeShippingOnWay
+        || self.type == CPOrderSearchTypeShippingFinished
+        || self.type == CPOrderSearchTypeShopPaidOrder
         ) {
         
-        NSInteger paycfg = 0;//aycfg 支付状态：0未支付，1已支付
-        if (self.type == CPOrderSearchTypeShopUnpaidOrder) {
-            paycfg = 0;
-        } else if (self.type == CPOrderSearchTypeShopPaidOrder) {
-            paycfg = 1;
+        
+        //  支付状态
+        {
+            NSInteger paycfg = 0;//aycfg 支付状态：0未支付，1已支付
+            if (self.type == CPOrderSearchTypeShopUnpaidOrder) {
+                paycfg = 0;
+                [params setObject:@(paycfg) forKey:@"paycfg"];
+            } else if (self.type == CPOrderSearchTypeShopPaidOrder) {
+                paycfg = 1;
+                [params setObject:@(paycfg) forKey:@"paycfg"];
+            }
+            
         }
         
-        [params setObject:@(paycfg) forKey:@"paycfg"];
+        //  物流状态
+        
+        {
+            NSInteger logistcfg = 0;//aycfg 支付状态：0未支付，1已支付
+            if (self.type == CPOrderSearchTypeShippingOnWay) {
+                logistcfg = 0;
+                [params setObject:@(logistcfg) forKey:@"finishcfg"];
+            } else if (self.type == CPOrderSearchTypeShippingFinished) {
+                logistcfg = 1;
+                [params setObject:@(logistcfg) forKey:@"finishcfg"];
+            }
+        }
+        
+
     }
 
     [CPOrderListPageModel modelRequestWith:DOMAIN_ADDRESS@"/api/Order/findOrderList"
@@ -305,28 +326,34 @@
                                      }];
 }
 
-- (void)handlequeryShopPayStateVCBlock:(CPOrderListPageModel *)resul {
-    if (!resul || ![resul isKindOfClass:[CPOrderListPageModel class]] || resul.cp_data.count == 0) {
+- (void)handlequeryShopPayStateVCBlock:(CPOrderListPageModel *)result {
+    if (!result || ![result isKindOfClass:[CPOrderListPageModel class]] || result.cp_data.count == 0) {
         [self.view makeToast:@"暂无符合的数据" duration:2.0 position:CSToastPositionCenter];
         return;
     }
     
-    if (self.type == CPOrderSearchTypeShipping) {
+    if (self.type == CPOrderSearchTypeShippingOnWay || self.type == CPOrderSearchTypeShippingFinished) {
         
-        CPShippingStateVC *vc = [[CPShippingStateVC alloc] init];
-        vc.title = self.title;
-        vc.dataArray = resul.cp_data;
+        !self.payFilterBlock ? : self.payFilterBlock(result);
         
-        [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+//        CPShippingStateVC *vc = [[CPShippingStateVC alloc] init];
+//        vc.title = self.title;
+//        vc.dataArray = result.cp_data;
+//
+//        [self.navigationController pushViewController:vc animated:YES];
 
     } else {
         
-        CPPayStateSearchResultVCViewController *vc = [[CPPayStateSearchResultVCViewController alloc] init];
-        //    vc.title = @"支付订单查询结果";
-        vc.payStateOrderModel = resul;
-        vc.title = self.title;
-        
-        [self.navigationController pushViewController:vc animated:YES];
+        !self.payFilterBlock ? : self.payFilterBlock(result);
+
+        [self.navigationController popViewControllerAnimated:YES];
+//        CPPayStateSearchResultVCViewController *vc = [[CPPayStateSearchResultVCViewController alloc] init];
+//        //    vc.title = @"支付订单查询结果";
+//        vc.payStateOrderModel = resul;
+//        vc.title = self.title;
+//
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     
 }

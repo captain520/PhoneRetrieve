@@ -131,11 +131,41 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 370.0f;
+//    return 0;
+//    return 370.0f;
 //    return self.footerHeight;
+    return [self culFooterHeight];
+}
+
+- (CGFloat)culFooterHeight {
+    
+    CGFloat height = 0.0f;
+    
+    //  WebView的高度
+    if (self.currentModel.Description.length > 0) {
+        height += cp_getHtmlStringSize(self.currentModel.Description).height;
+    }
+    
+    //  滚屏图片的高度和间隙
+    {
+        if (self.currentModel.images.count > 0) {
+            height += 140. + cellSpaceOffset;
+        }
+    }
+    
+    //  链接的高度
+    {
+        height += CELL_HEIGHT_F + cellSpaceOffset;
+    }
+    
+
+    return height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    
+    __weak typeof(self) weakSelf = self;
     
     NSString *footerIdneitify = @"CPSKUFooter";
     
@@ -146,7 +176,7 @@
 //        footer.contentView.backgroundColor = UIColor.redColor;
         footer.clipsToBounds = NO;
         footer.actionBlock = ^(CGFloat height) {
-//            self.footerHeight = height;
+//            weakSelf.footerHeight = height;
 //            [tableView reloadData];
         };
     }
@@ -220,6 +250,9 @@
 #pragma mark - private method
 
 - (void)loadData {
+    
+    self.currentStep = 0;
+    [self.selecteItems removeAllObjects];
     
     NSString *urlStr = DOMAIN_ADDRESS@"/api/Report/findReportData";
     __weak typeof(self) weakSelf = self;
@@ -343,7 +376,12 @@
 }
 - (void)handlePriceBlock:(CPRetrievePriceModel *)result items:(NSArray *)items {
     
+    __weak typeof(self) weakSelf = self;
+    
     CPEvaluatedPriceVC *vc = [[CPEvaluatedPriceVC alloc] init];
+    vc.revalueActionBlock = ^{
+        [weakSelf loadData];
+    };
     vc.model = result;
     vc.itemDicts = items;
     vc.title = @"评估价格";

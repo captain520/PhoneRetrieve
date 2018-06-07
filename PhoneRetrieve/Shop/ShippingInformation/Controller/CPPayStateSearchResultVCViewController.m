@@ -10,6 +10,7 @@
 #import "CPShippingListCell.h"
 #import "CPTitleDetailCell.h"
 #import "CPLeftRightCell.h"
+#import "CPOrderSearchVC.h"
 
 @interface CPPayStateSearchResultVCViewController ()
 
@@ -24,6 +25,32 @@
     [self loadData];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"right-arrow") style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"search") style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
+    
+}
+
+- (void)searchAction:(id)sender {
+    
+    CPOrderSearchVC *vc = [[CPOrderSearchVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+//    vc.type = CPOrderSearchTypeShopUnpaidOrder;
+//    vc.title = @"待支付订单查询";
+    
+//    if (self.currentTabIndex == 0) {
+//        vc.type = CPOrderSearchTypeShopUnpaidOrder;
+//        vc.title = @"待支付订单查询";
+//    } else {
+//        vc.type = CPOrderSearchTypeShopPaidOrder;
+//        vc.title = @"已支付订单查询";
+//    }
+    //    if (self.tabbarType == CPTabBarTypeShippingState) {
+    //        vc.type = CPOrderSearchTypeShipping;
+    //    } else if (self.tabbarType == CPTabBarTypePayState) {
+    //        vc.type = CPOrderSearchTypeOrder;
+    //    }
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)back:(id)sender {

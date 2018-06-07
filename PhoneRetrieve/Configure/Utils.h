@@ -34,6 +34,8 @@ NSString *htmlEntityDecode(NSString *string);
 //将HTML字符串转化为NSAttributedString富文本字符串
 NSAttributedString *attributedStringWithHTMLString(NSString *htmlString);
 
+//  获取HTMLString字符串的Size
+CGSize cp_getHtmlStringSize(NSString *htmlString);
 
 //  获取富文本的Frame
 CGRect cp_getTextFrame(NSString *text ,CGFloat width, NSDictionary <NSString *, id> *options) ;
