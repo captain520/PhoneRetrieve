@@ -9,10 +9,13 @@
 #import "CPGoodSearchResultVC.h"
 #import "CPGoodModel.h"
 #import "CPFlowVC.h"
+#import "CPSortCell.h"
 
 @interface CPGoodSearchResultVC ()<UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
+
+@property (nonatomic, strong) UIButton *backItem;
 
 @end
 
@@ -22,10 +25,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.dataTableView addSubview:self.searchBar];
-    
+    [self setupUI];
+
     [self loadData];
 }
+
+- (void)setupUI {
+
+    self.dataTableView.frame = CGRectMake(0, CPStatusBarHeight, SCREENWIDTH, SCREENHEIGHT - CPStatusBarHeight);
+    //  返回按钮
+    {
+        self.backItem = [[UIButton alloc] initWithFrame:CGRectMake(8., 0, CELL_HEIGHT_F, CELL_HEIGHT_F)];
+
+        [self.dataTableView addSubview:self.backItem];
+        [self.backItem setImage:CPImage(@"right-arrow") forState:0];
+        [self.backItem addTarget:self action:@selector(backAction:) forControlEvents:64];
+    }
+
+    [self.dataTableView addSubview:self.searchBar];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -35,6 +54,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -49,17 +69,30 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentify = @"CellIdentify";
+//    static NSString *cellIdentify = @"CellIdentify";
+//
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+//    if (nil == cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+//        cell.clipsToBounds = YES;
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    }
+//
+//    CPGoodModel *model = self.dataArray[indexPath.section][indexPath.row];
+//    cell.textLabel.text = model.name;
+    static NSString *cellIdentify = @"CPSortCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    CPSortCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell = [[CPSortCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
         cell.clipsToBounds = YES;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.contentView.backgroundColor = BgColor;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    CPGoodModel *model = self.dataArray[indexPath.section][indexPath.row];
-    cell.textLabel.text = model.name;
+    CPGoodModel *good = self.dataArray[indexPath.section][indexPath.row];
+    cell.no = [NSString stringWithFormat:@"%02ld",(long)indexPath.row + 1];
+    cell.content = good.name;
     
     return cell;
 }
@@ -67,7 +100,7 @@
 - (UISearchBar *)searchBar {
     
     if (nil == _searchBar) {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, CELL_HEIGHT_F)];
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(60, 0, SCREENWIDTH - 60, CELL_HEIGHT_F)];
         _searchBar.barTintColor = MainColor;//[UIColor clearColor];
         _searchBar.showsCancelButton = YES;
         //        _searchBar.backgroundColor = [UIColor redColor];
@@ -135,6 +168,12 @@
     
     [self.navigationController pushViewController:flowVC animated:YES];
     
+}
+
+#pragma mark - back action
+
+- (void)backAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

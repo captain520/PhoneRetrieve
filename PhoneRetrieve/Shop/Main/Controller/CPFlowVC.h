@@ -10,5 +10,6 @@
 
 @interface CPFlowVC : CPBaseTableVC
 @property (nonatomic,strong)  NSString *goodid;
+@property (nonatomic,copy) NSString *deviceName;
 
 @end

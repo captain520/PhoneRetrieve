@@ -319,6 +319,7 @@
     CPFlowVC *vc = [[CPFlowVC alloc] init];
     vc.goodid = good.ID;
     vc.title = @"评估价格";
+    vc.deviceName = good.name;
 
     [self.navigationController pushViewController:vc animated:YES];
 //    [self push2VCWith:@"CPFlowVC" title:@"手机是否存在以下问题？"];

@@ -25,6 +25,8 @@
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, assign) CGFloat footerHeight;
 
+@property (nonatomic, strong) NSMutableArray <NSIndexPath *> *firstPageSelectedIndexPaths;
+
 @end
 
 @implementation CPFlowVC
@@ -38,6 +40,8 @@
     self.dataArray = @[
                        @[@"",@"",@"",@"",@"",@""]
                        ];
+    
+    self.firstPageSelectedIndexPaths = @[].mutableCopy;
     
     self.selecteItems = @{}.mutableCopy;
     
@@ -65,9 +69,9 @@
     if (nil == _nextButton) {
         _nextButton = [UIButton new];
         _nextButton.titleLabel.font = CPFont_L;
-        [_nextButton setTitle:@"下一步" forState:0];
+        [_nextButton setTitle:@"无以上问题下一步,下一步" forState:0];
         [_nextButton setBackgroundColor:MainColor];
-        [_nextButton setTitleColor:C33 forState:0];
+        [_nextButton setTitleColor:UIColor.whiteColor forState:0];
         
         [self.view addSubview:_nextButton];
         
@@ -192,6 +196,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.currentStep == 0) {
+        if ([self.firstPageSelectedIndexPaths containsObject:indexPath]) {
+            [self.firstPageSelectedIndexPaths removeObject:indexPath];
+        } else {
+            [self.firstPageSelectedIndexPaths addObject:indexPath];
+        }
+        
+        if (self.firstPageSelectedIndexPaths.count > 0) {
+            [self.nextButton setTitle:@"下一步" forState:0];
+        } else {
+            [self.nextButton setTitle:@"无以上问题下一步,下一步" forState:0];
+        }
+    } else {
+        [self.nextButton setTitle:@"下一步" forState:0];
+    }
+
     if (self.currentStep < self.models.count - 1) {
         
         if (self.currentModel.inputtype == 1) {
@@ -384,7 +405,7 @@
     };
     vc.model = result;
     vc.itemDicts = items;
-    vc.title = @"评估价格";
+    vc.title = self.deviceName;
     
     [self.navigationController pushViewController:vc animated:YES];
 }

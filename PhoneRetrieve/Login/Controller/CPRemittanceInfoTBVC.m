@@ -500,8 +500,7 @@
         return;
     }
     
-    [[CPProgress Instance] showSuccess:self.view message:@"注册成功" finish:^(BOOL finished) {
-        //        [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.view makeToast:@"您提交的信息已发送至商家中，请耐心等候商家审核！！！" duration:2.0f position:CSToastPositionCenter title:nil image:nil style:nil completion:^(BOOL didTap) {
         
         [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass: [CPLoginVC class]]) {
@@ -509,7 +508,21 @@
                 *stop = YES;
             }
         }];
+        
     }];
+    
+    return;
+    
+//    [[CPProgress Instance] showSuccess:self.view message:@"注册成功" finish:^(BOOL finished) {
+//        //        [self.navigationController popToRootViewControllerAnimated:YES];
+//
+//        [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            if ([obj isKindOfClass: [CPLoginVC class]]) {
+//                [self.navigationController popToViewController:obj animated:YES];
+//                *stop = YES;
+//            }
+//        }];
+//    }];
 }
 
 @end
