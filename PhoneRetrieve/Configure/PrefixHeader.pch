@@ -9,9 +9,9 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#define RUN_EVN     0       //  0:Test   1:Product
+#define RUN_EVN     1       //  0:Test   1:Product
 
-#if RRN_EVN
+#if RUN_EVN
 #define DOMAIN_ADDRESS      @"http://api.leshouzhan.com"
 #else
 #define DOMAIN_ADDRESS     @"http://apitest.leshouzhan.com"

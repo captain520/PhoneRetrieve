@@ -142,7 +142,6 @@
 		9C167FEB20493F4D0017A525 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E275920240C10003E32E7 /* Launch Screen.storyboard */; };
 		9C167FEC20493F4D0017A525 /* Apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8B8620297DB70053C50B /* Apple.png */; };
 		9C167FED20493F4D0017A525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C070346202404520080856C /* Assets.xcassets */; };
-		9C167FEE20493F4D0017A525 /* FunctionList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E2751202409AF003E32E7 /* FunctionList.plist */; };
 		9C167FEF20493F4D0017A525 /* header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E2754202409AF003E32E7 /* header.jpg */; };
 		9C167FF020493F4D0017A525 /* TexturesCom_FoodSpices0018_S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E276520240DC6003E32E7 /* TexturesCom_FoodSpices0018_S.jpg */; };
 		9C167FF120493F4D0017A525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C070343202404520080856C /* Main.storyboard */; };
@@ -263,7 +262,6 @@
 		9C5E274C20240983003E32E7 /* CPCircularProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E273720240982003E32E7 /* CPCircularProgress.m */; };
 		9C5E274D20240983003E32E7 /* CPStar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E273A20240982003E32E7 /* CPStar.m */; };
 		9C5E274E20240983003E32E7 /* CPStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E273B20240982003E32E7 /* CPStartView.m */; };
-		9C5E2756202409AF003E32E7 /* FunctionList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E2751202409AF003E32E7 /* FunctionList.plist */; };
 		9C5E2757202409AF003E32E7 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E2753202409AF003E32E7 /* Utils.m */; };
 		9C5E2758202409AF003E32E7 /* header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E2754202409AF003E32E7 /* header.jpg */; };
 		9C5E275A20240C10003E32E7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E275920240C10003E32E7 /* Launch Screen.storyboard */; };
@@ -473,7 +471,6 @@
 		9CE934BD206CBFA7009946B4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E275920240C10003E32E7 /* Launch Screen.storyboard */; };
 		9CE934BE206CBFA7009946B4 /* Apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C8B8620297DB70053C50B /* Apple.png */; };
 		9CE934BF206CBFA7009946B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C070346202404520080856C /* Assets.xcassets */; };
-		9CE934C0206CBFA7009946B4 /* FunctionList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E2751202409AF003E32E7 /* FunctionList.plist */; };
 		9CE934C1206CBFA7009946B4 /* header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E2754202409AF003E32E7 /* header.jpg */; };
 		9CE934C2206CBFA7009946B4 /* TexturesCom_FoodSpices0018_S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C5E276520240DC6003E32E7 /* TexturesCom_FoodSpices0018_S.jpg */; };
 		9CE934C3206CBFA7009946B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C070343202404520080856C /* Main.storyboard */; };
@@ -533,7 +530,6 @@
 		9C167F7C204925E90017A525 /* CPUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUserInfoModel.h; sourceTree = "<group>"; };
 		9C167F7D204925E90017A525 /* CPUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPUserInfoModel.m; sourceTree = "<group>"; };
 		9C167FF820493F4D0017A525 /* Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C167FF920493F4E0017A525 /* PhoneRetrieve copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PhoneRetrieve copy-Info.plist"; path = "/mnt/Project/PhoneRetrieve/Code/PhoneRetrieve/PhoneRetrieve copy-Info.plist"; sourceTree = "<absolute>"; };
 		9C167FFA204950AB0017A525 /* CPLeftMiddleRightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPLeftMiddleRightCell.h; sourceTree = "<group>"; };
 		9C167FFB204950AB0017A525 /* CPLeftMiddleRightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPLeftMiddleRightCell.m; sourceTree = "<group>"; };
 		9C167FFE204ACDA20017A525 /* CPAssistantModifyPhoneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAssistantModifyPhoneVC.h; sourceTree = "<group>"; };
@@ -713,7 +709,6 @@
 		9C5E273C20240982003E32E7 /* CPImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPImageCell.h; sourceTree = "<group>"; };
 		9C5E273D20240982003E32E7 /* CPBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPBaseCell.h; sourceTree = "<group>"; };
 		9C5E2750202409AF003E32E7 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		9C5E2751202409AF003E32E7 /* FunctionList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FunctionList.plist; sourceTree = "<group>"; };
 		9C5E2752202409AF003E32E7 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		9C5E2753202409AF003E32E7 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		9C5E2754202409AF003E32E7 /* header.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = header.jpg; sourceTree = "<group>"; };
@@ -817,7 +812,6 @@
 		9CDD9303205F937A0072A6C1 /* CPAssistanteOrderDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAssistanteOrderDetailModel.h; sourceTree = "<group>"; };
 		9CDD9304205F937A0072A6C1 /* CPAssistanteOrderDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAssistanteOrderDetailModel.m; sourceTree = "<group>"; };
 		9CE934CA206CBFA7009946B4 /* PhoneRetrieveDelegate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneRetrieveDelegate.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CE934CB206CBFA7009946B4 /* PhoneRetrieve copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PhoneRetrieve copy2-Info.plist"; path = "/mnt/Project/PhoneRetrieve/Code/PhoneRetrieve/PhoneRetrieve copy2-Info.plist"; sourceTree = "<absolute>"; };
 		9CF5AE4320591F2C0026C4F2 /* CPAppearanceHintView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAppearanceHintView.h; sourceTree = "<group>"; };
 		9CF5AE4420591F2C0026C4F2 /* CPAppearanceHintView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAppearanceHintView.m; sourceTree = "<group>"; };
 		9CFA673F2058B15300301056 /* CPRetrieveFlowModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPRetrieveFlowModel.h; sourceTree = "<group>"; };
@@ -894,8 +888,6 @@
 				9C07033B202404520080856C /* Products */,
 				DD4D04B97AC3941413B1BC32 /* Pods */,
 				45894F02D28E85BC52D540C7 /* Frameworks */,
-				9C167FF920493F4E0017A525 /* PhoneRetrieve copy-Info.plist */,
-				9CE934CB206CBFA7009946B4 /* PhoneRetrieve copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1359,7 +1351,6 @@
 				9C5C8B8E20298F1B0053C50B /* test.jpg */,
 				9C5C8B8620297DB70053C50B /* Apple.png */,
 				9C5E2750202409AF003E32E7 /* Utils.h */,
-				9C5E2751202409AF003E32E7 /* FunctionList.plist */,
 				9C5E2752202409AF003E32E7 /* API.h */,
 				9C5E2753202409AF003E32E7 /* Utils.m */,
 				9C5E2754202409AF003E32E7 /* header.jpg */,
@@ -1685,7 +1676,6 @@
 				9C5E275A20240C10003E32E7 /* Launch Screen.storyboard in Resources */,
 				9C5C8B8720297DB70053C50B /* Apple.png in Resources */,
 				9C070347202404520080856C /* Assets.xcassets in Resources */,
-				9C5E2756202409AF003E32E7 /* FunctionList.plist in Resources */,
 				9C5E2758202409AF003E32E7 /* header.jpg in Resources */,
 				9C5E276E20240DC6003E32E7 /* TexturesCom_FoodSpices0018_S.jpg in Resources */,
 				9C070345202404520080856C /* Main.storyboard in Resources */,
@@ -1700,7 +1690,6 @@
 				9C167FEB20493F4D0017A525 /* Launch Screen.storyboard in Resources */,
 				9C167FEC20493F4D0017A525 /* Apple.png in Resources */,
 				9C167FED20493F4D0017A525 /* Assets.xcassets in Resources */,
-				9C167FEE20493F4D0017A525 /* FunctionList.plist in Resources */,
 				9C167FEF20493F4D0017A525 /* header.jpg in Resources */,
 				9C167FF020493F4D0017A525 /* TexturesCom_FoodSpices0018_S.jpg in Resources */,
 				9C167FF120493F4D0017A525 /* Main.storyboard in Resources */,
@@ -1715,7 +1704,6 @@
 				9CE934BD206CBFA7009946B4 /* Launch Screen.storyboard in Resources */,
 				9CE934BE206CBFA7009946B4 /* Apple.png in Resources */,
 				9CE934BF206CBFA7009946B4 /* Assets.xcassets in Resources */,
-				9CE934C0206CBFA7009946B4 /* FunctionList.plist in Resources */,
 				9CE934C1206CBFA7009946B4 /* header.jpg in Resources */,
 				9CE934C2206CBFA7009946B4 /* TexturesCom_FoodSpices0018_S.jpg in Resources */,
 				9CE934C3206CBFA7009946B4 /* Main.storyboard in Resources */,
@@ -2383,7 +2371,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: tingting zhu (DXR694BTZ4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5646F3X3S2;
+				DEVELOPMENT_TEAM = D6MY97ZPTP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2400,7 +2388,7 @@
 				INFOPLIST_FILE = PhoneRetrieve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qiji.leshouzhan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oddPlot.leshouzhan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2417,7 +2405,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: tingting zhu (DXR694BTZ4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5646F3X3S2;
+				DEVELOPMENT_TEAM = D6MY97ZPTP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2434,7 +2422,7 @@
 				INFOPLIST_FILE = PhoneRetrieve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qiji.leshouzhan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oddPlot.leshouzhan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

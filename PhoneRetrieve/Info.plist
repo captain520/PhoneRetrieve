@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -28,9 +28,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>乐收栈</string>
+	<string>乐收栈将访问您的APP相机进行拍照功能</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>NSPhotoLibraryUsageDescription</string>
+	<string>乐收栈将访问您的APP相册功能进行图片选取</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

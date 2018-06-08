@@ -184,7 +184,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     
     {
         CPLabel *companyNameLB = [CPLabel new];
-        companyNameLB.text = @"深圳市奇迹网络科技有限公司";
+        companyNameLB.text = @"深圳市奇积网络科技有限公司";
         companyNameLB.textAlignment = NSTextAlignmentCenter;
         companyNameLB.textColor = C66;
         
