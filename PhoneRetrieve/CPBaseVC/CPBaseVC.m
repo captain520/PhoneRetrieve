@@ -27,6 +27,8 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"tab_home-default") style:UIBarButtonItemStyleDone target:self action:@selector(push2MainPage)];
     
     DDLogInfo(@"**********>Class:%@<**********",NSStringFromClass(self.class));
+    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"left") style:UIBarButtonItemStyleDone target:self action:@selector(back)];
 }
 
 - (void)loadCustomNav {
@@ -80,7 +82,17 @@
                                  } fail:^(CPError *error) {
                                      
                                  }];
+}
+
+- (void)getHelpDetail:(NSString *)detailID block:(void (^)(NSString *url,NSString *title))block {
     
+    [CPConfigUrlModel modelRequestWith:DOMAIN_ADDRESS@"/api/sysconfig/getHelpDetail"
+                            parameters:@{@"id" : detailID}
+                                 block:^(CPConfigUrlModel *result) {
+                                     !block ? : block(result.Description, result.title);
+                                 } fail:^(CPError *error) {
+                                     
+                                 }];
 }
 
 @end

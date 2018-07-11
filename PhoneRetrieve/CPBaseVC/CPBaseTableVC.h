@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UITableView *dataTableView;
 
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 - (void)loadData;
 

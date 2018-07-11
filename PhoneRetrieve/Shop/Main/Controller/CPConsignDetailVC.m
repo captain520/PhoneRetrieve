@@ -231,8 +231,13 @@
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:blockDict];
     [dict setObject:[self getOrderJson] forKey:@"orderjson"];
+    
+    NSString *url = DOMAIN_ADDRESS@"/api/Order/insertOrder";
+    if ([CPUserInfoModel shareInstance].loginModel.Typeid == 6 || [CPUserInfoModel shareInstance].loginModel.Typeid == 7) {
+        url = DOMAIN_ADDRESS@"/api/Order/insertUserOrder";
+    }
 
-    [CPShopShippingResultModel modelRequestWith:DOMAIN_ADDRESS@"/api/Order/insertOrder"
+    [CPShopShippingResultModel modelRequestWith:url
                            parameters:dict
                                 block:^(CPShopShippingResultModel *result) {
                                     [weakSelf handleActionBlock:result];

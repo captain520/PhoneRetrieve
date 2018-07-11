@@ -48,7 +48,8 @@
     if (_webView == nil) {
         _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
         _webView.dataDetectorTypes = UIDataDetectorTypeAll;
-//        _webView.scalesPageToFit   = YES;
+        _webView.backgroundColor = UIColor.whiteColor;
+        _webView.scalesPageToFit   = YES;
 
         _webView.delegate = self;
         

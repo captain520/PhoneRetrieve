@@ -21,6 +21,10 @@
 #import "CPShopAccountManagerVC.h"
 #import "CPHelpCenterVC.h"
 
+#import "CPMemeberMainVC.h"
+#import "CPRecycleDesVC.h"
+#import "CPMemberInfoVC.h"
+
 @interface CPShopTabBarController ()
 
 @end
@@ -43,8 +47,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)initializedBaseViewControllersFor:(CPTabVCType)type {
-    
+   
+    if (type == CPTabVCTypeMemeber || type == CPTabVCTypeSubMember) {
+        [self initMemmberTabBar];
+        return;
+    }
     //  首页
     CPShopMainVC *homeVC = [[CPShopMainVC alloc] init];
     homeVC.tabBarItem = [self createTabBarItemWithTitle:@"首页" imageName:@"tab_home-default" selectedImage:@"tab_home-pressed"];
@@ -95,6 +104,31 @@
        
         self.viewControllers = @[homeNav,assistantOrderNav,aboutNav];
     }
+}
+
+
+
+/**
+ 会员主页界面
+ */
+- (void)initMemmberTabBar {
+    
+    //  会员-首页
+    CPMemeberMainVC *homeVC = [[CPMemeberMainVC alloc] init];
+    homeVC.tabBarItem = [self createTabBarItemWithTitle:@"首页" imageName:@"tab_home-default" selectedImage:@"tab_home-pressed"];
+    CPNavigationController *homeNav = [[CPNavigationController alloc] initWithRootViewController:homeVC];
+    
+    //  会员-回收说明
+    CPRecycleDesVC *recycleVC = [[CPRecycleDesVC alloc] init];
+    recycleVC.tabBarItem = [self createTabBarItemWithTitle:@"回收标准" imageName:@"tab_help_default" selectedImage:@"tab_help_pressed"];
+    CPNavigationController *recycleNav = [[CPNavigationController alloc] initWithRootViewController:recycleVC];
+    
+    //  会员-信息
+    CPMemberInfoVC *memberInfoVC = [[CPMemberInfoVC alloc] init];
+    memberInfoVC.tabBarItem = [self createTabBarItemWithTitle:@"会员资料" imageName:@"tab_data_default" selectedImage:@"tab_data_pressed"];
+    CPNavigationController *memeberInfoNav = [[CPNavigationController alloc] initWithRootViewController:memberInfoVC];
+    
+    self.viewControllers = @[homeNav,recycleNav,memeberInfoNav];
 }
 /**
  * 创建UITabBarItem

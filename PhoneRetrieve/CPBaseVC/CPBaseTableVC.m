@@ -82,7 +82,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
-    cell.textLabel.text = @"-----";
+    cell.textLabel.text = [NSString stringWithFormat:@"section:%ld, row:%ld",indexPath.section,indexPath.row];
     
     return cell;
 }

@@ -35,11 +35,18 @@
 
 @property (nonatomic, assign) NSInteger goodscount;
 
-@property (nonatomic, assign) NSInteger paycfg;
+@property (nonatomic, assign) BOOL paycfg;
 
 @property (nonatomic, copy) NSString *logisticsno;
 @property (nonatomic, copy) NSString *createtime;
 @property (nonatomic, copy) NSString *paytime;
+
+@property (nonatomic, copy) NSString *userid;
+@property (nonatomic, copy) NSString *ptprice;
+@property (nonatomic, copy) NSString *yfprice;
+@property (nonatomic, copy) NSString *sfprice;
+@property (nonatomic, assign) BOOL yfpaycfg;
+
 
 @end
 

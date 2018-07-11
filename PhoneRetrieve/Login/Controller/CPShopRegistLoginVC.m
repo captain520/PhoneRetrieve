@@ -36,12 +36,23 @@
 }
 
 - (void)setupUI {
-   
-    CPRegistStepView *stepView = [[CPRegistStepView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, 44.9f)];
-    stepView.currentStep = 0;
-
-    [self.view addSubview:stepView];
     
+    CPRegistStepView *stepView = nil;
+
+    if (self.registType == CPRegistTypeMember) {
+        
+        stepView = [[CPRegistStepView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, 44.9f) itemTitles:@[ @"注册只需3步",@"登录信息",@"会员信息"]];
+        stepView.currentStep = 0;
+        
+        [self.view addSubview:stepView];
+    } else {
+        stepView = [[CPRegistStepView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, 44.9f)];
+        stepView.currentStep = 0;
+        
+        [self.view addSubview:stepView];
+    }
+
+
     if (nil == self.accountTF) {
         self.accountTF = [CPTextField new];
         self.accountTF.font = [UIFont systemFontOfSize:13.0f];
@@ -244,7 +255,11 @@
     [CPRegistParam shareInstance].sms = self.codeTF.text;
     [CPRegistParam shareInstance].password = cp_md5(self.confirmTF.text);
 
-    [self push2VCWith:@"CPShopRegistInfoTBVC" title:@"门店注册"];
+    if (self.registType == CPRegistTypeMember) {
+        [self push2VCWith:@"CPMemberRegisterStep01VC" title:@"会员注册"];
+    } else {
+        [self push2VCWith:@"CPShopRegistInfoTBVC" title:@"门店注册"];
+    }
 }
 
 @end

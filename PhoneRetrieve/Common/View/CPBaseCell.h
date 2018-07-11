@@ -12,4 +12,6 @@
 
 @property (nonatomic,assign) BOOL shouldShowBottomLine;
 
+- (void)setupUI ;
+
 @end

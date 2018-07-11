@@ -22,6 +22,8 @@
 
 @property (nonatomic, strong) CPTextField *shopCodeTF;
 
+@property (nonatomic, strong) CPTextField *IDTF;
+
 @end
 
 @implementation CPDeviceOwnerInfoVC
@@ -126,6 +128,23 @@
         }];
     }
     
+    if (nil == self.IDTF) {
+        self.IDTF = [CPTextField new];
+        self.IDTF.keyboardType = UIKeyboardTypeNumberPad;
+        self.IDTF.font = [UIFont systemFontOfSize:13.0];
+        self.IDTF.borderStyle = UITextBorderStyleRoundedRect;
+        self.IDTF.placeholder = @"身份证号码(可选)";
+        
+        [self.view addSubview:self.IDTF];
+        
+        [self.IDTF mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.confirmTF.mas_bottom).offset(cellSpaceOffset);
+            make.height.mas_equalTo(CELL_HEIGHT_F);
+            make.left.mas_equalTo(cellSpaceOffset);
+            make.right.mas_equalTo(-cellSpaceOffset);
+        }];
+    }
+    
     if (nil == self.checkBox) {
         
         NSDictionary *option0 = @{
@@ -167,7 +186,7 @@
         [self.view addSubview:self.checkBox];
         
         [self.checkBox mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.confirmTF.mas_bottom).offset(cellSpaceOffset);
+            make.top.mas_equalTo(self.IDTF.mas_bottom).offset(cellSpaceOffset);
             make.left.mas_equalTo(cellSpaceOffset);
             make.right.mas_equalTo(-cellSpaceOffset);
             make.height.mas_equalTo(20);

@@ -17,6 +17,9 @@
 #import "CPSortCell.h"
 #import "CPNavView.h"
 #import "CPFlowVC.h"
+#import "CPFlowModel.h"
+
+#import "CPMemberQuotePriceFlowVC.h"
 
 #define OFFSET_F    (100.0f)
 #define HEIGHT_F    (80.0f)
@@ -189,6 +192,7 @@
         __weak CPShopGoodsListVC *weakSelf = self;
         _tabbarView = [[CPTabBarView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT , SCREENWIDTH, CELL_HEIGHT_F)];
         _tabbarView.backgroundColor = MainColor;
+        _tabbarView.clipsToBounds = YES;
 //        _tabbarView.currentIndex = self.selecteTypeIndex;
         _tabbarView.selectBlock = ^(NSInteger index) {
             weakSelf.selecteTypeIndex = index;
@@ -315,16 +319,56 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 //    [self push2VCWith:@"CPDevieInfoListVC" title:@"手机是否存在以下问题？"];
     CPGoodModel *good = self.goods[indexPath.row];
-    
-    CPFlowVC *vc = [[CPFlowVC alloc] init];
-    vc.goodid = good.ID;
-    vc.title = @"评估价格";
-    vc.deviceName = good.name;
-
-    [self.navigationController pushViewController:vc animated:YES];
+//
+//    CPFlowVC *vc = [[CPFlowVC alloc] init];
+//    vc.goodid = good.ID;
+//    vc.title = @"评估价格";
+//    vc.deviceName = good.name;
+//
+//    [self.navigationController pushViewController:vc animated:YES];
 //    [self push2VCWith:@"CPFlowVC" title:@"手机是否存在以下问题？"];
+    
+    [self nextMainQuoteFlow:good];
+    
 }
 
+- (void)nextMainQuoteFlow:(CPGoodModel *)good {
+    
+    NSString *urlStr = DOMAIN_ADDRESS@"/api/Report/findUserReportData";
+    __weak typeof(self) weakSelf = self;
+    
+    [CPMemberQuoteManager shareInstance].goodsid = good.ID;
+    
+    [CPFlowModel modelRequestWith:urlStr
+                       parameters:@{@"goodsid" : good.ID,
+                                    @"report_item_id" : @"0"
+                                    }
+                            block:^(id result) {
+                                [weakSelf handleNextmainQuoteBlock:result];
+                            } fail:^(CPError *error) {
+                                
+                            }];
+}
+- (void)handleNextmainQuoteBlock:(NSArray <CPFlowModel *> *)result {
+    
+    if (!result || ![result isKindOfClass:[NSArray class]]) {
+        
+        return;
+    }
+    
+    [result enumerateObjectsUsingBlock:^(CPFlowModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj.itemData enumerateObjectsUsingBlock:^(CPItemData * _Nonnull subObj, NSUInteger idx, BOOL * _Nonnull stop) {
+            subObj.parentName = obj.name;
+        }];
+    }];
+    
+    [CPMemberQuoteManager shareInstance].mainQuoteFlowDataArray = result;
+    
+    CPMemberQuotePriceFlowVC *vc = [[CPMemberQuotePriceFlowVC alloc] init];
+    vc.currentMainModel = result.firstObject;
+
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -463,13 +507,16 @@
     
     CPGoodTypeModel *tempModel = self.goodTypes[self.selecteTypeIndex];
     
-    NSDictionary *params= @{
+    NSMutableDictionary *params= @{
                             @"brandid" : @(self.selectBrandIndex),
                             @"typeid" : @(tempModel.ID),
                             @"currentpage" : @(self.currentPage),
                             @"repaircfg" : [CPUserInfoModel shareInstance].repaircfg,
                             @"pagesize" : @(10)
-                            };
+                            }.mutableCopy;
+    if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {    // 6 7 会员
+        [params setObject:@"1" forKey:@"usetypecfg"];
+    }
 
     [CPGoodModel modelRequestWith:CPURL_SHOP_GOOD_LIST
                        parameters:params

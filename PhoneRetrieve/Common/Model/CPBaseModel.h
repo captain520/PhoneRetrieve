@@ -42,6 +42,11 @@
                         block:(void (^)(id result))successBlock
                          fail:(void (^)(CPError *error))failBlock ;
 
++ (void)modelRequestPageWith:(NSString *)url
+                  parameters:(NSDictionary *)parameters
+                       block:(void (^)(id result))successBlock
+                        fail:(void (^)(CPError *error))failBlock;
+
 
 
 @end

@@ -9,8 +9,10 @@
 #import "CPTabBarController.h"
 
 typedef NS_ENUM(NSUInteger,CPTabVCType) {
-   CPTabVCTypeShop,
-   CPTabVCTypeAssistant,
+   CPTabVCTypeShop = 3,
+   CPTabVCTypeAssistant = 4,
+   CPTabVCTypeMemeber = 6,
+   CPTabVCTypeSubMember = 7,
    CPTabVCTypeOther
 };
 

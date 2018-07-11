@@ -10,7 +10,9 @@
 
 typedef NS_ENUM(NSUInteger, CPRegistType) {
    CPRegistTypeShop,
-   CPRegistTypeAssistant
+   CPRegistTypeAssistant,
+   CPRegistTypeMember,
+   CPRegistTypeOther
 };
 
 @interface CPShopRegistLoginVC : CPBaseVC

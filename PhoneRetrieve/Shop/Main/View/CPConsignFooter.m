@@ -189,7 +189,7 @@
 
 - (void)buttonAction:(UIButton *)sender {
 
-    NSDictionary *params = @{
+    NSMutableDictionary *params = @{
 //                             @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID),
 //                             @"username" : [CPUserInfoModel shareInstance].loginModel.linkname,
                              @"logisticsno" : consignNoLB.text,
@@ -197,7 +197,17 @@
                              @"deviceurls" : self.goodImageBT.imageUrl,
                              @"doorid" : @([CPUserInfoModel shareInstance].loginModel.ID),
                              @"doorname" : [CPUserInfoModel shareInstance].loginModel.linkname,
-                             };
+                             }.mutableCopy;
+    
+    NSUInteger userType = [CPUserInfoModel shareInstance].loginModel.Typeid;
+    NSUInteger userID = [CPUserInfoModel shareInstance].loginModel.ID;
+    NSString *userCode = [CPUserInfoModel shareInstance].loginModel.cp_code;
+    NSInteger typeID = [CPUserInfoModel shareInstance].loginModel.Typeid;
+    if (userType == 6 || userType == 7) {
+        [params setObject:@(userID) forKey:@"currentuserid"];
+        [params setObject:userCode forKey:@"code"];
+        [params setObject:@(typeID) forKey:@"typeid"];
+    }
 
 
     !self.actionBlock ? : self.actionBlock(params);

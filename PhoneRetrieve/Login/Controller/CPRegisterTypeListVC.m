@@ -9,11 +9,13 @@
 #import "CPRegisterTypeListVC.h"
 #import "CPButton.h"
 #import "CPLoginVC.h"
+#import "CPShopRegistLoginVC.h"
 
 @interface CPRegisterTypeListVC ()
 
 @property (nonatomic, strong) UIImageView *logoIV;
 @property (nonatomic, strong) CPButton *shopRegisterBt, *assistantRegisterBt;
+@property (nonatomic, strong) CPButton *memberRegisterBT;
 
 @end
 
@@ -83,6 +85,25 @@
     }
     
     {
+        self.memberRegisterBT = [[CPButton alloc] initWithFrame:CGRectZero];
+        [self.memberRegisterBT setTitle:@"会员注册" forState:0];
+        //        UIImage *image = [UIImage imageWithColor:UIColor.blueColor];
+        UIColor *blueColor = UIColor.blueColor;
+        [self.memberRegisterBT setBackgroundImage:[UIImage imageWithColor:blueColor] forState:UIControlStateNormal];
+        [self.memberRegisterBT addTarget:self action:@selector(pus2MemberRegistVC) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:self.memberRegisterBT];
+        
+        [self.memberRegisterBT mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.assistantRegisterBt.mas_bottom).offset(CELL_HEIGHT_F / 2);
+            make.left.mas_equalTo(cellSpaceOffset);
+            make.right.mas_equalTo(-cellSpaceOffset);
+            make.height.mas_equalTo(CELL_HEIGHT_F);
+        }];
+        
+    }
+    
+    {
         UIButton *loginBt = [UIButton new];
         [loginBt setTitleColor:C33 forState:0];
         [loginBt setAttributedTitle:[self getAttributedText:@"我已有账号， " strokText:@"立即登录"] forState:0];
@@ -91,7 +112,7 @@
         [self.view addSubview:loginBt];
         
         [loginBt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.assistantRegisterBt.mas_bottom).offset(cellSpaceOffset);
+            make.top.mas_equalTo(self.memberRegisterBT.mas_bottom).offset(cellSpaceOffset);
             make.right.mas_equalTo(-cellSpaceOffset);
         }];
     }
@@ -130,5 +151,12 @@
 
 - (void)pus2ShopRegistVC { [self push2VCWith:@"CPShopRegistLoginVC" title:@"门店注册"];}
 - (void)pus2AssistantRegistVC { [self push2VCWith:@"CPAssistantRegisterVC" title:@"店员注册"];}
+- (void)pus2MemberRegistVC {
+    CPShopRegistLoginVC *vc = [[CPShopRegistLoginVC alloc] init];
+    vc.title = @"会员注册";
+    vc.registType = CPRegistTypeMember;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

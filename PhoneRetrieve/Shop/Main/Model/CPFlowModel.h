@@ -51,7 +51,9 @@
 
 @property (nonatomic, copy) NSString *reportitemid;
 
-@property (nonatomic, assign) NSInteger reportid;
+@property (nonatomic, copy) NSString *reportid;
+
+@property (nonatomic, copy) NSString *parentName;
 
 @property (nonatomic, assign) NSInteger typecfg;
 

@@ -10,4 +10,7 @@
 
 @interface CPHeaderFooter : UITableViewHeaderFooterView
 
+//  install UI
+- (void)setupUI;
+
 @end

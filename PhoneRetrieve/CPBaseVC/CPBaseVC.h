@@ -14,4 +14,19 @@
 
 - (void)getConfigUrl:(NSString *)code block:(void (^)(NSString *url,NSString *title))block;
 
+
+/**
+ 获取网页详情
+
+ @param detailID ID
+ @param block 详情回调
+ */
+- (void)getHelpDetail:(NSString *)detailID block:(void (^)(NSString *url,NSString *title))block;
+
+
+/**
+ * 返回操作
+ */
+- (void)back;
+
 @end

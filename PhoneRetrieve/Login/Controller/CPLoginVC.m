@@ -60,8 +60,9 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     if (nil == self.accountTF) {
         self.accountTF = [UITextField new];
         self.accountTF.placeholder = @"请输入您的手机号码/会员编号";
-//        self.accountTF.text = @"15814099327";
+        self.accountTF.text = @"15814099327";
 //        self.accountTF.text = @"18033446838";
+//        self.accountTF.text = @"17063893998";
         if (params[@"phone"]) {
             self.accountTF.text = params[@"phone"];
         }
@@ -107,7 +108,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     if (nil == self.passwdTF) {
         self.passwdTF = [UITextField new];
         self.passwdTF.placeholder = @"请输入您的登陆密码";
-//        self.passwdTF.text = @"123456";
+        self.passwdTF.text = @"123456";
         self.passwdTF.borderStyle = UITextBorderStyleRoundedRect;
 //        self.passwdTF.keyboardType = UIKeyboardTypeNumberPad;
         self.passwdTF.font = [UIFont systemFontOfSize:15.0f];
@@ -343,8 +344,14 @@ typedef NS_ENUM(NSInteger, CPLoginType){
 }
 
 - (void)handleLoginBlock:(CPLoginModel *)result {
+
+    if (result.Typeid != 3 && result.Typeid != 4 && result.Typeid != 6 && result.Typeid == 7) {
+        [self.view makeToast:@"非门店和商家代理账号" duration:2.0f position:CSToastPositionCenter];
+        return;
+    };
     
-//    result.Typeid = 4;
+    __weak typeof(self) weakSelf = self;
+    
     if (!result.linkname) {
         result.linkname = @"匿名用户";
     }
@@ -357,12 +364,17 @@ typedef NS_ENUM(NSInteger, CPLoginType){
                                 finish:^(BOOL finished) {
                                     DDLogInfo(@"------------------------------");
                                     CPShopTabBarController *tbVC = (CPShopTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-                                    if ([CPUserInfoModel shareInstance].isShop) {
-                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeShop];
-                                    } else {
-                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeAssistant];
-                                    }
-                                    [self.navigationController popViewControllerAnimated:NO];
+                                    [tbVC initializedBaseViewControllersFor:result.Typeid];
+//                                    if ([CPUserInfoModel shareInstance].isShop) {
+//                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeShop];
+//                                    } else {
+//                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeAssistant];
+//                                    }
+                                    
+//                                    [weakSelf.navigationController popViewControllerAnimated:NO];
+//                                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+//                                        !self.loginBlock ? : self.loginBlock();
+//                                    }];
                                 }];
 }
 

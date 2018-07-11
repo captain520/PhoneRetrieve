@@ -64,5 +64,8 @@
 
 @property (nonatomic, copy) NSString *wxnum;
 
+@property (nonatomic, copy) NSString *pgprice_pre;
+
+
 @end
 

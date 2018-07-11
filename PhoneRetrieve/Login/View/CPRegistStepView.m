@@ -12,6 +12,16 @@
     CALayer *bottomLine;
 }
 
+- (id)initWithFrame:(CGRect)frame itemTitles:(NSArray *)itemTitles {
+    if (self = [super initWithFrame:frame]) {
+        self.titles = itemTitles;
+        
+        [self setupUI];
+    }
+    
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
