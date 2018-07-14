@@ -13,6 +13,7 @@
 #import "CPSelectCell.h"
 #import "CPDeviceOwnerInfoVC.h"
 #import "CPShopGoodsListVC.h"
+#import "CPMemberQuotePriceFooter.h"
 
 @interface CPEvaluatedPriceVC ()
 
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) NSMutableArray *itemDatas;
 @property (nonatomic, assign) BOOL hasAgreeProtocol;
+
+@property (nonatomic, assign) BOOL isUpDirection;
 
 @end
 
@@ -53,6 +56,8 @@
     
     self.dataTableView.frame = CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, SCREENHEIGHT - NAV_HEIGHT - NAV_HEIGHT);
 
+    
+    [self setTitle:[CPMemberQuoteManager shareInstance].deviceName];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,9 +111,9 @@
 
     switch (section) {
         case 0:
-            return 200.0f;
+            return 200;
         case 1:
-            return cellSpaceOffset;
+            return 100 + self.isUpDirection * CELL_HEIGHT_F;
             break;
 
         default:
@@ -135,17 +140,25 @@
         footer.cp_content = self.model.price;
 
         return footer;
-    } else {
+    } else if(1 == section && [CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
         
-//        NSString *headerIdenitfier = @"CPEvaluatedTypeHeader";
-//        CPEvaluatedTypeHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdenitfier];
-//        if (!header) {
-//            header = [[CPEvaluatedTypeHeader alloc] initWithReuseIdentifier:headerIdenitfier];
-//        }
-//
-//        header.title = @"评估详情";
-//
-//        return header;
+//        __weak typeof(self) weakSelf = self;
+
+        NSString *headerIdenitfier = @"MemberPriceFooter";
+        CPMemberQuotePriceFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdenitfier];
+        if (!footer) {
+            footer = [[CPMemberQuotePriceFooter alloc] initWithReuseIdentifier:headerIdenitfier];
+            footer.actionBlock = ^(BOOL isUpDirection) {
+//                DDLogError(@"******************************%@",@(isUpDirection));
+//                weakSelf.isUpDirection = isUpDirection;
+//                [weakSelf.dataTableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationTop];
+            };
+            footer.contentView.backgroundColor = UIColor.groupTableViewBackgroundColor;
+        }
+
+        footer.price = self.model.currentprice;
+
+        return footer;
     }
     
     return nil;
@@ -233,6 +246,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
+        case 0: {
+            if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
+                return 120;
+            } else {
+                return CELL_HEIGHT_F;
+            }
+        }
+            break;
         case 1:
         case 2:
             return 30.0f;
@@ -251,7 +272,13 @@
     
     switch (indexPath.section) {
         case 0:
-            cell = [self configHintCell:indexPath];
+        {
+            if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {    //  会员温馨提示
+                cell = [self configMemberHintCell:indexPath];
+            } else {
+                cell = [self configHintCell:indexPath];     //  其他  安全小贴士
+            }
+        }
             break;
         case 1:
             cell = [self configEvaluatedContentCell:indexPath];
@@ -302,6 +329,40 @@
     }
     
     return cell;
+}
+
+
+//  会员
+- (id)configMemberHintCell:(NSIndexPath *)indexPath {
+    
+    static NSString *cellIdentify = @"configMemberHintCell";
+    
+    UITableViewCell *cell = [self.dataTableView dequeueReusableCellWithIdentifier:cellIdentify];
+    if (nil == cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentify];
+        cell.textLabel.text = @"温馨提示";
+        cell.detailTextLabel.attributedText = [self memberHintContnet];
+        cell.detailTextLabel.numberOfLines = 0;
+        cell.contentView.backgroundColor = UIColor.clearColor;
+        cell.backgroundColor = UIColor.clearColor;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    return cell;
+}
+
+//  获取会员温馨提示富文本
+- (NSAttributedString *)memberHintContnet {
+    
+    NSString *content0 = @"本平台根据国家法律法规，盗抢设备概不收回，一经发现立即报警\n";
+    NSMutableAttributedString *attr0 = [[NSMutableAttributedString alloc] initWithString:content0 attributes:@{NSForegroundColorAttributeName : UIColor.redColor}];
+    
+    NSString *content1 = @"另拒绝回收一切有锁设备(ID锁，屏幕锁，账户锁等)";
+    NSAttributedString *attr1 = [[NSAttributedString alloc] initWithString:content1 attributes:@{NSForegroundColorAttributeName : C33}];
+    
+    [attr0 appendAttributedString:attr1];
+    
+    return attr0;
 }
 
 - (CPEvaluatedContentCell *)configEvaluatedContentCell:(NSIndexPath *)indexPath {

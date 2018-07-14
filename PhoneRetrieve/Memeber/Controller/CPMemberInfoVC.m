@@ -12,8 +12,9 @@
 #import "CPItemPickerAlert.h"
 #import "CPMemberRateListModel.h"
 #import "CPUserDetailInfoModel.h"
+#import "CPLoginVC.h"
 
-@interface CPMemberInfoVC ()
+@interface CPMemberInfoVC ()<UIAlertViewDelegate>
 
 @property (nonatomic, strong) CPShopAboutHeader *headerView;
 @property (nonatomic, strong) NSArray <CPMemberRateListModel *> *rateModels;
@@ -146,6 +147,47 @@
     }
 
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (2 == section) {
+        return 60.0f;
+    }
+    
+    return 0.00000001;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    if ( 2 == section) {
+        NSString *headerIdenitfier = @"footer";
+        
+        UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdenitfier];
+        CPButton *loginoutBT = [header.contentView viewWithTag:CPBASETAG];
+        if (!header) {
+            header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerIdenitfier];
+            header.contentView.backgroundColor = tableView.backgroundColor;
+            
+            loginoutBT = [CPButton new];
+            [loginoutBT setTitle:@"退出当前登陆" forState:0];
+            [loginoutBT setTitleColor:UIColor.whiteColor forState:0];
+            [loginoutBT addTarget:self action:@selector(loginOutAction:) forControlEvents:64];
+            [loginoutBT setBackgroundColor:CPERROR_COLOR];
+            [loginoutBT setBackgroundImage:UIImage.new forState:0];
+            
+            [header.contentView addSubview:loginoutBT];
+            [loginoutBT mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(cellSpaceOffset);
+                make.right.mas_equalTo(-cellSpaceOffset);
+                make.centerY.mas_equalTo(header.contentView.mas_centerY);
+                make.height.mas_equalTo(CELL_HEIGHT_F);
+            }];
+            
+        }
+        
+        return header;
+    }
+    
+    return nil;
+}
 
 #pragma mark - Pirvate method implement
 
@@ -262,7 +304,7 @@
                        @[
                            @"登录密码",
                            @"子会员管理",
-                           [NSString stringWithFormat:@"建议价格比例：(%@)",result.pgprice_pre]
+                           [NSString stringWithFormat:@"建议价格比例：(%ld%%)",result.pgprice_pre.integerValue]
                            ],
                        //   收款信息
                        @[
@@ -271,6 +313,26 @@
                        ].mutableCopy;
     
     [self.dataTableView reloadData];
+}
+
+- (void)loginOutAction:(CPButton *)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否要退出当前登陆" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    DDLogInfo(@"%@",@(buttonIndex));
+    
+    if (1 == buttonIndex) {
+        
+        CPLoginVC *vc = [[CPLoginVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        
+        [self presentViewController:vc animated:YES completion:nil];
+//        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end

@@ -28,5 +28,8 @@
 
 @property (nonatomic, copy) NSString *createtime;
 
+@property (nonatomic, copy) NSString *currentprice;
+
+
 @end
 

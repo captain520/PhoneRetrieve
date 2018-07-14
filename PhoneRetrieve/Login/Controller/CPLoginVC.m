@@ -346,10 +346,11 @@ typedef NS_ENUM(NSInteger, CPLoginType){
 - (void)handleLoginBlock:(CPLoginModel *)result {
 
     if (result.Typeid != 3 && result.Typeid != 4 && result.Typeid != 6 && result.Typeid == 7) {
-        [self.view makeToast:@"非门店和商家代理账号" duration:2.0f position:CSToastPositionCenter];
+        [self.view makeToast:@"账号不存在" duration:2.0f position:CSToastPositionCenter];
         return;
     };
     
+
     __weak typeof(self) weakSelf = self;
     
     if (!result.linkname) {
@@ -372,10 +373,34 @@ typedef NS_ENUM(NSInteger, CPLoginType){
 //                                    }
                                     
 //                                    [weakSelf.navigationController popViewControllerAnimated:NO];
-//                                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+                                    [weakSelf dismissViewControllerAnimated:YES completion:^{
 //                                        !self.loginBlock ? : self.loginBlock();
-//                                    }];
+                                    }];
                                 }];
+    
+    [self loadUserDetailInfo];
+}
+
+/**
+ 获取用户详细信息
+ */
+- (void)loadUserDetailInfo {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [CPUserDetailInfoModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/getDetailUserInfo"
+                                 parameters:@{@"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)}
+                                      block:^(CPUserDetailInfoModel *result) {
+                                          [weakSelf handleLoadUserDetailinfoBlock:result];
+                                      } fail:^(NSError *error) {
+                                          
+                                      }];
+}
+
+- (void)handleLoadUserDetailinfoBlock:(CPUserDetailInfoModel *)result {
+    if (result && [result isKindOfClass:[CPUserDetailInfoModel class]]) {
+        [CPUserInfoModel shareInstance].userDetaiInfoModel = result;
+    }
 }
 
 @end

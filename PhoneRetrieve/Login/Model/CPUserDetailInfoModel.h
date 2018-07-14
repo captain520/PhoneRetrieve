@@ -66,6 +66,7 @@
 
 @property (nonatomic, copy) NSString *pgprice_pre;
 
+@property (nonatomic, copy) NSString *default_pgprice_pre;
 
 @end
 

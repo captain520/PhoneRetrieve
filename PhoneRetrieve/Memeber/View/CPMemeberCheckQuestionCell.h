@@ -11,6 +11,6 @@
 
 @interface CPMemeberCheckQuestionCell : CPBaseCell
 
-@property (nonatomic, strong) CPMemberReportResultCheckjson *model;
+@property (nonatomic, strong) CPMemberReportResultJsonData *model;
 
 @end

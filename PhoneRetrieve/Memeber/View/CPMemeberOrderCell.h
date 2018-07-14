@@ -12,6 +12,7 @@
 @interface CPMemeberOrderCell : CPBaseCell
 
 @property (nonatomic, copy) void (^seeDetailAction)(void);
+@property (nonatomic, copy) void (^checkConsignBlock)(void);
 
 @property (nonatomic, strong) CPShopOrderDetailModel *model;
 

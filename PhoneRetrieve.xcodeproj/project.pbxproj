@@ -36,6 +36,8 @@
 		9C0D95EF204E255600834B90 /* CPAssistantRegisterParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D95ED204E255600834B90 /* CPAssistantRegisterParam.m */; };
 		9C0D95F2204E5DF500834B90 /* CPUserDetailInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D95F1204E5DF500834B90 /* CPUserDetailInfoModel.m */; };
 		9C0D95F3204E5DF500834B90 /* CPUserDetailInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0D95F1204E5DF500834B90 /* CPUserDetailInfoModel.m */; };
+		9C11EDDC20F6ECC700B6A892 /* CPMemberQuoteFlowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C11EDDB20F6ECC700B6A892 /* CPMemberQuoteFlowVC.m */; };
+		9C11EDDF20F72B7E00B6A892 /* CPMemberReportResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C11EDDD20F72B7D00B6A892 /* CPMemberReportResultModel.m */; };
 		9C167F7E204925E90017A525 /* CPUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C167F7D204925E90017A525 /* CPUserInfoModel.m */; };
 		9C167F8220493F4D0017A525 /* CPImageLeftRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED920202AA0D500532826 /* CPImageLeftRightCell.m */; };
 		9C167F8320493F4D0017A525 /* CPStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E273B20240982003E32E7 /* CPStartView.m */; };
@@ -220,7 +222,6 @@
 		9C48557E20F5A14F00D9F45E /* CPMemberCheckReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C48557D20F5A14F00D9F45E /* CPMemberCheckReportVC.m */; };
 		9C48558420F5BD6E00D9F45E /* CPMemberCheckReportInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C48558320F5BD6E00D9F45E /* CPMemberCheckReportInfoCell.m */; };
 		9C48558720F5D0AB00D9F45E /* CPMemeberCheckQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C48558620F5D0AB00D9F45E /* CPMemeberCheckQuestionCell.m */; };
-		9C48558D20F5D49A00D9F45E /* CPMemberReportResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C48558C20F5D49A00D9F45E /* CPMemberReportResultModel.m */; };
 		9C4F8EBE206F563300873192 /* CPOrderListPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F8EBD206F563300873192 /* CPOrderListPageModel.m */; };
 		9C4F8EBF206F563300873192 /* CPOrderListPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F8EBD206F563300873192 /* CPOrderListPageModel.m */; };
 		9C4F8EC0206F563300873192 /* CPOrderListPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F8EBD206F563300873192 /* CPOrderListPageModel.m */; };
@@ -348,6 +349,11 @@
 		9CD61C0C20678AD400CF863C /* CPAddMemberResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD61C0A20678AD400CF863C /* CPAddMemberResultModel.m */; };
 		9CDD9302205F8E3A0072A6C1 /* CPAssistantOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD9301205F8E3A0072A6C1 /* CPAssistantOrderListVC.m */; };
 		9CDD9305205F937A0072A6C1 /* CPAssistanteOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD9304205F937A0072A6C1 /* CPAssistanteOrderDetailModel.m */; };
+		9CE59BDB20F8CA6C006F3139 /* CPCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BDA20F8CA6C006F3139 /* CPCollectionViewLayout.m */; };
+		9CE59BDE20F99042006F3139 /* CPMemberQuotePriceFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BDD20F99042006F3139 /* CPMemberQuotePriceFooter.m */; };
+		9CE59BE120F9A056006F3139 /* CPMemberCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BE020F9A056006F3139 /* CPMemberCartCell.m */; };
+		9CE59BE420F9CC36006F3139 /* CPMemberCheckOKCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BE320F9CC36006F3139 /* CPMemberCheckOKCell.m */; };
+		9CE59BE720F9E075006F3139 /* CPRateControlVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BE620F9E075006F3139 /* CPRateControlVC.m */; };
 		9CE93425206CBFA7009946B4 /* CPImageLeftRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED920202AA0D500532826 /* CPImageLeftRightCell.m */; };
 		9CE93426206CBFA7009946B4 /* CPStartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E273B20240982003E32E7 /* CPStartView.m */; };
 		9CE93427206CBFA7009946B4 /* CPProviceCityAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD61C02206746C000CF863C /* CPProviceCityAreaModel.m */; };
@@ -555,6 +561,10 @@
 		9C0D95ED204E255600834B90 /* CPAssistantRegisterParam.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAssistantRegisterParam.m; sourceTree = "<group>"; };
 		9C0D95F0204E5DF500834B90 /* CPUserDetailInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUserDetailInfoModel.h; sourceTree = "<group>"; };
 		9C0D95F1204E5DF500834B90 /* CPUserDetailInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPUserDetailInfoModel.m; sourceTree = "<group>"; };
+		9C11EDDA20F6ECC700B6A892 /* CPMemberQuoteFlowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPMemberQuoteFlowVC.h; sourceTree = "<group>"; };
+		9C11EDDB20F6ECC700B6A892 /* CPMemberQuoteFlowVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPMemberQuoteFlowVC.m; sourceTree = "<group>"; };
+		9C11EDDD20F72B7D00B6A892 /* CPMemberReportResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPMemberReportResultModel.m; sourceTree = "<group>"; };
+		9C11EDDE20F72B7E00B6A892 /* CPMemberReportResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPMemberReportResultModel.h; sourceTree = "<group>"; };
 		9C167F7C204925E90017A525 /* CPUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUserInfoModel.h; sourceTree = "<group>"; };
 		9C167F7D204925E90017A525 /* CPUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPUserInfoModel.m; sourceTree = "<group>"; };
 		9C167FF820493F4D0017A525 /* Assistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -684,8 +694,6 @@
 		9C48558320F5BD6E00D9F45E /* CPMemberCheckReportInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPMemberCheckReportInfoCell.m; sourceTree = "<group>"; };
 		9C48558520F5D0AB00D9F45E /* CPMemeberCheckQuestionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPMemeberCheckQuestionCell.h; sourceTree = "<group>"; };
 		9C48558620F5D0AB00D9F45E /* CPMemeberCheckQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPMemeberCheckQuestionCell.m; sourceTree = "<group>"; };
-		9C48558B20F5D49A00D9F45E /* CPMemberReportResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPMemberReportResultModel.h; path = ../../../../../CPMemberReportResultModel.h; sourceTree = "<group>"; };
-		9C48558C20F5D49A00D9F45E /* CPMemberReportResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPMemberReportResultModel.m; path = ../../../../../CPMemberReportResultModel.m; sourceTree = "<group>"; };
 		9C4F8EBC206F563300873192 /* CPOrderListPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPOrderListPageModel.h; sourceTree = "<group>"; };
 		9C4F8EBD206F563300873192 /* CPOrderListPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPOrderListPageModel.m; sourceTree = "<group>"; };
 		9C4F8EC1206F5DAB00873192 /* CPAssistantOrderListPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAssistantOrderListPageModel.h; sourceTree = "<group>"; };
@@ -895,6 +903,16 @@
 		9CDD9301205F8E3A0072A6C1 /* CPAssistantOrderListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAssistantOrderListVC.m; sourceTree = "<group>"; };
 		9CDD9303205F937A0072A6C1 /* CPAssistanteOrderDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAssistanteOrderDetailModel.h; sourceTree = "<group>"; };
 		9CDD9304205F937A0072A6C1 /* CPAssistanteOrderDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAssistanteOrderDetailModel.m; sourceTree = "<group>"; };
+		9CE59BD920F8CA6C006F3139 /* CPCollectionViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPCollectionViewLayout.h; sourceTree = "<group>"; };
+		9CE59BDA20F8CA6C006F3139 /* CPCollectionViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPCollectionViewLayout.m; sourceTree = "<group>"; };
+		9CE59BDC20F99042006F3139 /* CPMemberQuotePriceFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPMemberQuotePriceFooter.h; sourceTree = "<group>"; };
+		9CE59BDD20F99042006F3139 /* CPMemberQuotePriceFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPMemberQuotePriceFooter.m; sourceTree = "<group>"; };
+		9CE59BDF20F9A056006F3139 /* CPMemberCartCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPMemberCartCell.h; sourceTree = "<group>"; };
+		9CE59BE020F9A056006F3139 /* CPMemberCartCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPMemberCartCell.m; sourceTree = "<group>"; };
+		9CE59BE220F9CC36006F3139 /* CPMemberCheckOKCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPMemberCheckOKCell.h; sourceTree = "<group>"; };
+		9CE59BE320F9CC36006F3139 /* CPMemberCheckOKCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPMemberCheckOKCell.m; sourceTree = "<group>"; };
+		9CE59BE520F9E075006F3139 /* CPRateControlVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPRateControlVC.h; sourceTree = "<group>"; };
+		9CE59BE620F9E075006F3139 /* CPRateControlVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPRateControlVC.m; sourceTree = "<group>"; };
 		9CE934CA206CBFA7009946B4 /* PhoneRetrieveDelegate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneRetrieveDelegate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF5AE4320591F2C0026C4F2 /* CPAppearanceHintView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAppearanceHintView.h; sourceTree = "<group>"; };
 		9CF5AE4420591F2C0026C4F2 /* CPAppearanceHintView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAppearanceHintView.m; sourceTree = "<group>"; };
@@ -1136,6 +1154,10 @@
 				9C48557420F448ED00D9F45E /* CPMemberQuotePriceFlowVC.m */,
 				9C48557C20F5A14F00D9F45E /* CPMemberCheckReportVC.h */,
 				9C48557D20F5A14F00D9F45E /* CPMemberCheckReportVC.m */,
+				9C11EDDA20F6ECC700B6A892 /* CPMemberQuoteFlowVC.h */,
+				9C11EDDB20F6ECC700B6A892 /* CPMemberQuoteFlowVC.m */,
+				9CE59BE520F9E075006F3139 /* CPRateControlVC.h */,
+				9CE59BE620F9E075006F3139 /* CPRateControlVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1143,8 +1165,8 @@
 		9C57B01720E9D2EA006104DB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9C48558B20F5D49A00D9F45E /* CPMemberReportResultModel.h */,
-				9C48558C20F5D49A00D9F45E /* CPMemberReportResultModel.m */,
+				9C11EDDE20F72B7E00B6A892 /* CPMemberReportResultModel.h */,
+				9C11EDDD20F72B7D00B6A892 /* CPMemberReportResultModel.m */,
 				9C48557920F5941E00D9F45E /* CPMemberOrderDetailModel.h */,
 				9C48557A20F5941F00D9F45E /* CPMemberOrderDetailModel.m */,
 				9C30049820EDCC6100F8C083 /* CPRecycleQuotePriceModel.h */,
@@ -1184,6 +1206,14 @@
 				9C48558320F5BD6E00D9F45E /* CPMemberCheckReportInfoCell.m */,
 				9C48558520F5D0AB00D9F45E /* CPMemeberCheckQuestionCell.h */,
 				9C48558620F5D0AB00D9F45E /* CPMemeberCheckQuestionCell.m */,
+				9CE59BD920F8CA6C006F3139 /* CPCollectionViewLayout.h */,
+				9CE59BDA20F8CA6C006F3139 /* CPCollectionViewLayout.m */,
+				9CE59BDC20F99042006F3139 /* CPMemberQuotePriceFooter.h */,
+				9CE59BDD20F99042006F3139 /* CPMemberQuotePriceFooter.m */,
+				9CE59BDF20F9A056006F3139 /* CPMemberCartCell.h */,
+				9CE59BE020F9A056006F3139 /* CPMemberCartCell.m */,
+				9CE59BE220F9CC36006F3139 /* CPMemberCheckOKCell.h */,
+				9CE59BE320F9CC36006F3139 /* CPMemberCheckOKCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1959,6 +1989,7 @@
 				9C5E2783202462C1003E32E7 /* CPButton.m in Sources */,
 				9C5C8B82202979FA0053C50B /* CPNavigationController.m in Sources */,
 				9C039E152066797600AAAA50 /* CPMemeberListModel.m in Sources */,
+				9C11EDDF20F72B7E00B6A892 /* CPMemberReportResultModel.m in Sources */,
 				9C039E0D2064FDF500AAAA50 /* CPShippingCell.m in Sources */,
 				9C5E277020240DC6003E32E7 /* CPPostTestModel.m in Sources */,
 				9C57B01E20E9D735006104DB /* CPMainItemCell.m in Sources */,
@@ -1982,6 +2013,7 @@
 				9C1A1F832046E5D900CA23C8 /* CPOrderSearchVC.m in Sources */,
 				9C9C74AC2028460000B1CF66 /* CPSelectTextField.m in Sources */,
 				9C3774EA2044089C0001B961 /* CPDeviceProblemCell.m in Sources */,
+				9CE59BE420F9CC36006F3139 /* CPMemberCheckOKCell.m in Sources */,
 				9C2DE696205B5893005C0F26 /* CPFlowCell.m in Sources */,
 				9CD61C072067857200CF863C /* CPShopRegisterModel.m in Sources */,
 				9C9ED924202AABB900532826 /* CPAssistantManagerVC.m in Sources */,
@@ -1999,6 +2031,7 @@
 				9CFA674D205902F400301056 /* CPRetrieveFlowProgressView.m in Sources */,
 				9C37751C204554D30001B961 /* CPShopAboutVC.m in Sources */,
 				9C039DF120648E0200AAAA50 /* CPCustomerHelpModel.m in Sources */,
+				9CE59BE120F9A056006F3139 /* CPMemberCartCell.m in Sources */,
 				9CCE379D2046ABDA00DBF147 /* CPShippingInformationListVC.m in Sources */,
 				9C5C8B6E20294A930053C50B /* CPRemittanceInfoTBVC.m in Sources */,
 				9C5E274320240983003E32E7 /* CPPickerCell.m in Sources */,
@@ -2057,12 +2090,14 @@
 				9C48557E20F5A14F00D9F45E /* CPMemberCheckReportVC.m in Sources */,
 				9C039E092064F88C00AAAA50 /* CPShippingDetailModel.m in Sources */,
 				9C1A1F8C2047946A00CA23C8 /* CPGoodOrderListVC.m in Sources */,
+				9CE59BDE20F99042006F3139 /* CPMemberQuotePriceFooter.m in Sources */,
 				9C039DED2063E00300AAAA50 /* CPCartModel.m in Sources */,
 				9C3774FF2044FD9A0001B961 /* CPEvaluatedContentCell.m in Sources */,
 				9C37750B204534F20001B961 /* CPOrderDetailVC.m in Sources */,
 				9C5E2757202409AF003E32E7 /* Utils.m in Sources */,
 				9C16EAC1204D1D6F007BE6FE /* CPProgress.m in Sources */,
 				9C168000204ACDA20017A525 /* CPAssistantModifyPhoneVC.m in Sources */,
+				9C11EDDC20F6ECC700B6A892 /* CPMemberQuoteFlowVC.m in Sources */,
 				9C48557520F448ED00D9F45E /* CPMemberQuotePriceFlowVC.m in Sources */,
 				9CCE377B2046453F00DBF147 /* CPShopCartVC.m in Sources */,
 				9CA7ABBE208B464000994DAC /* CPHelpListModel.m in Sources */,
@@ -2102,12 +2137,12 @@
 				9C5E274A20240983003E32E7 /* CPResponderButton.m in Sources */,
 				9CCE378120464C9000DBF147 /* CPShopCartCell.m in Sources */,
 				9C3774DE2043D8780001B961 /* CPTypeGoodTypeView.m in Sources */,
+				9CE59BE720F9E075006F3139 /* CPRateControlVC.m in Sources */,
 				9C5C8B9B202990D00053C50B /* CPWebVC.m in Sources */,
 				9CCE379320469CFD00DBF147 /* CPConsignStateVC.m in Sources */,
 				9C37751520454EE40001B961 /* CPShopOrderVC.m in Sources */,
 				9C699AFF208C951700CBE81D /* CPHelpDetailModel.m in Sources */,
 				9C377505204524000001B961 /* CPDeviceOwnerInfoVC.m in Sources */,
-				9C48558D20F5D49A00D9F45E /* CPMemberReportResultModel.m in Sources */,
 				9C039DE92063D90500AAAA50 /* CPUserOperationModel.m in Sources */,
 				9C5E278620246A29003E32E7 /* CPShopRegistLoginVC.m in Sources */,
 				9C039E112065364600AAAA50 /* CPShopOrderDetailModel.m in Sources */,
@@ -2117,6 +2152,7 @@
 				9C30049320EDB18A00F8C083 /* CPRecycleDesModel.m in Sources */,
 				9C4F8ECD206F79AA00873192 /* CPPayStateSearchResultVCViewController.m in Sources */,
 				9C57B07520ECB003006104DB /* CPMemberInfoVC.m in Sources */,
+				9CE59BDB20F8CA6C006F3139 /* CPCollectionViewLayout.m in Sources */,
 				9C9ED91E202A9C4700532826 /* CPShopHelpHeader.m in Sources */,
 				9C9C74A02027FE9D00B1CF66 /* CPView.m in Sources */,
 				9C57B01B20E9D3BE006104DB /* CPMemeberMainVC.m in Sources */,

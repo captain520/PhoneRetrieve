@@ -63,6 +63,10 @@
     }];
 
     self.IDFrontBT = [CPPhotoUploadBT new];
+    self.IDFrontBT.hidden = IS_MEMBER_ACCOUNT;
+    if (IS_MEMBER_ACCOUNT) {
+        self.IDFrontBT.imageUrl = @"null";
+    }
     self.IDFrontBT.backgroundColor = UIColor.clearColor;
     [self.IDFrontBT setBackgroundImage:CPImage(@"camera") forState:UIControlStateNormal];
     [self.IDFrontBT addTarget:self action:@selector(showImagePickVC:) forControlEvents:UIControlEventTouchUpInside];
@@ -76,6 +80,7 @@
     }];
     
     UILabel *titleLB = [UILabel new];
+    titleLB.hidden = IS_MEMBER_ACCOUNT;
     titleLB.text = @"拍照上传快递单";
     titleLB.textColor = [UIColor redColor];
     titleLB.textAlignment = NSTextAlignmentLeft;
@@ -91,6 +96,10 @@
     
     {
         self.goodImageBT = [CPPhotoUploadBT new];
+        self.goodImageBT.hidden = IS_MEMBER_ACCOUNT;
+        if (IS_MEMBER_ACCOUNT) {
+            self.goodImageBT.imageUrl = @"null";
+        }
         self.goodImageBT.backgroundColor = UIColor.clearColor;
         [self.goodImageBT setBackgroundImage:CPImage(@"camera") forState:UIControlStateNormal];
         [self.goodImageBT addTarget:self action:@selector(showImagePickVC:) forControlEvents:UIControlEventTouchUpInside];
@@ -104,6 +113,7 @@
         }];
         
         UILabel *titleLB = [UILabel new];
+        titleLB.hidden = IS_MEMBER_ACCOUNT;
         titleLB.text = @"货品拍照";
         titleLB.textColor = [UIColor redColor];
         titleLB.textAlignment = NSTextAlignmentCenter;

@@ -16,5 +16,8 @@
 
 @property (nonatomic, copy) NSString *price;
 
+@property (nonatomic, copy) NSString *currentprice;
+
+
 @end
 

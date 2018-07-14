@@ -24,6 +24,7 @@
 #import "CPMemeberMainVC.h"
 #import "CPRecycleDesVC.h"
 #import "CPMemberInfoVC.h"
+#import "CPRateControlVC.h"
 
 @interface CPShopTabBarController ()
 
@@ -123,12 +124,16 @@
     recycleVC.tabBarItem = [self createTabBarItemWithTitle:@"回收标准" imageName:@"tab_help_default" selectedImage:@"tab_help_pressed"];
     CPNavigationController *recycleNav = [[CPNavigationController alloc] initWithRootViewController:recycleVC];
     
+    //  比例调节
+    CPRateControlVC *rateControlVC = [[CPRateControlVC alloc] init];
+    rateControlVC.tabBarItem = [self createTabBarItemWithTitle:@"比例调节" imageName:@"tab_scaleplateUnpressed" selectedImage:@"tab_scaleplate_pressed"];
+    CPNavigationController *rateControlNav = [[CPNavigationController alloc] initWithRootViewController:rateControlVC];
     //  会员-信息
     CPMemberInfoVC *memberInfoVC = [[CPMemberInfoVC alloc] init];
     memberInfoVC.tabBarItem = [self createTabBarItemWithTitle:@"会员资料" imageName:@"tab_data_default" selectedImage:@"tab_data_pressed"];
     CPNavigationController *memeberInfoNav = [[CPNavigationController alloc] initWithRootViewController:memberInfoVC];
     
-    self.viewControllers = @[homeNav,recycleNav,memeberInfoNav];
+    self.viewControllers = @[homeNav,recycleNav,rateControlNav,memeberInfoNav];
 }
 /**
  * 创建UITabBarItem

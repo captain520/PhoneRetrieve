@@ -12,6 +12,7 @@
 #import "CPCartModel.h"
 #import "CPConsignDetailVC.h"
 #import "CPOrderDetailVC.h"
+#import "CPMemberCartCell.h"
 
 @interface CPShopCartVC ()
 
@@ -77,6 +78,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
+        return 2 * CELL_HEIGHT_F + 30;
+    }
+    
     return 2 * CELL_HEIGHT_F;
 }
 
@@ -98,6 +104,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //  会员回收车
+    if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
+        return [self configMemeberCarCell:indexPath];
+    }
+    
     static NSString *identifier = @"CPShopCartCell";
     
     CPShopCartCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -108,6 +119,26 @@
     
     cell.model = self.dataArray[indexPath.row];
 
+    __weak typeof(self) weakSelf = self;
+    cell.hasSelected = [self.selectedIndexPaths containsObject:indexPath];
+    cell.actionBlock = ^{
+        [weakSelf handleCellActionBlock:indexPath];
+    };
+    
+    return cell;
+}
+
+- (CPMemberCartCell *)configMemeberCarCell:(NSIndexPath *)indexPath {
+    static NSString *identifier = @"CPMemberCartCell";
+    
+    CPMemberCartCell *cell = [self.dataTableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[CPMemberCartCell alloc] initWithStyle:0 reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    cell.model = self.dataArray[indexPath.row];
+    
     __weak typeof(self) weakSelf = self;
     cell.hasSelected = [self.selectedIndexPaths containsObject:indexPath];
     cell.actionBlock = ^{
@@ -164,6 +195,13 @@
 }
 
 - (void)nextAction {
+    
+    if (self.selectedIndexPaths.count == 0) {
+        
+        [self.view makeToast:@"至少选择一个订单" duration:2.0 position:CSToastPositionCenter];
+
+        return;
+    }
     
     NSMutableArray *tempDataArray = @[].mutableCopy;
     [self.selectedIndexPaths enumerateObjectsUsingBlock:^(NSIndexPath *obj, NSUInteger idx, BOOL * _Nonnull stop) {

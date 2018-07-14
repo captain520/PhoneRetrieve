@@ -185,7 +185,7 @@
     
     NSArray *tempArray = [self.dataArray objectAtIndex:component];
     
-    return tempArray[row];
+    return [NSString stringWithFormat:@"%@%%",tempArray[row]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

@@ -126,18 +126,65 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (IS_MEMBER_ACCOUNT && 1 == section) {
+        return CELL_HEIGHT_F;
+    }
+    
     return 1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (IS_MEMBER_ACCOUNT && 1 == section) {
+        NSString *headerCellIdneitifier = @"";
+        UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerCellIdneitifier];
+        CPLabel *titleLB = [header.contentView viewWithTag:CPBASETAG];
+        if (nil == header) {
+            header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerCellIdneitifier];
+            header.contentView.backgroundColor = UIColor.whiteColor;
+            
+            titleLB = [CPLabel new];
+            titleLB.textColor = UIColor.redColor;
+            titleLB.text = @"温馨提示：平台承担快递费用，寄件时请选择到付";
+            
+            [header.contentView addSubview:titleLB];
+            [titleLB mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(cellSpaceOffset);
+                make.right.mas_equalTo(-cellSpaceOffset);
+                make.top.mas_equalTo(0);
+                make.bottom.mas_equalTo(0);
+            }];
+            
+            UIView *sepLine = [UIView new];
+            sepLine.backgroundColor = CPBoardColor;
+            
+            [header.contentView addSubview:sepLine];
+            [sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(0);
+                make.right.mas_equalTo(0);
+                make.bottom.mas_equalTo(0);
+                make.height.mas_equalTo(.5);
+            }];
+        }
+        
+        return header;
+    }
+    
     return nil;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
     switch (section) {
         case 0:
-            return CELL_HEIGHT_F;
+        {
+            if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
+                return 10.0;
+            } else {
+                return CELL_HEIGHT_F;
+            }
+        }
             break;
         case 1:
             return 330.0f;
@@ -163,7 +210,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    if (0 == section) {
+    if (0 == section && [CPUserInfoModel shareInstance].loginModel.Typeid < 6) {
         
         NSString *headerIdentify = @"headerIdentify";
         

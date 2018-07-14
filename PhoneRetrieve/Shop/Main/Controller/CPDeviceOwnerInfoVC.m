@@ -255,14 +255,18 @@
     
     __weak CPDeviceOwnerInfoVC *weakSelf = self;
     
-    NSDictionary *params = @{
+    NSMutableDictionary *params = @{
                              @"id" : self.model.ID,
                              @"customname" : self.accountTF.text,
                              @"customphone" : self.codeTF.text,
                              @"customimei" : self.confirmTF.text ? self.confirmTF.text : @" ",
                              @"sms" : self.passwdTF.text,
                              @"resultno" : self.model.resultno
-                             };
+                             }.mutableCopy;
+    
+    if (self.IDTF.text.length > 0) {
+        [params setObject:self.IDTF.text forKey:@"idcard"];
+    }
 
     [CPRetrievePriceModel modelPostRequestWith:CPURL_SHOP_SAVE_OWNER_INFO
                                     parameters:params

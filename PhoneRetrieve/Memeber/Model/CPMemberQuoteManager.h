@@ -33,6 +33,17 @@
 @property (nonatomic,strong) NSMutableDictionary <NSString *, id> *mutipleQuoteFlowDataDict;
 
 @property (nonatomic,copy) NSString *goodsid;
+@property (nonatomic,copy) NSString *deviceName;
 
+@property (nonatomic, strong) NSMutableArray <CPFlowModel *> *flows;
+@property (nonatomic, assign) NSUInteger flowIndex;
+
+- (void)log;
+- (void)push;
+- (void)pop;
+
+- (CPFlowModel *)currentFlowModel;
+
+- (BOOL)canPush;
 
 @end

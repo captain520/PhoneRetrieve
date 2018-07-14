@@ -56,6 +56,8 @@
     nameLB.text = model.goodsname;
     imeiLB.text = [NSString stringWithFormat:@"IMEI：%@",model.customimei];
     checkStatusLB.text = model.checkcfg ? @"验货完成" : @"验货中";
+    checkStatusLB.textColor = model.checkcfg ? FONT_GREEN: UIColor.redColor;
+    
 }
 
 @end

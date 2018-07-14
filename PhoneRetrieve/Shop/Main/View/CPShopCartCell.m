@@ -167,10 +167,16 @@
     
     [pictureIV sd_setImageWithURL:CPUrl(_model.goodsurl) placeholderImage:CPImage(@"apple")];
     nameLB.text = _model.goodsname;
-    priceLB.text = [NSString stringWithFormat:@"¥%@",_model.price];
     orderNoLB.text = [NSString stringWithFormat:@"订单号：%@",_model.resultno];
+    if (IS_MEMBER_ACCOUNT) {
+        priceLB.text = [NSString stringWithFormat:@"客户成交价：%@",_model.price];
+        timeLB.text = [NSString stringWithFormat:@"平台回收价：%@",_model.currentprice];
+    } else {
+        priceLB.text = [NSString stringWithFormat:@"¥%@",_model.price];
+        timeLB.text = [NSString stringWithFormat:@"创建时间：%@",_model.createtime];
+    }
+    
     overdueLB.text = [NSString stringWithFormat:@"失效时间：%@",_model.daleytime];
-    timeLB.text = [NSString stringWithFormat:@"创建时间：%@",_model.createtime];
 
 }
 

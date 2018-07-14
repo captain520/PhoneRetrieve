@@ -148,6 +148,7 @@
     logisticsCheckBT = [CPButton new];
     logisticsCheckBT.titleLabel.font = [UIFont systemFontOfSize:11];
     [logisticsCheckBT setTitle:@"查看物流" forState:0];
+    [logisticsCheckBT addTarget:self action:@selector(checkConsignPage:) forControlEvents:64];
     [self.contentView addSubview:logisticsCheckBT];
     [logisticsCheckBT mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(logisticsLB.mas_centerY);
@@ -185,6 +186,10 @@
 
 - (void)seeOrderDetailAction:(id)sender {
     !self.seeDetailAction ? : self.seeDetailAction();
+}
+
+- (void)checkConsignPage:(id)sender {
+    !self.checkConsignBlock ? : self.checkConsignBlock();
 }
 
 

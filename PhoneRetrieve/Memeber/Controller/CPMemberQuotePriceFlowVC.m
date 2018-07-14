@@ -299,6 +299,7 @@
         
         [tempDict setObject:obj.reportid forKey:@"reportid"];
         [tempDict setObject:obj.parentName forKey:@"name"];
+        [tempDict setObject:obj.reportitemid forKey:@"reportitemid"];
         
         NSMutableArray *tempArray = @[].mutableCopy;
         [[CPMemberQuoteManager shareInstance].mutipleQuoteFlowDataDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, CPItemData *obj1, BOOL * _Nonnull stop) {
@@ -324,6 +325,7 @@
         
         [tempDict setObject:obj.reportid forKey:@"reportid"];
         [tempDict setObject:obj.parentName forKey:@"name"];
+        [tempDict setObject:obj.reportitemid forKey:@"reportitemid"];
         
         NSMutableArray *tempArray = @[].mutableCopy;
         [selectedDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key1, CPItemData *obj1, BOOL * _Nonnull stop1) {
@@ -355,7 +357,7 @@
     
     
     __weak typeof(self) weakSelf = self;
-
+//    [CPRetrievePriceModel modelRequestWith:urlStr
     [CPRetrievePriceModel modelPostRequestWith:urlStr
                                     parameters:params
                                          block:^(CPRetrievePriceModel *result) {

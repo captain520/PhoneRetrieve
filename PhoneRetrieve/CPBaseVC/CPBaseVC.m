@@ -29,6 +29,8 @@
     DDLogInfo(@"**********>Class:%@<**********",NSStringFromClass(self.class));
     
 //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"left") style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeLeft | UIRectEdgeRight | UIRectEdgeBottom;
 }
 
 - (void)loadCustomNav {

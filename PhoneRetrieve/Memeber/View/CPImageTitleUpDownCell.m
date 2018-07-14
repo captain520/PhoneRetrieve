@@ -23,6 +23,9 @@
 
 - (void)setupUI  {
     
+    self.layer.borderWidth = 0.5f;
+    self.layer.borderColor = CPBoardColor.CGColor;
+
     titleLB = [CPLabel new];
     titleLB.text = @"sldfjasl";
     titleLB.textAlignment = NSTextAlignmentCenter;
@@ -44,6 +47,20 @@
         make.width.mas_equalTo(iconIV.mas_height);
         make.bottom.mas_equalTo(titleLB.mas_top);
     }];
+    
+//    {
+//        UIView *sepLine = [UIView new];
+//        sepLine.backgroundColor = CPBoardColor;
+//
+//        [self.contentView addSubview:sepLine];
+//        [sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(0);
+//            make.right.mas_equalTo(0);
+//            make.bottom.mas_equalTo(0);
+//            make.height.mas_equalTo(.5);
+//        }];
+//    }
+
 }
 
 - (void)updateImage:(NSString *)imageUrl title:(NSString *)title {

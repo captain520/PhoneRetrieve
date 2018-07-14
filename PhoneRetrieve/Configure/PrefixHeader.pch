@@ -55,6 +55,8 @@ static const int ddLogLevel = DDLogLevelError;
 
 #endif
 
+#define IS_MEMBER_ACCOUNT  ([CPUserInfoModel shareInstance].loginModel.Typeid == 6 || [CPUserInfoModel shareInstance].loginModel.Typeid == 7)
+
 #define CPImageWithColr(x)  [UIImage imageWithColor:x]
 #define CPEnableColor       [UIImage imageWithColor:MainColor]
 #define CPEnableImage       CPImageWithColr(MainColor)//[UIImage imageWithColor:MainColor]

@@ -74,7 +74,7 @@
     
     iconIV = [UIImageView new];
     iconIV.image = CPImage(@"logo");
-    
+
     [self.contentView addSubview:iconIV];
     [iconIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-cellSpaceOffset);
@@ -82,6 +82,17 @@
         make.bottom.mas_equalTo(-cellSpaceOffset);
         make.width.mas_equalTo(iconIV.mas_height);
     }];
+}
+
+- (void)setModel:(CPMemberReportResultJsonData *)model {
+    _model = model;
+    
+    itemNameLB.text = model.name;
+    resultLB.text = [NSString stringWithFormat:@"检验结果：%@",model.checkremark];
+    quoteLB.text = [NSString stringWithFormat:@"评估状况：%@",model.name];
+    reduceLB.text = [NSString stringWithFormat:@"余额扣除：¥%@",model.kouprice];
+    
+    [iconIV sd_setImageWithURL:CPUrl(model.image) placeholderImage:CPImage(@"placeHolderImage")];
 }
 
 @end

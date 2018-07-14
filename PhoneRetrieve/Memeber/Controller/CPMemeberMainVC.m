@@ -44,8 +44,9 @@ UICollectionViewDelegateFlowLayout
 - (void)setupUI {
     
     self.navigationItem.title = [NSString stringWithFormat:@"会员号：%@",[CPUserInfoModel shareInstance].loginModel.cp_code];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"call") style:UIBarButtonItemStylePlain target:self action:@selector(showHelp)];
     
-    CGRect adFrame = CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, SCREENWIDTH / 3);
+    CGRect adFrame = CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, SCREENWIDTH / 3  * 1.5);
     self.adSV = [SDCycleScrollView cycleScrollViewWithFrame:adFrame
                                                    delegate:self
                                            placeholderImage:CPImage(@"logo")];
@@ -179,5 +180,8 @@ UICollectionViewDelegateFlowLayout
     //    [self push2VCWith:@"CPShopGoodsListVC" title:@"商品型号选择"];
 }
 
+- (void)showHelp {
+    [self push2VCWith:@"CPShopHelpVC" title:@"我的客服"];
+}
 
 @end

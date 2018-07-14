@@ -12,6 +12,7 @@
 #import "CPShippingListCell.h"
 #import "CPMemeberOrderCell.h"
 #import "CPMemberOrderDetailVC.h"
+#import "CPWebVC.h"
 
 @interface CPMemeberOrderVC ()
 
@@ -88,11 +89,17 @@
         //        cell.contentView.backgroundColor = tableView.backgroundColor;
     }
     
+    __weak typeof(self) weakSelf = self;
+    
     cell.seeDetailAction = ^{
         CPShopOrderDetailModel *model = self.dataArray[indexPath.section];
         CPMemberOrderDetailVC *vc = [[CPMemberOrderDetailVC alloc] init];
         vc.orderid = model.ID;
-        [self.navigationController pushViewController:vc animated:YES];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
+    };
+    
+    cell.checkConsignBlock = ^{
+        [weakSelf push2ShippingStatesVC];
     };
     
     cell.model = self.dataArray[indexPath.section];
@@ -201,6 +208,18 @@
     }
     
     [self.dataTableView reloadData];
+}
+
+- (void)push2ShippingStatesVC {
+    
+    NSString *url = @"http://www.sf-express.com/mobile/cn/sc/dynamic_function/waybill/waybill_query_by_billno.html";
+    
+    CPWebVC *webVC = [[CPWebVC alloc] init];
+    webVC.hidesBottomBarWhenPushed = YES;
+    webVC.urlStr = url;
+    
+    [self.navigationController pushViewController:webVC animated:YES];
+    
 }
 
 @end

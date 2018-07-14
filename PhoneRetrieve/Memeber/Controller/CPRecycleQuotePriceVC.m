@@ -11,6 +11,7 @@
 #import "CPRecycleQuotePriceModel.h"
 #import "CPImageTitleUpDownCell.h"
 #import "CPWebVC.h"
+#import "CPCollectionViewLayout.h"
 
 static NSString *cellIdentify = @"CPImageTitleUpDownCell";
 
@@ -76,7 +77,7 @@ UICollectionViewDelegateFlowLayout
 - (UICollectionView *)collectionView {
     if (nil == _collectionView) {
         
-        UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc] init];
+        CPCollectionViewLayout *flowlayout = [[CPCollectionViewLayout alloc] init];
         CGFloat width = SCREENWIDTH / 3 - 0.5;
         CGFloat height = width;
         
@@ -106,8 +107,8 @@ UICollectionViewDelegateFlowLayout
 #pragma mark - UICollectionViewDataSource && UICollectionViewDelegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {return 1;}
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {return self.contentModels.count;}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {return CGSizeMake(SCREENWIDTH, .5);}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {return CGSizeMake(SCREENWIDTH, .5);};
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {return CGSizeMake(0, 0);}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {return CGSizeMake(0, 0);};
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CPImageTitleUpDownCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
     cell.contentView.backgroundColor = UIColor.whiteColor;
@@ -126,6 +127,7 @@ UICollectionViewDelegateFlowLayout
     [self loadContentDetail:model.ID];
 
 }
+
 #pragma mark - private method implement
 - (void)loadData {
     

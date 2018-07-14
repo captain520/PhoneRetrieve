@@ -20,6 +20,7 @@
 #import "CPFlowModel.h"
 
 #import "CPMemberQuotePriceFlowVC.h"
+#import "CPMemberQuoteFlowVC.h"
 
 #define OFFSET_F    (100.0f)
 #define HEIGHT_F    (80.0f)
@@ -338,6 +339,7 @@
     __weak typeof(self) weakSelf = self;
     
     [CPMemberQuoteManager shareInstance].goodsid = good.ID;
+    [CPMemberQuoteManager shareInstance].deviceName = good.name;
     
     [CPFlowModel modelRequestWith:urlStr
                        parameters:@{@"goodsid" : good.ID,
@@ -363,11 +365,20 @@
     }];
     
     [CPMemberQuoteManager shareInstance].mainQuoteFlowDataArray = result;
-    
+
     CPMemberQuotePriceFlowVC *vc = [[CPMemberQuotePriceFlowVC alloc] init];
     vc.currentMainModel = result.firstObject;
 
     [self.navigationController pushViewController:vc animated:YES];
+    
+//    [[CPMemberQuoteManager shareInstance].flows removeAllObjects];
+//    [CPMemberQuoteManager shareInstance].flowIndex = 0;
+//    [[CPMemberQuoteManager shareInstance].flows addObjectsFromArray:result];
+//
+//    CPMemberQuoteFlowVC *vc = [[CPMemberQuoteFlowVC alloc] init];
+//    vc.currentMainModel = result.firstObject;
+//
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

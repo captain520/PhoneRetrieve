@@ -11,6 +11,8 @@
 #import "CPMemberOrderDetailFooter.h"
 #import "CPMemberOrderDetailModel.h"
 #import "CPMemberCheckReportVC.h"
+#import "CPOrderDetailVC.h"
+#import "CPWebVC.h"
 
 @interface CPMemberOrderDetailVC ()
 
@@ -69,6 +71,16 @@
     return footer;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CPMemberOrderDetailModel *model = self.dataArray[indexPath.section];
+    
+    CPOrderDetailVC *vc = [[CPOrderDetailVC alloc] init];
+    vc.orderID = model.ID;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - private method implement
 - (void)loadData {
     
@@ -84,6 +96,8 @@
                             } fail:^(CPError *error) {
                                 
                             }];
+    
+    [self setTitle:@"订单详情"];
 }
 
 - (void)handleLoadDataBlock:(NSArray <CPMemberOrderDetailModel *> *)result {
@@ -109,5 +123,7 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
 
 @end

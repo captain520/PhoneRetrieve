@@ -10,6 +10,7 @@
 #import "CPMemberCheckReportInfoCell.h"
 #import "CPMemberReportResultModel.h"
 #import "CPMemeberCheckQuestionCell.h"
+#import "CPMemberCheckOKCell.h"
 
 @interface CPMemberCheckReportVC ()
 
@@ -38,17 +39,17 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1 + self.model.checkjson.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (0 == section) {
         return 1;
-    } else if (1 == section) {
-        return 3;
+    } else {
+        
+        CPMemberReportResultCheckjson *model = self.model.checkjson[section - 1];
+        return model.data.count;
     }
-    
-    return self.model.checkjson.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,22 +58,50 @@
             return 60;
             break;
         case 1:
-            return 100;
+        {
+            CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
+            CPMemberReportResultJsonData *data = model.data[indexPath.row];
+            
+            if (data.checkcfg == 1) {
+                return CELL_HEIGHT_F;
+            } else if (data.checkcfg == 2) {
+                return 100;
+            }
+        }
+            break;
         default:
             break;
     }
     
-    return 60;
+    return CELL_HEIGHT_F;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return CELL_HEIGHT_F * section;
+    if (1 == section) {
+        return CELL_HEIGHT_F;
+    }
+    
+    return 0.000000001;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (0 == section) {
+        return cellSpaceOffset;
+    }
+    return 0.000000001;
 }
 
 #pragma mark - uitableview Datasouce && delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (1 == indexPath.section) {
-        return [self configCheckQuestionCell:indexPath];
+    if (0 < indexPath.section) {
+        CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
+        CPMemberReportResultJsonData *data = model.data[indexPath.row];
+        if (data.checkcfg == 1) {
+            return [self configCheckOKCell:indexPath];
+        } else if (data.checkcfg == 2) {
+            return [self configCheckQuestionCell:indexPath];
+        }
+            
     }
     return [self configBaseInfoCell:indexPath];
 }
@@ -101,11 +130,35 @@
         cell =[[CPMemeberCheckQuestionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
+    CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
+    cell.model = model.data[indexPath.row];
+
     return cell;
     
 }
 
+- (CPMemberCheckOKCell *)configCheckOKCell:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"CPMemberCheckOKCell";
+    
+    CPMemberCheckOKCell *cell = [self.dataTableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[CPMemberCheckOKCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
+    cell.model = model.data[indexPath.row];
+
+    return cell;
+}
+
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (1 != section) {
+        return nil;
+    }
+    
     NSString *headerIdentifier = @"Header";
     
     UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
@@ -135,6 +188,10 @@
     }
     
     return header;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return nil;
 }
 
 #pragma mark - private method
