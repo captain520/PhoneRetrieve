@@ -105,7 +105,10 @@
     }
     
     hintLB.text = _model.tips;
-    
+    if (IS_MEMBER_ACCOUNT) {
+        hintLB.textColor = UIColor.clearColor;
+    }
+
 //    _model.descriptionclickurl = model//@"https://www.baidu.com";
     wwwBT.hidden = _model.descriptionclickurl.length == 0;
     

@@ -48,6 +48,9 @@
 
     hintLB = [CPLabel new];
     hintLB.text = @"总计:0项";
+    if (IS_MEMBER_ACCOUNT) {
+        hintLB.text = @"客户成交价合计:";
+    }
     [self addSubview:hintLB];
     
     priceLB = [CPLabel new];
@@ -91,7 +94,11 @@
 
 - (void)setCapacity:(NSInteger )capacity {
     _capacity = capacity;
-    hintLB.text = [NSString stringWithFormat:@"总计:%ld项",_capacity];
+    if (IS_MEMBER_ACCOUNT) {
+        hintLB.text = @"客户成交价合计:";
+    } else {
+        hintLB.text = [NSString stringWithFormat:@"总计:%ld项",_capacity];
+    }
 }
 
 - (void)buttonAction:(id)sender {

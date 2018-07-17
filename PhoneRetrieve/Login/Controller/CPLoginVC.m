@@ -345,7 +345,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
 
 - (void)handleLoginBlock:(CPLoginModel *)result {
 
-    if (result.Typeid != 3 && result.Typeid != 4 && result.Typeid != 6 && result.Typeid == 7) {
+    if (result.Typeid != 3 && result.Typeid != 4 && result.Typeid != 6 && result.Typeid != 7) {
         [self.view makeToast:@"账号不存在" duration:2.0f position:CSToastPositionCenter];
         return;
     };

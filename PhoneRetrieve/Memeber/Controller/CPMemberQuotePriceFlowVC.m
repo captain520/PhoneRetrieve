@@ -116,6 +116,44 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return self.currentMainModel.tips.length > 0 ? CELL_HEIGHT_F : cellSpaceOffset;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (self.currentMainModel.tips.length > 0) {
+        
+        NSString *headerIdentifier = @"headerIdentifier";
+        
+        UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
+        CPLabel *titleLB = [header.contentView viewWithTag:CPBASETAG];
+        if (!header) {
+            header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerIdentifier];
+//            header.contentView.backgroundColor = UIColor.whiteColor;
+            
+            if (!titleLB) {
+                titleLB = [CPLabel new];
+                titleLB.tag = CPBASETAG;
+                titleLB.textColor = UIColor.redColor;
+                titleLB.text = self.currentMainModel.tips;
+                [header.contentView addSubview:titleLB];
+                [titleLB mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.mas_equalTo(cellSpaceOffset);
+                    make.right.mas_equalTo(-cellSpaceOffset);
+                    make.centerY.mas_equalTo(header.contentView.mas_centerY);
+                }];
+            }
+            
+        }
+        
+        return header;
+    }
+    
+    return nil;
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return [self culFooterHeight];
 }

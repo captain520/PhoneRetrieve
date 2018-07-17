@@ -24,20 +24,40 @@
         make.right.mas_equalTo(-cellSpaceOffset);
         make.bottom.mas_equalTo(0);
     }];
+    
+    UIView *sepLine = [UIView new];
+    sepLine.backgroundColor = CPBoardColor;
+    
+    [self.contentView addSubview:sepLine];
+    [sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(.5);
+    }];
 }
+
 
 - (void)setAmount:(CGFloat)amount {
     
     _amount = amount;
     
-    contentLB.text = [NSString stringWithFormat:@"总共%.0f件商品，共计¥%.2f",_count,_amount];
+    if (IS_MEMBER_ACCOUNT) {
+        contentLB.text = [NSString stringWithFormat:@"总共%.0f件商品",_count];
+    } else {
+        contentLB.text = [NSString stringWithFormat:@"总共%.0f件商品，共计¥%.2f",_count,_amount];
+    }
 }
 
 - (void)setCount:(CGFloat)count {
     
     _count = count;
     
-    contentLB.text = [NSString stringWithFormat:@"总共%.0f件商品，共计¥%.2f",_count,_amount];
+    if (IS_MEMBER_ACCOUNT) {
+        contentLB.text = [NSString stringWithFormat:@"总共%.0f件商品，共计¥%.2f",_count,_amount];
+    } else {
+        contentLB.text = [NSString stringWithFormat:@"总共%.0f件商品，共计¥%.2f",_count,_amount];
+    }
 }
 
 @end

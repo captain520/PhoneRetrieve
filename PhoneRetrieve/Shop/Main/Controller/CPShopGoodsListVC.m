@@ -462,7 +462,7 @@
 //                                } fail:^(CPError *error) {
 //
 //                                }];
-    [self loadBrand];
+//    [self loadBrand];
 }
 
 - (void)loadBrand {
@@ -487,7 +487,8 @@
     self.tabbarView.dataArray = [self.goodTypes valueForKeyPath:@"name"];
     self.tabbarView.currentIndex = self.selecteTypeIndex;
     
-    [self loadGoodList];
+    [self loadBrand];
+//    [self loadGoodList];
 }
 
 - (void)handleBrandTypeBlock:(NSArray <CPBrandModel *> *)result {

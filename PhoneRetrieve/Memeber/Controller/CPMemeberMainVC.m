@@ -109,7 +109,7 @@ UICollectionViewDelegateFlowLayout
     } else if (3 == indexPath.row) {
         [cell setTitle:@"我的订单" andImage:@"home_Description"];
     } else if (4 == indexPath.row) {
-        [cell setTitle:@"回收报价" andImage:@"home_peple"];
+        [cell setTitle:@"今日报价" andImage:@"home_peple"];
     } else if (5 == indexPath.row) {
         [cell setTitle:@"保修查询" andImage:@"home_Process"];
     }
@@ -130,7 +130,7 @@ UICollectionViewDelegateFlowLayout
     } else if (3 == indexPath.row) {
         [self push2VCWith:@"CPMemeberOrderVC" title:@"订单中心"];
     } else if (4 == indexPath.row) {
-        [self push2VCWith:@"CPRecycleQuotePriceVC" title:@"回收报价"];
+        [self push2VCWith:@"CPRecycleQuotePriceVC" title:@"今日报价"];
     } else if (5 == indexPath.row) {
         
         CPRecycleQuotePriceVC *vc = [[CPRecycleQuotePriceVC alloc] init];

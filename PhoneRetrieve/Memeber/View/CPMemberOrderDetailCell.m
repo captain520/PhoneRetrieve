@@ -104,7 +104,7 @@
     orderNOLB.text = [NSString stringWithFormat:@"订单号：%@",model.resultno];
     nameLB.text = [NSString stringWithFormat:@"%@",model.goodsname];
     customPriceLB.text = [NSString stringWithFormat:@"客户成交价：%.2f",model.price.floatValue];
-    platformPriceLB.text = [NSString stringWithFormat:@"平台成交价：%.2f",model.ptprice.floatValue];
+    platformPriceLB.text = [NSString stringWithFormat:@"平台成交价：%.2f",model.currentprice.floatValue];
     imeiLB.text = [NSString stringWithFormat:@"IMEI：%@",model.customimei];
     
     customPayStatusLB.text = model.paycfg ? @"已支付" : @"未支付";

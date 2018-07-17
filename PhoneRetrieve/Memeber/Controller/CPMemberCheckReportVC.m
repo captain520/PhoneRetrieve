@@ -62,9 +62,9 @@
             CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
             CPMemberReportResultJsonData *data = model.data[indexPath.row];
             
-            if (data.checkcfg == 1) {
+            if (data.checkcfg == 0) {
                 return CELL_HEIGHT_F;
-            } else if (data.checkcfg == 2) {
+            } else if (data.checkcfg == 1) {
                 return 100;
             }
         }
@@ -96,9 +96,9 @@
     if (0 < indexPath.section) {
         CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
         CPMemberReportResultJsonData *data = model.data[indexPath.row];
-        if (data.checkcfg == 1) {
+        if (data.checkcfg == 0) {
             return [self configCheckOKCell:indexPath];
-        } else if (data.checkcfg == 2) {
+        } else if (data.checkcfg == 1) {
             return [self configCheckQuestionCell:indexPath];
         }
             

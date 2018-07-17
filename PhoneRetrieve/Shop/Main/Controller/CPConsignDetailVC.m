@@ -179,11 +179,13 @@
     switch (section) {
         case 0:
         {
-            if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
-                return 10.0;
-            } else {
-                return CELL_HEIGHT_F;
-            }
+            
+            return CELL_HEIGHT_F;
+//            if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
+//                return 10.0;
+//            } else {
+//                return CELL_HEIGHT_F;
+//            }
         }
             break;
         case 1:
@@ -210,7 +212,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     
-    if (0 == section && [CPUserInfoModel shareInstance].loginModel.Typeid < 6) {
+    if (0 == section) {
         
         NSString *headerIdentify = @"headerIdentify";
         

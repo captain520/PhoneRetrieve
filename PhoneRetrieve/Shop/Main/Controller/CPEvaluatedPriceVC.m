@@ -185,7 +185,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return cellSpaceOffset;
+            return 0.0000000001;
         case 2:
             return 0.000000001;
             break;
@@ -248,7 +248,7 @@
     switch (indexPath.section) {
         case 0: {
             if ([CPUserInfoModel shareInstance].loginModel.Typeid > 5) {
-                return 120;
+                return 100;
             } else {
                 return CELL_HEIGHT_F;
             }
@@ -337,15 +337,16 @@
     
     static NSString *cellIdentify = @"configMemberHintCell";
     
-    UITableViewCell *cell = [self.dataTableView dequeueReusableCellWithIdentifier:cellIdentify];
+    CPBaseCell *cell = [self.dataTableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentify];
+        cell = [[CPBaseCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentify];
         cell.textLabel.text = @"温馨提示";
         cell.detailTextLabel.attributedText = [self memberHintContnet];
         cell.detailTextLabel.numberOfLines = 0;
         cell.contentView.backgroundColor = UIColor.clearColor;
-        cell.backgroundColor = UIColor.clearColor;
+        cell.backgroundColor = UIColor.whiteColor;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.shouldShowBottomLine = YES;
     }
     
     return cell;

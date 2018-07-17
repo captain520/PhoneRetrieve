@@ -39,11 +39,14 @@
 
     [self.view addSubview:self.headerView];
     
+    
+    DDLogInfo(@"------------:%@",NSStringFromCGRect(self.tabBarController.tabBar.frame));
+    
     [self.dataTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_headerView.mas_bottom).offset(0);
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(-self.tabBarController.tabBar.bounds.size.height);
     }];
 }
 
@@ -101,6 +104,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (IS_SUB_MEMBER_ACCOUNT) {
+        
+        [self.view makeToast:@"权限不足" duration:2. position:CSToastPositionCenter];
+        
+        return;
+    }
     
     switch (indexPath.section) {
         case 0:

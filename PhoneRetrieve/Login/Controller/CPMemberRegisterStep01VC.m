@@ -34,6 +34,8 @@
     // Do any additional setup after loading the view.
     self.dataTableView.backgroundColor = UIColor.whiteColor;
     
+    self.navigationItem.rightBarButtonItem = nil;
+    
     [self loadProvice];
 }
 
@@ -69,7 +71,7 @@
 #pragma mark - setup view
 - (void)setupUIWithCell:(UITableViewCell *)cell {
    // 注册进度视图
-    self.stepView = [[CPRegistStepView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 44.9f) itemTitles:@[ @"注册只需3步",@"登录信息",@"会员信息"]];
+    self.stepView = [[CPRegistStepView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 44.9f) itemTitles:@[ @"注册只需2步",@"登录信息",@"会员信息"]];
     self.stepView.currentStep = 1;
     
     [cell.contentView addSubview:self.stepView];
@@ -196,7 +198,7 @@
         }];
         
         CPLabel *titleLB = [CPLabel new];
-        titleLB.text = @"身份证正面";
+        titleLB.text = @"身份证正面（必填）";
         titleLB.textAlignment = NSTextAlignmentCenter;
         titleLB.textColor = [UIColor redColor];
         
@@ -226,7 +228,7 @@
         }];
         
         CPLabel *titleLB = [CPLabel new];
-        titleLB.text = @"身份证背面";
+        titleLB.text = @"身份证背面(必填)";
         titleLB.textAlignment = NSTextAlignmentCenter;
         titleLB.textColor = [UIColor redColor];
         
@@ -289,6 +291,8 @@
         if (nil == self.bankBranchTF) {
             self.bankBranchTF = [[CPTextField alloc] initWithFrame:CGRectMake(cellSpaceOffset, 0, SCREENWIDTH - 2 * cellSpaceOffset, CELL_HEIGHT_F)];
             self.bankBranchTF.placeholder = @"支行名称";
+            self.bankBranchTF.text = @"memberNull";
+            self.bankBranchTF.hidden = YES;
             //            self.bankBranchTF.tintColor = UIColor.clearColor;
             
             [cell.contentView addSubview:self.bankBranchTF];
@@ -305,7 +309,7 @@
             self.bankAccountTF.placeholder = @"银行账号";
             [cell.contentView addSubview:self.bankAccountTF];
             [self.bankAccountTF mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(self.bankBranchTF.mas_bottom).offset(cellSpaceOffset);
+                make.top.mas_equalTo(self.bankSelecteTF.mas_bottom).offset(cellSpaceOffset);
                 make.left.mas_equalTo(cellSpaceOffset);
                 make.right.mas_equalTo(-cellSpaceOffset);
                 make.height.mas_equalTo(CELL_HEIGHT_F);
@@ -524,7 +528,7 @@
 }
 
 - (void)handleRegistActionBlock:(id)result {
-    [self.view makeToast:@"您提交的信息已发送至商家中，请耐心等候商家审核！！！" duration:2.0f position:CSToastPositionCenter title:nil image:nil style:nil completion:^(BOOL didTap) {
+    [self.view makeToast:@"注册已完成，请静待审核！！！" duration:2.0f position:CSToastPositionCenter title:nil image:nil style:nil completion:^(BOOL didTap) {
         
         [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([NSStringFromClass(obj.class) isEqualToString:@"CPLoginVC"]) {
