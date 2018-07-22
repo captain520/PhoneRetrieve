@@ -37,13 +37,17 @@
 
 @property (nonatomic, copy) NSString *name;
 
-@property (nonatomic, copy) NSString *kouprice;
+//@property (nonatomic, copy) NSString *kouprice;
 
-@property (nonatomic, copy) NSString *checkremark;
+//@property (nonatomic, copy) NSString *checkremark;
 
-@property (nonatomic, copy) NSString *image;
+@property (nonatomic, copy) NSString *imageurl;
 
 @property (nonatomic, assign) NSUInteger checkcfg;
+
+@property (nonatomic, copy) NSString *Description;
+
+@property (nonatomic, copy) NSString *price;
 
 @end
 

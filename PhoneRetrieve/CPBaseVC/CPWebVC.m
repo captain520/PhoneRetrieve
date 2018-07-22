@@ -46,7 +46,7 @@
 
 - (UIWebView *)webView {
     if (_webView == nil) {
-        _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, SCREENHEIGHT - NAV_HEIGHT)];
         _webView.dataDetectorTypes = UIDataDetectorTypeAll;
         _webView.backgroundColor = UIColor.whiteColor;
         _webView.scalesPageToFit   = YES;

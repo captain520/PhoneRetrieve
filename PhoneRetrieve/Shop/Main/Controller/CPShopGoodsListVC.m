@@ -22,6 +22,9 @@
 #import "CPMemberQuotePriceFlowVC.h"
 #import "CPMemberQuoteFlowVC.h"
 
+
+#import "CPQuoteManager.h"
+
 #define OFFSET_F    (100.0f)
 #define HEIGHT_F    (80.0f)
 #define IDENTIFIER_T    @"IDENTIFIER"
@@ -38,6 +41,7 @@
 @property (nonatomic, strong) NSMutableArray *goods;
 @property (nonatomic, assign) NSInteger selectBrandIndex;
 @property (nonatomic, strong) CPNavView *navView;
+@property (nonatomic, strong) NSArray <CPFlowModel *> *result;
 
 @property (nonatomic, strong) UIButton *topBt;
 
@@ -45,6 +49,10 @@
 
 @implementation CPShopGoodsListVC {
     CALayer *bottomLineLayer;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -67,6 +75,9 @@
 }
 
 - (void)initialzedBaseProperties {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(push2QuoteFlow:) name:@"RefreshQuoteFlow" object:nil];
+    
     self.currentPage = 1;
 //    self.selecteTypeIndex = 0;
     self.selectBrandIndex = 0;
@@ -364,21 +375,33 @@
         }];
     }];
     
-    [CPMemberQuoteManager shareInstance].mainQuoteFlowDataArray = result;
-
-    CPMemberQuotePriceFlowVC *vc = [[CPMemberQuotePriceFlowVC alloc] init];
-    vc.currentMainModel = result.firstObject;
-
-    [self.navigationController pushViewController:vc animated:YES];
-    
-//    [[CPMemberQuoteManager shareInstance].flows removeAllObjects];
-//    [CPMemberQuoteManager shareInstance].flowIndex = 0;
-//    [[CPMemberQuoteManager shareInstance].flows addObjectsFromArray:result];
+//    [CPMemberQuoteManager shareInstance].mainQuoteFlowDataArray = result;
 //
-//    CPMemberQuoteFlowVC *vc = [[CPMemberQuoteFlowVC alloc] init];
+//    CPMemberQuotePriceFlowVC *vc = [[CPMemberQuotePriceFlowVC alloc] init];
 //    vc.currentMainModel = result.firstObject;
 //
 //    [self.navigationController pushViewController:vc animated:YES];
+    
+    //  新的流程算法
+//    [[CPMemberQuoteManager shareInstance].flows removeAllObjects];
+//    [CPMemberQuoteManager shareInstance].flowIndex = 0;
+//    [[CPMemberQuoteManager shareInstance].flows addObjectsFromArray:result];
+    
+    self.result = result;
+    
+    [self push2QuoteFlow:YES];
+}
+
+- (void)push2QuoteFlow:(BOOL)animated {
+    
+    [CPQuoteManager shareInstance].flows = self.result.mutableCopy;
+    [CPQuoteManager shareInstance].firstFlows = self.result.copy;;
+    [CPQuoteManager shareInstance].flowIndex = 0;
+    
+    CPMemberQuoteFlowVC *vc = [[CPMemberQuoteFlowVC alloc] init];
+//    vc.currentMainModel = result.firstObject;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

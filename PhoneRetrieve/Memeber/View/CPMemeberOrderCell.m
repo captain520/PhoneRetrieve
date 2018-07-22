@@ -24,8 +24,8 @@
     customPriceStateLB.text = [NSString stringWithFormat:@"(%@)",model.paycfg  ?  @"已支付" : @"未支付"];
     customPriceStateLB.textColor = model.paycfg ? MainColor : CPERROR_COLOR;
     
-    balanceLB.text = [NSString stringWithFormat:@"应付余额：¥%.2f",model.ptprice.floatValue];
-    platformPriceLB.text = [NSString stringWithFormat:@"平台回收价：¥%.2f",model.yfprice.floatValue];
+    balanceLB.text = [NSString stringWithFormat:@"应付余额：¥%.2f",model.yfprice.floatValue];
+    platformPriceLB.text = [NSString stringWithFormat:@"平台回收价：¥%.2f",model.ptprice.floatValue];
     finallyPriceLB.text = [NSString stringWithFormat:@"实付余额：¥%.2f",model.sfprice.floatValue];
     finallyPriceStateLB.text = [NSString stringWithFormat:@"(%@)",model.paycfg  ?  @"已支付" : @"未支付"];
     finallyPriceStateLB.textColor = model.paycfg ? MainColor : CPERROR_COLOR;

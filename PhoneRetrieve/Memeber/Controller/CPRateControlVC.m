@@ -28,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = [NSString stringWithFormat:@"会员号：%@",[CPUserInfoModel shareInstance].loginModel.cp_code];
+    self.navigationItem.leftBarButtonItem = nil;
     
     [self initialzedBaseProperties];
     [self setupUI];
@@ -56,6 +57,7 @@
 //                           @"11111"
 //                           ]
 //                       ];
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)setupUI {
@@ -161,7 +163,7 @@
     
     CPMemberRateListModel *model = self.rateModels[row];
     
-    [CPBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/setDefault_Pgprice_pre"
+    [CPBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/setPgprice_pre"
                        parameters:@{
                                     @"userid":@([CPUserInfoModel shareInstance].loginModel.ID),
                                     @"default_pgprice_pre": model.values
@@ -180,7 +182,7 @@
 }
 
 - (void)updateCurrentIndictor {
-    NSString *default_pgprice_pre = [CPUserInfoModel shareInstance].userDetaiInfoModel.default_pgprice_pre;
+    NSString *default_pgprice_pre = [CPUserInfoModel shareInstance].userDetaiInfoModel.pgprice_pre;
     
     [self.rateModels enumerateObjectsUsingBlock:^(CPMemberRateListModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.values.integerValue == default_pgprice_pre.integerValue) {
@@ -189,5 +191,7 @@
         }
     }];
 }
+
+
 
 @end

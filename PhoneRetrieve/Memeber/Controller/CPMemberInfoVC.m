@@ -248,7 +248,7 @@
     
     CPMemberRateListModel *model = self.rateModels[row];
     
-    [CPBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/setPgprice_pre"
+    [CPBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/setDefault_Pgprice_pre"
                        parameters:@{
                                     @"userid":@([CPUserInfoModel shareInstance].loginModel.ID),
                                     @"pgprice_pre": model.values
@@ -314,7 +314,7 @@
                        @[
                            @"登录密码",
                            @"子会员管理",
-                           [NSString stringWithFormat:@"建议价格比例：(%ld%%)",result.pgprice_pre.integerValue]
+                           [NSString stringWithFormat:@"建议价格比例：(%ld%%)",result.default_pgprice_pre.integerValue]
                            ],
                        //   收款信息
                        @[

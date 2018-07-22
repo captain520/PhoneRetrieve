@@ -24,6 +24,7 @@
     
 //    [self loadCustomNav];
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"left") style:UIBarButtonItemStyleDone target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"tab_home-default") style:UIBarButtonItemStyleDone target:self action:@selector(push2MainPage)];
     
     DDLogInfo(@"**********>Class:%@<**********",NSStringFromClass(self.class));

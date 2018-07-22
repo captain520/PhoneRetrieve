@@ -11,6 +11,7 @@
 #import "CPSKUFooter.h"
 #import "CPRetrievePriceModel.h"
 #import "CPEvaluatedPriceVC.h"
+#import "CPQuoteManager.h"
 
 @interface CPMemberQuoteFlowVC ()
 
@@ -22,12 +23,17 @@
 
 @implementation CPMemberQuoteFlowVC
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    DDLogError(@"~~~~~~~~~~~~~释放实例~~~~~~~~~~~~~~~~~");
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.currentMainModel = [[CPMemberQuoteManager shareInstance] currentFlowModel];
-    [[CPMemberQuoteManager shareInstance] push];
+    self.currentMainModel = [[CPQuoteManager shareInstance] currentFlowModel];
+    [CPQuoteManager shareInstance].flowIndex++;
 
     [self initialzedBaseProperties];
     [self loadData];
@@ -35,20 +41,15 @@
 
 - (void)initialzedBaseProperties {
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"left") style:UIBarButtonItemStyleDone target:self action:@selector(back)];
-    
     self.selectedIndexPaths = @[].mutableCopy;
     
     self.title = self.currentMainModel.name;
-    
-//    [[CPMemberQuoteManager shareInstance] log];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     DDLogError(@"*****************************");
-    [[CPMemberQuoteManager shareInstance] log];
+    [[CPQuoteManager shareInstance] log];
     
     [super viewWillAppear:animated];
 }
@@ -157,15 +158,13 @@
     [testArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, tempArray.count)]];
 //    DDLogError(@"%@",testArray);
 //    DDLogInfo(@"------------------------------");
-    CPItemData *itemModel = self.currentMainModel.itemData[indexPath.row];
+//    CPItemData *itemModel = self.currentMainModel.itemData[indexPath.row];
     
     if (self.currentMainModel.inputtype == 1) {
 
         //        单选
         self.selectedIndexPaths = @[indexPath].mutableCopy;
-        
-        [[CPMemberQuoteManager shareInstance].singlebQuoteFlowDataDict setObject:itemModel forKey:itemModel.reportid];
-        
+
         [self loadNextQuoteFlowItem:indexPath.row];
         
     } else if (self.currentMainModel.inputtype == 2) {
@@ -173,14 +172,41 @@
         if ([self.selectedIndexPaths containsObject:indexPath]) {
             [self.selectedIndexPaths removeObject:indexPath];
             //  取消移除选中
-            [[CPMemberQuoteManager shareInstance].mutipleQuoteFlowDataDict removeObjectForKey:itemModel.reportitemid];
         } else {
             //  保存选中
             //            [[CPMemberQuoteManager shareInstance].mutipleQuoteFlowDataDict removeObjectForKey:itemModel.reportitemid];
             [self.selectedIndexPaths addObject:indexPath];
-            [[CPMemberQuoteManager shareInstance].mutipleQuoteFlowDataDict setObject:itemModel forKey:itemModel.reportitemid];
         }
     }
+
+//    [self.selectedIndexPaths enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        [self.currentMainModel.itemData enumerateObjectsUsingBlock:^(CPItemData * _Nonnull item, NSUInteger itemIdx, BOOL * _Nonnull stop) {
+//
+//            if (obj.row == itemIdx) {
+//                item.isSelected = YES;
+//                DDLogError(@"--------------------");
+//            } else {
+//                item.isSelected = NO;
+//                DDLogError(@"**********");
+//            }
+//        }];
+//    }];
+//
+//    [[CPQuoteManager shareInstance] log];
+
+    [self.currentMainModel.itemData enumerateObjectsUsingBlock:^(CPItemData * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        CPItemData *itemModel = self.currentMainModel.itemData[indexPath.row];
+        obj.isSelected = NO;
+        [self.selectedIndexPaths enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj1, NSUInteger idx1, BOOL * _Nonnull stop) {
+//            itemModel.isSelected = obj1.row == idx;
+            if (obj1.row == idx) {
+                obj.isSelected = YES;
+                DDLogError(@"--------------------");
+            }
+        }];
+    }];
+
+    [[CPQuoteManager shareInstance] log];
     
     [tableView reloadData];
     [self updateActionUI];
@@ -238,10 +264,11 @@
 
 - (void)nextAction:(id)sender {
     
-    if ([[CPMemberQuoteManager shareInstance] canPush]) {
+    if ([[CPQuoteManager shareInstance] canPush]) {
         CPMemberQuoteFlowVC *vc = [[CPMemberQuoteFlowVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     } else {
+        [self valuePrice];
         [self.view makeToast:@"进行价格评估" duration:1.0f position:CSToastPositionCenter];
     }
 
@@ -277,7 +304,7 @@
                                         @"report_item_id" : item.reportitemid
                                         }
                                 block:^(id result) {
-                                    [weakSelf handleLoadNextQuoteFlowItem:result];
+                                    [weakSelf handleLoadNextQuoteFlowItem:result reportitemid:item.reportitemid];
                                 } fail:^(CPError *error) {
                                     
                                 }];
@@ -288,7 +315,7 @@
     
 }
 
-- (void)handleLoadNextQuoteFlowItem:(NSArray <CPFlowModel *> *)result {
+- (void)handleLoadNextQuoteFlowItem:(NSArray <CPFlowModel *> *)result reportitemid:(NSString *)reportitemid {
     
     if (!result || ![result isKindOfClass:[NSArray class]]) {
         
@@ -299,16 +326,18 @@
     
     self.dataArray = result;
     
-    [[CPMemberQuoteManager shareInstance].flows insertObjects:result atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange([CPMemberQuoteManager shareInstance].flowIndex, result.count)]];
 
     //    将流程的标题赋值给选项parentName;
     [result enumerateObjectsUsingBlock:^(CPFlowModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj.itemData enumerateObjectsUsingBlock:^(CPItemData * _Nonnull subObj, NSUInteger subIdx, BOOL * _Nonnull stop) {
-            subObj.parentName = obj.name;
-        }];
+        obj.reportitemid  = reportitemid;
+//        [obj.itemData enumerateObjectsUsingBlock:^(CPItemData * _Nonnull subObj, NSUInteger subIdx, BOOL * _Nonnull stop) {
+//            subObj.parentName = obj.name;
+//        }];
     }];
     
-    if ([[CPMemberQuoteManager shareInstance] canPush]) {
+    [[CPQuoteManager shareInstance].flows insertObjects:result atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange([CPQuoteManager shareInstance].flowIndex, result.count)]];
+    
+    if ([[CPQuoteManager shareInstance] canPush]) {
         CPMemberQuoteFlowVC *vc = [[CPMemberQuoteFlowVC alloc] init];
         vc.dataArray = self.dataArray;
 
@@ -329,63 +358,48 @@
     NSString *urlStr = DOMAIN_ADDRESS@"/api/Reportresult/insertUserResult";
     
     NSMutableArray *dataArray = @[].mutableCopy;
-    
-    NSMutableDictionary *mutipleSelectedDict = @{}.mutableCopy;
-    [[CPMemberQuoteManager shareInstance].mutipleQuoteFlowDataDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, CPItemData *obj, BOOL * _Nonnull stop) {
-        [mutipleSelectedDict setObject:obj forKey:obj.reportid];
-    }];
-    
-    [mutipleSelectedDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, CPItemData *obj, BOOL * _Nonnull stop) {
-        NSMutableDictionary *tempDict = @{}.mutableCopy;
+
+    [[CPQuoteManager shareInstance].flows enumerateObjectsUsingBlock:^(CPFlowModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        [tempDict setObject:obj.reportid forKey:@"reportid"];
-        [tempDict setObject:obj.parentName forKey:@"name"];
-        
-        NSMutableArray *tempArray = @[].mutableCopy;
-        [[CPMemberQuoteManager shareInstance].mutipleQuoteFlowDataDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, CPItemData *obj1, BOOL * _Nonnull stop) {
-            NSMutableDictionary *itemTempDict = @{}.mutableCopy;
-            
-            [itemTempDict setObject:obj1.reportitemid forKey:@"reportitemid"];
-            [itemTempDict setObject:obj1.name forKey:@"name"];
-            
-            [tempArray addObject:itemTempDict];
-        }];
-        
-        [tempDict setObject:tempArray forKey:@"data"];
-        
-        [dataArray addObject:tempDict];
-    }];
-    
-    
-    
-    NSMutableDictionary *selectedDict = [CPMemberQuoteManager shareInstance].singlebQuoteFlowDataDict;
-    
-    [selectedDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, CPItemData *obj, BOOL * _Nonnull stop) {
-        NSMutableDictionary *tempDict = @{}.mutableCopy;
-        
-        [tempDict setObject:obj.reportid forKey:@"reportid"];
-        [tempDict setObject:obj.parentName forKey:@"name"];
-        
-        NSMutableArray *tempArray = @[].mutableCopy;
-        [selectedDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key1, CPItemData *obj1, BOOL * _Nonnull stop1) {
-            NSMutableDictionary *itemTempDict = @{}.mutableCopy;
-            if ([obj1.reportid isEqualToString:obj.reportid]) {
-                [itemTempDict setObject:obj1.reportitemid forKey:@"reportitemid"];
-                [itemTempDict setObject:obj1.name forKey:@"name"];
+        __block NSMutableDictionary *flowDict = nil;
+
+        NSMutableArray *itemDicts = @[].mutableCopy;
+        [obj.itemData enumerateObjectsUsingBlock:^(CPItemData * _Nonnull itemObj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (itemObj.isSelected) {
                 
-                [tempArray addObject:itemTempDict];
+                flowDict = @{}.mutableCopy;
+                
+                [flowDict setObject:obj.reportid forKey:@"reportid"];
+                [flowDict setObject:obj.name forKey:@"name"];
+                if (obj.reportitemid) {
+                    [flowDict setObject:obj.reportitemid forKey:@"reportitemid"];
+                } else {
+                    [flowDict setObject:@"0" forKey:@"reportitemid"];
+                }
+
+                NSMutableDictionary *dict = @{}.mutableCopy;
+                
+                [dict setObject:itemObj.reportid forKey:@"reportid"];
+                [dict setObject:itemObj.name forKey:@"name"];
+                [dict setObject:itemObj.reportitemid forKey:@"reportitemid"];
+                
+                [itemDicts addObject:dict];
+
+                DDLogError(@"%@",itemObj.name);
             }
-            
         }];
         
-        [tempDict setObject:tempArray forKey:@"data"];
-        
-        [dataArray addObject:tempDict];
+        if (flowDict) {
+            [flowDict setObject:itemDicts forKey:@"data"];
+            [dataArray addObject:flowDict];
+        }
+
     }];
-    
     
     NSString *jsonStr = cp_jsonString(dataArray);
-    
+
+    DDLogError(@"%@",jsonStr);
+
     NSMutableDictionary *params = @{
                                     @"currentuserid" : @([CPUserInfoModel shareInstance].loginModel.ID),
                                     @"code" : [CPUserInfoModel shareInstance].loginModel.cp_code,
@@ -410,13 +424,9 @@
     __weak typeof(self) weakSelf = self;
     
     CPEvaluatedPriceVC *vc = [[CPEvaluatedPriceVC alloc] init];
-    //    vc.revalueActionBlock = ^{
-    //        [weakSelf loadData];
-    //    };
-    vc.model = result;
+    vc.model     = result;
     vc.itemDicts = items;
-    //    vc.title = self.deviceName;
-    
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -426,10 +436,10 @@
  */
 - (void)back {
     
-    [[CPMemberQuoteManager shareInstance] pop];
+    [CPQuoteManager shareInstance].flowIndex--;
 
     if (self.dataArray.count > 0) {
-        [[CPMemberQuoteManager shareInstance].flows removeObjectsInArray:self.dataArray];
+        [[CPQuoteManager shareInstance].flows removeObjectsInArray:self.dataArray];
     }
     
     [self.selectedIndexPaths enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -446,6 +456,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+- (void)refreshActino:(NSNotification *)nfc {
+    [self.selectedIndexPaths removeAllObjects];
+    [self.dataTableView reloadData];
+}
 
 
 @end

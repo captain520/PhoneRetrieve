@@ -53,23 +53,22 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DDLogInfo(@"-------------------------:%@",@(indexPath.section));
     switch (indexPath.section) {
         case 0:
             return 60;
             break;
-        case 1:
+        default:
         {
             CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
             CPMemberReportResultJsonData *data = model.data[indexPath.row];
             
             if (data.checkcfg == 0) {
                 return CELL_HEIGHT_F;
-            } else if (data.checkcfg == 1) {
+            } else {
                 return 100;
             }
         }
-            break;
-        default:
             break;
     }
     
@@ -96,10 +95,10 @@
     if (0 < indexPath.section) {
         CPMemberReportResultCheckjson *model = self.model.checkjson[indexPath.section - 1];
         CPMemberReportResultJsonData *data = model.data[indexPath.row];
-        if (data.checkcfg == 0) {
-            return [self configCheckOKCell:indexPath];
-        } else if (data.checkcfg == 1) {
+        if (data.checkcfg == 1) {
             return [self configCheckQuestionCell:indexPath];
+        } else {
+            return [self configCheckOKCell:indexPath];
         }
             
     }
@@ -197,8 +196,7 @@
 #pragma mark - private method
 
 - (void)loadData {
-    [self.dataTableView reloadData];
-    
+
     __weak typeof(self) weakSelf = self;
 
     [CPMemberReportResultModel modelRequestWith:DOMAIN_ADDRESS@"/api/Reportresult/getResultCheckInfo"
@@ -219,5 +217,7 @@
    
     [self.dataTableView reloadData];
 }
+
+
 
 @end

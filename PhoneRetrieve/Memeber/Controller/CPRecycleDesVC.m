@@ -32,6 +32,8 @@
     [self loadData];
     
     self.navigationItem.title = [NSString stringWithFormat:@"会员号：%@",[CPUserInfoModel shareInstance].loginModel.cp_code];
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)didReceiveMemoryWarning {

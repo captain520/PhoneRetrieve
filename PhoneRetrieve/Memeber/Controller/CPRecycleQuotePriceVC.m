@@ -78,7 +78,7 @@ UICollectionViewDelegateFlowLayout
     if (nil == _collectionView) {
         
         CPCollectionViewLayout *flowlayout = [[CPCollectionViewLayout alloc] init];
-        CGFloat width = SCREENWIDTH / 3 - 0.5;
+        CGFloat width = SCREENWIDTH / 4;
         CGFloat height = width;
         
         flowlayout.itemSize                = CGSizeMake(width,height);
@@ -186,12 +186,12 @@ UICollectionViewDelegateFlowLayout
         return;
     }
     
-//    NSMutableArray *tempArray = @[].mutableCopy;
-//    for (NSInteger i = 0; i < 20; ++i) {
-//        [tempArray addObjectsFromArray:resuslt.copy];
-//    }
-//
-//    self.contentModels = tempArray;
+    NSMutableArray *tempArray = @[].mutableCopy;
+    for (NSInteger i = 0; i < 20; ++i) {
+        [tempArray addObjectsFromArray:resuslt.copy];
+    }
+
+    self.contentModels = tempArray;
     
     self.contentModels = resuslt;
     
@@ -225,7 +225,7 @@ UICollectionViewDelegateFlowLayout
     
     CPWebVC *webVC = [[CPWebVC alloc] init];
     webVC.title                    = result.name;
-    webVC.urlStr                   = result.imageurl;
+    webVC.urlStr                   = result.Description;
     webVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:webVC animated:YES];

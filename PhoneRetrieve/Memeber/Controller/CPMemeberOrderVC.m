@@ -117,6 +117,7 @@
         header.contentView.backgroundColor = UIColor.whiteColor;
         
         titleLB = [CPLabel new];
+        titleLB.tag = CPBASETAG;
         [header.contentView addSubview:titleLB];
         [titleLB mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(0);

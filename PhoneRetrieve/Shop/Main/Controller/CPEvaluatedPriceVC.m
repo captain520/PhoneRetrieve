@@ -14,6 +14,8 @@
 #import "CPDeviceOwnerInfoVC.h"
 #import "CPShopGoodsListVC.h"
 #import "CPMemberQuotePriceFooter.h"
+#import "CPMemberQuoteFlowVC.h"
+#import "CPQuoteManager.h"
 
 @interface CPEvaluatedPriceVC ()
 
@@ -168,18 +170,22 @@
     
     !self.revalueActionBlock ? : self.revalueActionBlock();
     
-    [self.navigationController popViewControllerAnimated:YES];
-    
-//    [self.navigationController popToRootViewControllerAnimated:YES];
-//    [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if ([obj isKindOfClass:[CPShopGoodsListVC class]]) {
-//
-//            [self.navigationController popToViewController:obj animated:YES];
-//
-//            *stop = YES;
-//        }
-//    }];
-    
+    if (IS_MEMBER_ACCOUNT) {
+        
+
+        [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[CPShopGoodsListVC class]]) {
+                [self.navigationController popToViewController:obj animated:YES];
+                *stop = YES;
+            }
+        }];
+        
+        [CPQuoteManager shareInstance].flowIndex = 1;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshQuoteFlow" object:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

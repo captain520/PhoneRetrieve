@@ -221,8 +221,15 @@
     
     __weak typeof(self) weakSelf = self;
     
+    NSDictionary *params = @{
+                             @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID),
+                             @"typeid": @([CPUserInfoModel shareInstance].loginModel.Typeid),
+                             @"currentpage" : @"1",
+                             @"pagesize" : @"1000"
+                             };
+
     [CPCartModel modelRequestWith:DOMAIN_ADDRESS@"/api/reportresult/findRecycList"
-                       parameters:@{@"userid" : @([CPUserInfoModel shareInstance].loginModel.ID)}
+                       parameters:params
                             block:^(NSArray <CPCartModel *> *result) {
                                 [weakSelf handleLoadDataSuccessBlock:result];
                             } fail:^(CPError *error) {

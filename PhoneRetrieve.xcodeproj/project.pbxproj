@@ -308,6 +308,7 @@
 		9C5E2783202462C1003E32E7 /* CPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E2782202462C1003E32E7 /* CPButton.m */; };
 		9C5E278620246A29003E32E7 /* CPShopRegistLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E278520246A29003E32E7 /* CPShopRegistLoginVC.m */; };
 		9C699AFF208C951700CBE81D /* CPHelpDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C699AFE208C951700CBE81D /* CPHelpDetailModel.m */; };
+		9C6E6B24210336F800B30481 /* CPQuoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6E6B23210336F800B30481 /* CPQuoteManager.m */; };
 		9C7F64AE204D0E170029B193 /* CPLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F64AD204D0E170029B193 /* CPLoginModel.m */; };
 		9C7F64AF204D0E170029B193 /* CPLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F64AD204D0E170029B193 /* CPLoginModel.m */; };
 		9C81F390202C1D4000837D96 /* CPAssistantInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C81F38F202C1D4000837D96 /* CPAssistantInfoCell.m */; };
@@ -833,6 +834,8 @@
 		9C5E278520246A29003E32E7 /* CPShopRegistLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopRegistLoginVC.m; sourceTree = "<group>"; };
 		9C699AFD208C951700CBE81D /* CPHelpDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPHelpDetailModel.h; sourceTree = "<group>"; };
 		9C699AFE208C951700CBE81D /* CPHelpDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPHelpDetailModel.m; sourceTree = "<group>"; };
+		9C6E6B22210336F800B30481 /* CPQuoteManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPQuoteManager.h; sourceTree = "<group>"; };
+		9C6E6B23210336F800B30481 /* CPQuoteManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPQuoteManager.m; sourceTree = "<group>"; };
 		9C7F64AC204D0E170029B193 /* CPLoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPLoginModel.h; sourceTree = "<group>"; };
 		9C7F64AD204D0E170029B193 /* CPLoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPLoginModel.m; sourceTree = "<group>"; };
 		9C81F38E202C1D4000837D96 /* CPAssistantInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPAssistantInfoCell.h; sourceTree = "<group>"; };
@@ -1179,6 +1182,8 @@
 				9C3004A720EF06B400F8C083 /* CPMemberSonModel.m */,
 				9C48557620F44FA800D9F45E /* CPMemberQuoteManager.h */,
 				9C48557720F44FA800D9F45E /* CPMemberQuoteManager.m */,
+				9C6E6B22210336F800B30481 /* CPQuoteManager.h */,
+				9C6E6B23210336F800B30481 /* CPQuoteManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2024,6 +2029,7 @@
 				9C039DF92064DEE700AAAA50 /* CPConfigUrlModel.m in Sources */,
 				9C5E274220240983003E32E7 /* CPTextView.m in Sources */,
 				9C5E274920240983003E32E7 /* CPImageCell.m in Sources */,
+				9C6E6B24210336F800B30481 /* CPQuoteManager.m in Sources */,
 				9C377508204527970001B961 /* CPAddCartSuccessVC.m in Sources */,
 				9CCE378D20467B5F00DBF147 /* CPCommonButtn.m in Sources */,
 				9C48557B20F5941F00D9F45E /* CPMemberOrderDetailModel.m in Sources */,

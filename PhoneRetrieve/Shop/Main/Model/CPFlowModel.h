@@ -41,6 +41,8 @@
 
 @property (nonatomic, strong, readonly) NSArray <NSString *> *images;
 
+@property (nonatomic, copy) NSString *reportitemid;
+
 @end
 
 @interface CPItemData : NSObject
@@ -64,6 +66,8 @@
 @property (nonatomic, copy) NSString *name;
 
 @property (nonatomic, strong, readonly) NSArray <NSString *> *images;
+
+@property (nonatomic, assign) BOOL isSelected;
 
 @end
 

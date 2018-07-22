@@ -27,6 +27,8 @@
     
     [self initialzedBaseProperties];
     [self loadData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshActino:) name:@"RefreshQuoteFlow" object:nil];
 }
 
 - (void)initialzedBaseProperties {
@@ -201,6 +203,10 @@
     
     [tableView reloadData];
     [self updateActionUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - private method
@@ -437,6 +443,13 @@
     }];
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)refreshActino:(NSNotification *)nfc {
+    [self.selectedIndexPaths removeAllObjects];
+    [self.dataTableView reloadData];
+    [[CPMemberQuoteManager shareInstance].singlebQuoteFlowDataDict removeAllObjects];
+    [[CPMemberQuoteManager shareInstance].mutipleQuoteFlowDataDict removeAllObjects];
 }
 
 @end

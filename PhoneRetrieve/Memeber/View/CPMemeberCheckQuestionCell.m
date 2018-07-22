@@ -88,11 +88,11 @@
     _model = model;
     
     itemNameLB.text = model.name;
-    resultLB.text = [NSString stringWithFormat:@"检验结果：%@",model.checkremark];
+    resultLB.text = [NSString stringWithFormat:@"检验结果：%@",model.Description];
     quoteLB.text = [NSString stringWithFormat:@"评估状况：%@",model.name];
-    reduceLB.text = [NSString stringWithFormat:@"余额扣除：¥%@",model.kouprice];
+    reduceLB.text = [NSString stringWithFormat:@"余额扣除：¥%@",model.price];
     
-    [iconIV sd_setImageWithURL:CPUrl(model.image) placeholderImage:CPImage(@"placeHolderImage")];
+    [iconIV sd_setImageWithURL:CPUrl(model.imageurl) placeholderImage:CPImage(@"placeHolderImage")];
 }
 
 @end

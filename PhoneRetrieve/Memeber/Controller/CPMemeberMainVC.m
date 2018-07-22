@@ -43,6 +43,7 @@ UICollectionViewDelegateFlowLayout
 
 - (void)setupUI {
     
+    self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.title = [NSString stringWithFormat:@"会员号：%@",[CPUserInfoModel shareInstance].loginModel.cp_code];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:CPImage(@"call") style:UIBarButtonItemStylePlain target:self action:@selector(showHelp)];
     

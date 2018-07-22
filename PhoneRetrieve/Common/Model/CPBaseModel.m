@@ -52,7 +52,7 @@
             
             NSDictionary *dictObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&error];
             
-            DDLogWarn(@"%@",dictObject);
+//            DDLogWarn(@"%@",dictObject);
             
             if (error) {
                 CPError *cp_error = [[CPError alloc] initWithError:error];
