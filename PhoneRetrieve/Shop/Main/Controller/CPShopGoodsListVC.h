@@ -14,4 +14,6 @@
 
 @property (nonatomic, assign) NSInteger selecteTypeIndex;
 
+- (void)push2QuoteFlow:(BOOL)animated ;
+
 @end

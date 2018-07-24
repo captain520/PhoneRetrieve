@@ -18,6 +18,7 @@
 #import "CPNavView.h"
 #import "CPFlowVC.h"
 #import "CPFlowModel.h"
+#import "CPGoodSearchResultVC.h"
 
 #import "CPMemberQuotePriceFlowVC.h"
 #import "CPMemberQuoteFlowVC.h"
@@ -462,7 +463,11 @@
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [self.view endEditing:YES];
 //    [self push2VCWith:@"CPSearchVC" title:nil];
-    [self push2VCWith:@"CPGoodSearchResultVC" title:nil];
+//    [self push2VCWith:@"CPGoodSearchResultVC" title:nil];
+    CPGoodTypeModel *model = self.goodTypes[self.selecteTypeIndex];
+    CPGoodSearchResultVC *vc = [[CPGoodSearchResultVC alloc] init];
+    vc.deviceTypeid = model.ID;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Private method

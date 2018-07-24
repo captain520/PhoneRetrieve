@@ -16,6 +16,7 @@
 #import "CPMemberQuotePriceFooter.h"
 #import "CPMemberQuoteFlowVC.h"
 #import "CPQuoteManager.h"
+#import "CPGoodSearchResultVC.h"
 
 @interface CPEvaluatedPriceVC ()
 
@@ -172,16 +173,25 @@
     
     if (IS_MEMBER_ACCOUNT) {
         
+        NSArray *array = [[self.navigationController.viewControllers reverseObjectEnumerator] allObjects];
 
-        [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [array enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if ([obj isKindOfClass:[CPGoodSearchResultVC class]]) {
+                [self.navigationController popToViewController:obj animated:YES];
+                [((CPGoodSearchResultVC *)obj) push2QuoteFlow:YES];
+                *stop = YES;
+            }
+
             if ([obj isKindOfClass:[CPShopGoodsListVC class]]) {
                 [self.navigationController popToViewController:obj animated:YES];
+                [((CPShopGoodsListVC *)obj) push2QuoteFlow:YES];
                 *stop = YES;
             }
         }];
         
         [CPQuoteManager shareInstance].flowIndex = 1;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshQuoteFlow" object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshQuoteFlow" object:nil];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }

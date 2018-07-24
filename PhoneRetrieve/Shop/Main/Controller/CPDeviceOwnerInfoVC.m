@@ -261,11 +261,14 @@
                              @"customphone" : self.codeTF.text,
                              @"customimei" : self.confirmTF.text ? self.confirmTF.text : @" ",
                              @"sms" : self.passwdTF.text,
-                             @"resultno" : self.model.resultno
+                             @"resultno" : self.model.resultno,
+                             @"currentuserid" : @([CPUserInfoModel shareInstance].loginModel.ID)
                              }.mutableCopy;
     
     if (self.IDTF.text.length > 0) {
         [params setObject:self.IDTF.text forKey:@"idcard"];
+    } else {
+        [params setObject:@"null" forKey:@"idcard"];
     }
 
     [CPRetrievePriceModel modelPostRequestWith:CPURL_SHOP_SAVE_OWNER_INFO

@@ -166,7 +166,7 @@
     [CPBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/setPgprice_pre"
                        parameters:@{
                                     @"userid":@([CPUserInfoModel shareInstance].loginModel.ID),
-                                    @"default_pgprice_pre": model.values
+                                    @"pgprice_pre": model.values
                                     }
                             block:^(id result) {
                                 [weakSelf handleUdpateRateBlock:result row:row];

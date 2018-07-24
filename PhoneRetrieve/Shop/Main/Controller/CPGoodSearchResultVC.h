@@ -10,4 +10,8 @@
 
 @interface CPGoodSearchResultVC : CPBaseTableVC
 
+@property (nonatomic, assign) NSInteger deviceTypeid;
+
+- (void)push2QuoteFlow:(BOOL)animated;
+
 @end

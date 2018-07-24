@@ -10,12 +10,15 @@
 #import "CPGoodModel.h"
 #import "CPFlowVC.h"
 #import "CPSortCell.h"
+#import "CPQuoteManager.h"
+#import "CPMemberQuoteFlowVC.h"
 
 @interface CPGoodSearchResultVC ()<UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
 @property (nonatomic, strong) UIButton *backItem;
+@property (nonatomic, strong) NSArray <CPFlowModel *> *result;
 
 @end
 
@@ -130,10 +133,15 @@
     DDLogInfo(@"i0i0i0i0i0i0i0i0i0i0");
     __weak typeof(self) weakSelf = self;
     
-    NSDictionary *params= @{
+    NSMutableDictionary *params= @{
                             @"name" : self.searchBar.text,
-                            @"repaircfg" : @"1"
-                            };
+                            @"repaircfg" : @"1",
+                            @"typeid" : @(self.deviceTypeid)
+                            }.mutableCopy;
+    if (IS_MEMBER_ACCOUNT) {
+        [params setObject:@"1" forKey:@"usetypecfg"];
+    }
+
     
     [CPGoodModel modelRequestWith:CPURL_SHOP_GOOD_LIST
                        parameters:params
@@ -161,12 +169,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CPGoodModel *model = self.dataArray[indexPath.section][indexPath.row];
-
-    CPFlowVC *flowVC = [[CPFlowVC alloc] init];
-    flowVC.title = @"手机是否存在以下问题？";
-    flowVC.goodid = model.ID;
     
-    [self.navigationController pushViewController:flowVC animated:YES];
+    if (IS_MEMBER_ACCOUNT) {
+        [self nextMainQuoteFlow:model];
+    } else {
+
+        CPFlowVC *flowVC = [[CPFlowVC alloc] init];
+        flowVC.title = @"手机是否存在以下问题？";
+        flowVC.goodid = model.ID;
+        
+        [self.navigationController pushViewController:flowVC animated:YES];
+    }
     
 }
 
@@ -174,6 +187,57 @@
 
 - (void)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)nextMainQuoteFlow:(CPGoodModel *)good {
+    
+    if (nil == good) {
+    }
+    
+    NSString *urlStr = DOMAIN_ADDRESS@"/api/Report/findUserReportData";
+    __weak typeof(self) weakSelf = self;
+    
+    [CPMemberQuoteManager shareInstance].goodsid = good.ID;
+    [CPMemberQuoteManager shareInstance].deviceName = good.name;
+    
+    [CPFlowModel modelRequestWith:urlStr
+                       parameters:@{@"goodsid" : good.ID,
+                                    @"report_item_id" : @"0"
+                                    }
+                            block:^(id result) {
+                                [weakSelf handleNextmainQuoteBlock:result];
+                            } fail:^(CPError *error) {
+                                
+                            }];
+}
+- (void)handleNextmainQuoteBlock:(NSArray <CPFlowModel *> *)result {
+    
+    if (!result || ![result isKindOfClass:[NSArray class]]) {
+        
+        return;
+    }
+    
+    [result enumerateObjectsUsingBlock:^(CPFlowModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj.itemData enumerateObjectsUsingBlock:^(CPItemData * _Nonnull subObj, NSUInteger idx, BOOL * _Nonnull stop) {
+            subObj.parentName = obj.name;
+        }];
+    }];
+
+    self.result = result;
+    
+    [self push2QuoteFlow:YES];
+}
+
+- (void)push2QuoteFlow:(BOOL)animated {
+    
+    [CPQuoteManager shareInstance].flows = self.result.mutableCopy;
+    [CPQuoteManager shareInstance].firstFlows = self.result.copy;;
+    [CPQuoteManager shareInstance].flowIndex = 0;
+    
+    CPMemberQuoteFlowVC *vc = [[CPMemberQuoteFlowVC alloc] init];
+    //    vc.currentMainModel = result.firstObject;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
