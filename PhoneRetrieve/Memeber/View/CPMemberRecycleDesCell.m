@@ -64,4 +64,19 @@
     titleLB.text = title;
 }
 
+- (void)setLevel:(NSInteger)level {
+    _level = level;
+    
+    [titleLB mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(cellSpaceOffset * level);
+        make.centerY.mas_equalTo(self.contentView.mas_centerY);
+    }];
+    
+    if (_level == 1) {
+        titleLB.font = [UIFont boldSystemFontOfSize:15];
+    } else {
+        titleLB.font = [UIFont systemFontOfSize:15];
+    }
+}
+
 @end

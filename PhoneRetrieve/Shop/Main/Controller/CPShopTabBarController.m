@@ -121,19 +121,19 @@
     
     //  会员-回收说明
     CPRecycleDesVC *recycleVC = [[CPRecycleDesVC alloc] init];
-    recycleVC.tabBarItem = [self createTabBarItemWithTitle:@"回收标准" imageName:@"tab_help_default" selectedImage:@"tab_help_pressed"];
+    recycleVC.tabBarItem = [self createTabBarItemWithTitle:@"回收指南" imageName:@"HelpIcon_unselected" selectedImage:@"HelpIcon_selected"];
     CPNavigationController *recycleNav = [[CPNavigationController alloc] initWithRootViewController:recycleVC];
     
     //  比例调节
     CPRateControlVC *rateControlVC = [[CPRateControlVC alloc] init];
-    rateControlVC.tabBarItem = [self createTabBarItemWithTitle:@"比例调节" imageName:@"tab_scaleplateUnpressed" selectedImage:@"tab_scaleplate_pressed"];
+    rateControlVC.tabBarItem = [self createTabBarItemWithTitle:@"比例调节" imageName:@"rate_unselected" selectedImage:@"rate_selected"];
     CPNavigationController *rateControlNav = [[CPNavigationController alloc] initWithRootViewController:rateControlVC];
     //  会员-信息
     CPMemberInfoVC *memberInfoVC = [[CPMemberInfoVC alloc] init];
     memberInfoVC.tabBarItem = [self createTabBarItemWithTitle:@"会员资料" imageName:@"tab_data_default" selectedImage:@"tab_data_pressed"];
     CPNavigationController *memeberInfoNav = [[CPNavigationController alloc] initWithRootViewController:memberInfoVC];
     
-    self.viewControllers = @[homeNav,recycleNav,rateControlNav,memeberInfoNav];
+    self.viewControllers = @[homeNav,rateControlNav,recycleNav,memeberInfoNav];
 }
 /**
  * 创建UITabBarItem

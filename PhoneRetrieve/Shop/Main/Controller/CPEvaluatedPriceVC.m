@@ -371,10 +371,10 @@
 //  获取会员温馨提示富文本
 - (NSAttributedString *)memberHintContnet {
     
-    NSString *content0 = @"本平台根据国家法律法规，盗抢设备概不收回，一经发现立即报警\n";
+    NSString *content0 = @"本平台根据国家法律法规，盗抢设备概不回收，一经发现立即报警\n";
     NSMutableAttributedString *attr0 = [[NSMutableAttributedString alloc] initWithString:content0 attributes:@{NSForegroundColorAttributeName : UIColor.redColor}];
     
-    NSString *content1 = @"另拒绝回收一切有锁设备(ID锁，屏幕锁，账户锁等)";
+    NSString *content1 = @"另拒绝回收一切有锁设备（ID锁、屏幕锁、账户锁等）";
     NSAttributedString *attr1 = [[NSAttributedString alloc] initWithString:content1 attributes:@{NSForegroundColorAttributeName : C33}];
     
     [attr0 appendAttributedString:attr1];

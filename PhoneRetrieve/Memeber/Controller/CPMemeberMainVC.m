@@ -110,9 +110,9 @@ UICollectionViewDelegateFlowLayout
     } else if (3 == indexPath.row) {
         [cell setTitle:@"我的订单" andImage:@"home_Description"];
     } else if (4 == indexPath.row) {
-        [cell setTitle:@"今日报价" andImage:@"home_peple"];
+        [cell setTitle:@"今日报价" andImage:@"qoutePrice"];
     } else if (5 == indexPath.row) {
-        [cell setTitle:@"保修查询" andImage:@"home_Process"];
+        [cell setTitle:@"保修查询" andImage:@"repairQuery"];
     }
 
     return cell;
@@ -139,18 +139,20 @@ UICollectionViewDelegateFlowLayout
         vc.title = @"保修查询";
         
         [self.navigationController pushViewController:vc animated:YES];
-        
-//        [self push2VCWith:@"CPRecycleDesVC" title:@"回收说明"];
-//        [self getConfigUrl:@"210" block:^(NSString *url, NSString *title) {
-//
-//            CPWebVC *webVC = [[CPWebVC alloc] init];
-//            webVC.title                    = title;
-//            webVC.contentStr               = url;
-//            webVC.hidesBottomBarWhenPushed = YES;
-//
-//            [self.navigationController pushViewController:webVC animated:YES];
-//        }];
     }
+}
+
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
+
+    CPHomeAdvModel *model = self.advModels[index];
+    if (model.clickurl.length > 0) {
+        CPWebVC *webVC = [[CPWebVC alloc] init];
+        webVC.urlStr = model.clickurl;
+        webVC.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:webVC animated:YES];
+    }
+    
 }
 
 #pragma mark - private method implement

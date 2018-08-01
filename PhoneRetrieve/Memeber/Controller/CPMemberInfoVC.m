@@ -340,8 +340,8 @@
         CPLoginVC *vc = [[CPLoginVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         
-        [self presentViewController:vc animated:YES completion:nil];
-//        [self.navigationController pushViewController:vc animated:YES];
+//        [self presentViewController:vc animated:YES completion:nil];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

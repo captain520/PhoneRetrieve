@@ -64,6 +64,7 @@
         [leftLB mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(logoIV.mas_right).offset(cellSpaceOffset / 2);
             make.centerY.mas_equalTo(self.contentView.mas_centerY);
+            make.width.mas_greaterThanOrEqualTo(50);
         }];
     }
     
@@ -71,12 +72,14 @@
         rightLB = [UILabel new];
         rightLB.font = CPFont_M;
         rightLB.textColor = C33;
+        rightLB.numberOfLines = 0;
 
         [self.contentView addSubview:rightLB];
         
         [rightLB mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-cellSpaceOffset);
             make.centerY.mas_equalTo(self.contentView.mas_centerY);
+            make.left.mas_greaterThanOrEqualTo(leftLB.mas_right).offset(20);
         }];
     }
 }

@@ -7,10 +7,11 @@
 //
 
 #import "CPWebVC.h"
+#import <WebKit/WKWebView.h>
 
 @interface CPWebVC ()<UIWebViewDelegate>
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progress;
 
 @end
@@ -44,14 +45,14 @@
     return _progress;
 }
 
-- (UIWebView *)webView {
+- (WKWebView *)webView {
     if (_webView == nil) {
-        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, SCREENHEIGHT - NAV_HEIGHT)];
-        _webView.dataDetectorTypes = UIDataDetectorTypeAll;
-        _webView.backgroundColor = UIColor.whiteColor;
-        _webView.scalesPageToFit   = YES;
-
-        _webView.delegate = self;
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, SCREENWIDTH, SCREENHEIGHT - NAV_HEIGHT)];
+//        _webView.dataDetectorTypes = UIDataDetectorTypeAll;
+//        _webView.backgroundColor = UIColor.whiteColor;
+//        _webView.scalesPageToFit   = YES;
+//
+//        _webView.delegate = self;
         
         [self.view addSubview:_webView];
     }
@@ -62,9 +63,19 @@
     
     _urlStr = urlStr;
     
+//    {
+//        NSString *html = [NSString stringWithFormat:@"<html><body><img src='%@' width=\'100%\' height='100%'></body></html>",_urlStr];
+////        NSString *html = [NSString stringWithFormat:@"<img src='%@'>",_urlStr];
+//
+//        NSString *tempStr = [self webImageFitToDeviceSize:html.mutableCopy];
+//
+//        [self.webView loadHTMLString:html baseURL:nil];
+//    }
+    {
     NSURLRequest *request = [NSURLRequest requestWithURL:CPUrl(urlStr)];
-    
+
     [self.webView loadRequest:request];
+    }
 }
 
 - (void)setContentStr:(NSString *)contentStr {
@@ -101,14 +112,32 @@
     
 //    获取网页title
     
-//        NSString *htmlTitle = @"document.title";
-//        NSString *titleHtmlInfo = [webView stringByEvaluatingJavaScriptFromString:htmlTitle];
-//        [self setTitle:titleHtmlInfo];
+//    NSString *htmlTitle = @"document.title";
+//    NSString *titleHtmlInfo = [webView stringByEvaluatingJavaScriptFromString:htmlTitle];
+//    [self setTitle:titleHtmlInfo];
 //    if (titleHtmlInfo && titleHtmlInfo.length > 0) {
 //        self.navigationItem.title = titleHtmlInfo;
 //    }
-
-    [self performSelector:@selector(hideProgress) withObject:nil afterDelay:1.0f];
+//    NSString *js=@"var script = document.createElement('script');"
+//    "script.type = 'text/javascript';"
+//    "script.text = \"function ResizeImages() { "
+//    "var myimg,oldwidth;"
+//    "var maxwidth = 100%f;"
+//    "for(i=0;i <document.images.length;i++){"
+//    "myimg = document.images[i];"
+//    "if(myimg.width > maxwidth){"
+//    "oldwidth = myimg.width;"
+//    "myimg.width = 100%f;"
+//    "}"
+//    "}"
+//    "}\";"
+//    "document.getElementsByTagName('head')[0].appendChild(script);";
+//
+//    js=[NSString stringWithFormat:js,[UIScreen mainScreen].bounds.size.width,[UIScreen mainScreen].bounds.size.width-15];
+//    [webView stringByEvaluatingJavaScriptFromString:js];
+//    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
+//
+//    [self performSelector:@selector(hideProgress) withObject:nil afterDelay:1.0f];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {

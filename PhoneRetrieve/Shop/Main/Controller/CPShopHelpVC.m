@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view.
 
     self.dataArray = @[
-                       @[@"",@"",@"",@""]
+                       @[@"",@"",@"",@"",@""]
                        ];
     
     [self loadData];
@@ -120,6 +120,14 @@
             cell.image = @"aboutme";
             cell.leftValue = @"关于我们";
             cell.rightValue = self.model.Description;//@"";
+        }
+            
+            break;
+        case 4:
+        {
+            cell.image = @"CompayAddress";
+            cell.leftValue = @"送货地址";
+            cell.rightValue = self.model.linkaddress;;
         }
             
             break;

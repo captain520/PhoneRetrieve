@@ -340,6 +340,7 @@
 		9CCE379D2046ABDA00DBF147 /* CPShippingInformationListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE379C2046ABDA00DBF147 /* CPShippingInformationListVC.m */; };
 		9CCE37A02046B1FC00DBF147 /* CPShippingListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE379F2046B1FC00DBF147 /* CPShippingListCell.m */; };
 		9CCF20B22062600300E83936 /* CPGoodSearchResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF20B12062600300E83936 /* CPGoodSearchResultVC.m */; };
+		9CD470C221119A9400E74F1F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD470C121119A9400E74F1F /* WebKit.framework */; };
 		9CD61BFF20673A4700CF863C /* CPShopResigterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD61BFE20673A4700CF863C /* CPShopResigterParams.m */; };
 		9CD61C0020673A4700CF863C /* CPShopResigterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD61BFE20673A4700CF863C /* CPShopResigterParams.m */; };
 		9CD61C03206746C000CF863C /* CPProviceCityAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD61C02206746C000CF863C /* CPProviceCityAreaModel.m */; };
@@ -894,6 +895,7 @@
 		9CCE379F2046B1FC00DBF147 /* CPShippingListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShippingListCell.m; sourceTree = "<group>"; };
 		9CCF20B02062600300E83936 /* CPGoodSearchResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPGoodSearchResultVC.h; sourceTree = "<group>"; };
 		9CCF20B12062600300E83936 /* CPGoodSearchResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPGoodSearchResultVC.m; sourceTree = "<group>"; };
+		9CD470C121119A9400E74F1F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		9CD61BFD20673A4700CF863C /* CPShopResigterParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopResigterParams.h; sourceTree = "<group>"; };
 		9CD61BFE20673A4700CF863C /* CPShopResigterParams.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopResigterParams.m; sourceTree = "<group>"; };
 		9CD61C01206746C000CF863C /* CPProviceCityAreaModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPProviceCityAreaModel.h; sourceTree = "<group>"; };
@@ -941,6 +943,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD470C221119A9400E74F1F /* WebKit.framework in Frameworks */,
 				9C1CBD632085882A00CFC722 /* UserNotifications.framework in Frameworks */,
 				9C1CBD612085881200CFC722 /* libz.tbd in Frameworks */,
 				9C1CBD5F2085880A00CFC722 /* libsqlite3.tbd in Frameworks */,
@@ -974,6 +977,7 @@
 		45894F02D28E85BC52D540C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CD470C121119A9400E74F1F /* WebKit.framework */,
 				9C1CBD622085882A00CFC722 /* UserNotifications.framework */,
 				9C1CBD602085881200CFC722 /* libz.tbd */,
 				9C1CBD5E2085880A00CFC722 /* libsqlite3.tbd */,

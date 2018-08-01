@@ -219,6 +219,11 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
@@ -385,10 +390,11 @@ typedef NS_ENUM(NSInteger, CPLoginType){
 //                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeAssistant];
 //                                    }
                                     
-//                                    [weakSelf.navigationController popViewControllerAnimated:NO];
-                                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+                                    [weakSelf.navigationController popViewControllerAnimated:NO];
                                         [tbVC setSelectedIndex:0];
-                                    }];
+//                                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+//                                        [tbVC setSelectedIndex:0];
+//                                    }];
                                 }];
     
     [self loadUserDetailInfo];

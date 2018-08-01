@@ -26,6 +26,7 @@
     
     iconIV = [UIImageView new];
     iconIV.image = [UIImage imageNamed:@"logo"];
+    iconIV.contentMode = UIViewContentModeScaleAspectFit;
 
     [self.contentView addSubview:iconIV];
     [iconIV mas_makeConstraints:^(MASConstraintMaker *make) {

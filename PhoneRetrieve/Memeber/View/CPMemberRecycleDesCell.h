@@ -15,6 +15,7 @@
 
 //  右边图片名称
 @property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, assign) NSInteger level;
 
 
 /**

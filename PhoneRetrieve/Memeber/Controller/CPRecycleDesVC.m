@@ -60,6 +60,9 @@
     
     if (indexPath.row > 0) {
         cell.imageName = @"right";
+        cell.level = 2;
+    } else {
+        cell.level = 1;
     }
     
     CPRecycleDesModel *model = self.dataArray[indexPath.section][indexPath.row];
