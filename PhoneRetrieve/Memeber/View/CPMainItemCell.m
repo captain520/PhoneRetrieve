@@ -44,10 +44,11 @@
 
     [self.contentView addSubview:titleLB];
     [titleLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_offset(0);
+        make.centerY.mas_equalTo(self.contentView.mas_centerY);
+//        make.top.mas_offset(0);
         make.left.mas_offset(cellSpaceOffset);
         make.right.mas_equalTo(iconIV.mas_left).offset(-cellSpaceOffset);
-        make.bottom.mas_equalTo(self.contentView.mas_centerY);
+//        make.bottom.mas_equalTo(self.contentView.mas_centerY);
     }];
     
 }

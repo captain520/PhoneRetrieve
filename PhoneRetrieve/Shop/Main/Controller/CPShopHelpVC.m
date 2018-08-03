@@ -126,7 +126,7 @@
         case 4:
         {
             cell.image = @"CompayAddress";
-            cell.leftValue = @"送货地址";
+            cell.leftValue = @"收货地址";
             cell.rightValue = self.model.linkaddress;;
         }
             

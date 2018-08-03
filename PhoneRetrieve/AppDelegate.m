@@ -10,8 +10,11 @@
 #import <UMPush/UMessage.h>
 #import <UMCommon/UMCommon.h>
 #import <UserNotifications/UserNotifications.h>
+#import "CPUpdateVersionModel.h"
 
-@interface AppDelegate ()<UNUserNotificationCenterDelegate>
+@interface AppDelegate ()<UNUserNotificationCenterDelegate,UIAlertViewDelegate>
+
+@property (nonatomic, strong) CPUpdateVersionModel *checkVersionModel;
 
 @end
 
@@ -27,7 +30,7 @@
     [self setUINavigatinoBarProperities];
     
     [self configLogColors];
-    
+
     [self configUMPush:launchOptions];
     
     DDLogInfo(@"------------------------------%d",test);
@@ -63,6 +66,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self checkUpdateVersion];
 }
 
 
@@ -189,6 +193,54 @@
     
     [CPUserInfoModel shareInstance].push_token = push_token;
     [CPRegistParam shareInstance].push_token = push_token;
+}
+
+- (void)checkUpdateVersion {
+    
+    
+    __weak typeof(self) weakSelf = self;
+    
+    NSDictionary *params = @{
+                             @"clientcfg" : @"2",
+                             @"typecfg" : @"1"
+                             };
+    
+    [CPUpdateVersionModel modelRequestWith:DOMAIN_ADDRESS@"/api/version/getLastVersion"
+                       parameters:params
+                            block:^(CPUpdateVersionModel *result) {
+                                [weakSelf handlecheckUpdateVersionBlock:result];
+                            } fail:^(CPError *error) {
+                                
+                            }];
+
+}
+
+- (void)handlecheckUpdateVersionBlock:(CPUpdateVersionModel *)result {
+    if (!result || ![result isKindOfClass:[CPUpdateVersionModel class]]) {
+        return;
+    }
+    
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    if ([app_Version isEqualToString:result.name]) {
+        return;
+    }
+    
+    self.checkVersionModel = result;
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                        message:result.Description
+                                                       delegate:self
+                                              cancelButtonTitle:@"立即升级"
+                                              otherButtonTitles:nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSURL *url = [NSURL URLWithString:self.checkVersionModel.url];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+    }
 }
 
 @end

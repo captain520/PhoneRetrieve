@@ -102,17 +102,17 @@ UICollectionViewDelegateFlowLayout
     CPMainItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
     cell.contentView.backgroundColor = UIColor.whiteColor;
     if (indexPath.row == 0) {
-        [cell setTitle:@"手机回收" andImage:@"hme_iphone"];
+        [cell setTitle:@"手机回收" andImage:@"手机回收"];
     } else if (indexPath.row == 1) {
-        [cell setTitle:@"回收车" andImage:@"home_car"];
+        [cell setTitle:@"回收车" andImage:@"回收车"];
     } else if (2 == indexPath.row) {
-        [cell setTitle:@"平板回收" andImage:@"hme_ipad"];
+        [cell setTitle:@"平板回收" andImage:@"平板回收"];
     } else if (3 == indexPath.row) {
-        [cell setTitle:@"我的订单" andImage:@"home_Description"];
+        [cell setTitle:@"我的订单" andImage:@"我的订单"];
     } else if (4 == indexPath.row) {
-        [cell setTitle:@"今日报价" andImage:@"qoutePrice"];
+        [cell setTitle:@"今日报价" andImage:@"今日报价"];
     } else if (5 == indexPath.row) {
-        [cell setTitle:@"保修查询" andImage:@"repairQuery"];
+        [cell setTitle:@"保修查询" andImage:@"保修查询"];
     }
 
     return cell;

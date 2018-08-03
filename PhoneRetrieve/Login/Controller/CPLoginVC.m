@@ -41,8 +41,8 @@ typedef NS_ENUM(NSInteger, CPLoginType){
 }
 
 - (void)tap3Action:(id)sender {
-    self.accountTF.text = @"15179676384";
-    self.passwdTF.text = @"1234567";
+//    self.accountTF.text = @"15179676384";
+//    self.passwdTF.text = @"1234567";
 }
 
 - (void)setupUI {

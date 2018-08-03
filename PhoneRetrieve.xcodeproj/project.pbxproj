@@ -327,6 +327,7 @@
 		9CA7ABC1208B4F1E00994DAC /* CPFullImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA7ABC0208B4F1E00994DAC /* CPFullImageCell.m */; };
 		9CAB3975206AA55D005F4D5F /* CPShippingStateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */; };
 		9CAB3976206AA55D005F4D5F /* CPShippingStateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */; };
+		9CBD340E2114459600D36470 /* CPUpdateVersionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD340D2114459600D36470 /* CPUpdateVersionModel.m */; };
 		9CCE377B2046453F00DBF147 /* CPShopCartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE377A2046453F00DBF147 /* CPShopCartVC.m */; };
 		9CCE377E204647BA00DBF147 /* CPOrderActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE377D204647BA00DBF147 /* CPOrderActionView.m */; };
 		9CCE378120464C9000DBF147 /* CPShopCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE378020464C9000DBF147 /* CPShopCartCell.m */; };
@@ -869,6 +870,8 @@
 		9CA7ABC0208B4F1E00994DAC /* CPFullImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPFullImageCell.m; sourceTree = "<group>"; };
 		9CAB3973206AA55D005F4D5F /* CPShippingStateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShippingStateVC.h; sourceTree = "<group>"; };
 		9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShippingStateVC.m; sourceTree = "<group>"; };
+		9CBD340C2114459600D36470 /* CPUpdateVersionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUpdateVersionModel.h; sourceTree = "<group>"; };
+		9CBD340D2114459600D36470 /* CPUpdateVersionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPUpdateVersionModel.m; sourceTree = "<group>"; };
 		9CCE37792046453F00DBF147 /* CPShopCartVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopCartVC.h; sourceTree = "<group>"; };
 		9CCE377A2046453F00DBF147 /* CPShopCartVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopCartVC.m; sourceTree = "<group>"; };
 		9CCE377C204647BA00DBF147 /* CPOrderActionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPOrderActionView.h; sourceTree = "<group>"; };
@@ -1188,6 +1191,8 @@
 				9C48557720F44FA800D9F45E /* CPMemberQuoteManager.m */,
 				9C6E6B22210336F800B30481 /* CPQuoteManager.h */,
 				9C6E6B23210336F800B30481 /* CPQuoteManager.m */,
+				9CBD340C2114459600D36470 /* CPUpdateVersionModel.h */,
+				9CBD340D2114459600D36470 /* CPUpdateVersionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2047,6 +2052,7 @@
 				9C5E274320240983003E32E7 /* CPPickerCell.m in Sources */,
 				9C30049C20EDE59400F8C083 /* CPImageTitleUpDownCell.m in Sources */,
 				9CCE377E204647BA00DBF147 /* CPOrderActionView.m in Sources */,
+				9CBD340E2114459600D36470 /* CPUpdateVersionModel.m in Sources */,
 				9C0D95F2204E5DF500834B90 /* CPUserDetailInfoModel.m in Sources */,
 				9C5CFCCD2050DCC90053369F /* CPGoodTypeModel.m in Sources */,
 				9C57B01420E9BC71006104DB /* CPMemberRegisterStep01VC.m in Sources */,
