@@ -12,4 +12,6 @@
 
 @property (nonatomic, copy) NSString *image, *leftValue, *rightValue;
 
+- (void)alignRightLabel;
+
 @end

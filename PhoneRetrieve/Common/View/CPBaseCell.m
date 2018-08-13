@@ -50,7 +50,7 @@
         sepLine.tag             = 9527;
         sepLine.backgroundColor = CPBoardColor;
 
-        [self.contentView addSubview:sepLine];
+        [self addSubview:sepLine];
         
         [sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(0);

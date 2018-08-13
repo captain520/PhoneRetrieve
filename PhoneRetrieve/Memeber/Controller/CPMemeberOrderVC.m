@@ -99,6 +99,11 @@
     };
     
     cell.checkConsignBlock = ^{
+        CPShopOrderDetailModel *model = self.dataArray[indexPath.section];
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = model.logisticsno;
+        [[UIApplication sharedApplication].keyWindow makeToast:@"物流单号已复制到剪切板" duration:2. position:CSToastPositionCenter];
+        
         [weakSelf push2ShippingStatesVC];
     };
     

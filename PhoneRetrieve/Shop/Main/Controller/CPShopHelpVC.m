@@ -25,8 +25,8 @@
     // Do any additional setup after loading the view.
 
     self.dataArray = @[
-                       @[@"",@"",@"",@"",@""]
-                       ];
+                       @[@"",@"",@"",@"",@"",@"",@""]
+                       ].mutableCopy;
     
     [self loadData];
     
@@ -87,6 +87,7 @@
     
     if (3 == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell alignRightLabel];
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
@@ -125,11 +126,25 @@
             break;
         case 4:
         {
+            cell.image = @"收货人";
+            cell.leftValue = @"收货人";
+            cell.rightValue = self.model.linkname;;
+        }
+            break;
+        case 5:
+        {
+            cell.image = @"收货人电话";
+            cell.leftValue = @"电话";
+            cell.rightValue = self.model.phone;;
+        }
+            break;
+            
+        case 6:
+        {
             cell.image = @"CompayAddress";
             cell.leftValue = @"收货地址";
             cell.rightValue = self.model.linkaddress;;
         }
-            
             break;
 
         default:

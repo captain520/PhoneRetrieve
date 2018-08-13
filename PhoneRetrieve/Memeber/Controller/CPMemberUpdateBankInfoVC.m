@@ -99,7 +99,7 @@
     if (nil == self.nextAction) {
         self.nextAction = [CPButton new];
         [self.view addSubview:self.nextAction];
-        [self.nextAction setTitle:@"提交注册信息" forState:0];
+        [self.nextAction setTitle:@"保  存" forState:0];
         [self.nextAction addTarget:self action:@selector(nextAction:) forControlEvents:64];
         [self.nextAction mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.bankAccountTF.mas_bottom).offset(CELL_HEIGHT_F);
@@ -112,11 +112,11 @@
                                                                   self.bankAccontNameTF.rac_textSignal,
                                                                   self.bankSelecteTF.rac_textSignal,
                                                                   self.bankAccountTF.rac_textSignal,
-                                                                  self.bankBranchTF.rac_textSignal
+//                                                                  self.bankBranchTF.rac_textSignal
                                                                   ]
                                                          reduce:^id{
                                                             return @(
-                                                             self.bankBranchTF.text.length > 0 &&
+//                                                             self.bankBranchTF.text.length > 0 &&
                                                              self.bankAccontNameTF.text.length > 0 &&
                                                              self.bankSelecteTF.text.length > 0 &&
                                                              self.bankAccountTF.text.length > 0
@@ -134,7 +134,7 @@
                              @"userid" : @([CPUserInfoModel shareInstance].loginModel.ID),
                              @"bankname" : self.bankSelecteTF.text,
                              @"banknum" : self.bankAccountTF.text,
-                             @"bankbranch" : self.bankBranchTF.text,
+                             @"bankbranch" : @"null",
                              @"bname" : self.bankAccontNameTF.text
                              };
     

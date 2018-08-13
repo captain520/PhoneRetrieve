@@ -102,4 +102,12 @@
     rightLB.text = _rightValue;
 }
 
+- (void)alignRightLabel {
+    [rightLB mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(0);
+        make.centerY.mas_equalTo(self.contentView.mas_centerY);
+        make.left.mas_greaterThanOrEqualTo(leftLB.mas_right).offset(20);
+    }];
+}
+
 @end
