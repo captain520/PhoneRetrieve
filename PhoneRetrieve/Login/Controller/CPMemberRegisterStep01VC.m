@@ -465,14 +465,15 @@
             
             [CPBaseModel uploadImages:photos.firstObject block:^(NSString *filePath) {
                 DDLogError(@">>>>>>>>>>>>>>>>>>>>%@",filePath);
+                [[CPProgress Instance] hidden];
+                
                 if ([filePath isKindOfClass:[NSString class]] && filePath.length > 0) {
                     sender.imageUrl = filePath;
-                    [[CPProgress Instance] hidden];
                     [weakSelf handleImagePickImageBlock];
                     
                     [sender setImage:photos.firstObject forState:UIControlStateNormal];
                 } else {
-                    [weakSelf.view makeToast:@"图片上传失败" duration:2.f position:@"center"];
+                    [weakSelf.view makeToast:@"图片上传失败" duration:2.f position:CSToastPositionCenter];
                 }
             }];
             
