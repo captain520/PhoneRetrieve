@@ -398,7 +398,7 @@
     [CPQuoteManager shareInstance].flows = self.result.mutableCopy;
     [CPQuoteManager shareInstance].firstFlows = self.result.copy;;
     [CPQuoteManager shareInstance].flowIndex = 0;
-    
+   
     CPMemberQuoteFlowVC *vc = [[CPMemberQuoteFlowVC alloc] init];
 //    vc.currentMainModel = result.firstObject;
     

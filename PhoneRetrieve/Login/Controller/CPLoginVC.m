@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
         self.accountTF.placeholder = @"请输入您的手机号码/会员编号";
 //        self.accountTF.text = @"15814099327";
 //        self.accountTF.text = @"13407065418";   // 子会员
-//        self.accountTF.text = @"15179676384";
+        self.accountTF.text = @"15179676384";
 //        self.accountTF.text = @"18033446838";
 //        self.accountTF.text = @"17063893998";
         if (params[@"phone"]) {

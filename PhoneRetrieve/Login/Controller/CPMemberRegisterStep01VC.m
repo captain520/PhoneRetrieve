@@ -454,21 +454,28 @@
     __weak CPMemberRegisterStep01VC *weakSelf = self;
     
     TZImagePickerController *vc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:nil];
+    vc.allowPickingVideo = NO;
+    vc.allowPickingGif = NO;
     
     [vc setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
         NSLog(@"------");
         dispatch_async(dispatch_get_main_queue(), ^{
-            [sender setImage:photos.firstObject forState:UIControlStateNormal];
-            
+
             [[CPProgress Instance] showLoading:self.view message:@"图片上传中"];
             
             [CPBaseModel uploadImages:photos.firstObject block:^(NSString *filePath) {
                 DDLogError(@">>>>>>>>>>>>>>>>>>>>%@",filePath);
-                sender.imageUrl = filePath;
-                [[CPProgress Instance] hidden];
+                if ([filePath isKindOfClass:[NSString class]] && filePath.length > 0) {
+                    sender.imageUrl = filePath;
+                    [[CPProgress Instance] hidden];
+                    [weakSelf handleImagePickImageBlock];
+                    
+                    [sender setImage:photos.firstObject forState:UIControlStateNormal];
+                } else {
+                    [weakSelf.view makeToast:@"图片上传失败" duration:2.f position:@"center"];
+                }
             }];
             
-            [weakSelf handleImagePickImageBlock];
         });
     }];
     

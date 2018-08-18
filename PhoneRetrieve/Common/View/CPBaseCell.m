@@ -36,7 +36,7 @@
 - (void)setShouldShowBottomLine:(BOOL)shouldShowBottomLine {
     _shouldShowBottomLine = shouldShowBottomLine;
     
-    UIView *sepline = [self.contentView viewWithTag:9527];
+    UIView *sepline = [self viewWithTag:9527];
     sepline.hidden = !shouldShowBottomLine;
 }
 

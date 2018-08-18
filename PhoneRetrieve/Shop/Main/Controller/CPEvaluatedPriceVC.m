@@ -190,7 +190,7 @@
             }
         }];
         
-        [CPQuoteManager shareInstance].flowIndex = 1;
+//        [CPQuoteManager shareInstance].flowIndex = 1;
 //        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshQuoteFlow" object:nil];
     } else {
         [self.navigationController popViewControllerAnimated:YES];
