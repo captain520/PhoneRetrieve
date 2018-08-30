@@ -52,12 +52,12 @@
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangzhangchuan/Documents/GitHub/PhoneRetrieve/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
-                  timestampString = "557310393.8086751"
+                  timestampString = "557311323.1404231"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangzhangchuan/Documents/GitHub/PhoneRetrieve/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
-                  timestampString = "557310393.81155"
+                  timestampString = "557311323.142814"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "35">
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
