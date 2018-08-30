@@ -21,8 +21,10 @@
 
 - (void)setupUI {
     
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    
     UILabel *versionLB = [UILabel new];
-    versionLB.text = @"V1.0.0";
+    versionLB.text = infoDict[@"CFBundleShortVersionString"];
     versionLB.font = [UIFont systemFontOfSize:13.0f];
     versionLB.textAlignment = NSTextAlignmentCenter;
 
@@ -35,7 +37,7 @@
     }];
 
     UILabel *appNameLB = [UILabel new];
-    appNameLB.text = @"手机回收栈";
+    appNameLB.text = @"手机乐收栈";
     appNameLB.font = [UIFont systemFontOfSize:13.0f];
     appNameLB.textAlignment = NSTextAlignmentCenter;
     

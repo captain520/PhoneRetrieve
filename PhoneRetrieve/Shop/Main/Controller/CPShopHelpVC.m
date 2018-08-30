@@ -85,7 +85,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    if (3 == indexPath.row) {
+    if (3 == indexPath.row || 1 == indexPath.row) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [cell alignRightLabel];
     } else {
@@ -104,7 +104,7 @@
         {
             cell.image = @"consumerhotline";
             cell.leftValue = @"客服电话";
-            cell.rightValue = self.model.tel;//@"400-xxxx";
+            cell.rightValue = @"";//self.model.tel;//@"400-xxxx";
         }
             
             break;
@@ -168,6 +168,10 @@
             
             [self.navigationController pushViewController:webVC animated:YES];
         }];
+    } else if (1 == indexPath.row) {
+        CPWebVC *webVC = [[CPWebVC alloc] init];
+        webVC.urlStr = @"http://mp.weixin.qq.com/s?__biz=MzU5ODQ4OTY3MA==&mid=100000127&idx=1&sn=44396417fd9c78169e262e7add9f5910&chksm=7e422e564935a74082bab4a9950b31b32b5223cf9d9acbbd4e025e34b9adf2c8559c9de8c0de#rd";
+        [self.navigationController pushViewController:webVC animated:YES];
     }
     
 }

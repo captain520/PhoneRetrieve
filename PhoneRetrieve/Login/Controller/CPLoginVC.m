@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
         self.accountTF.placeholder = @"请输入您的手机号码/会员编号";
 //        self.accountTF.text = @"15814099327";
 //        self.accountTF.text = @"13407065418";   // 子会员
-//        self.accountTF.text = @"15179676384";
+        self.accountTF.text = @"15179676384";
 //        self.accountTF.text = @"18033446838";
 //        self.accountTF.text = @"17063893998";
         if (params[@"phone"]) {
@@ -121,7 +121,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     if (nil == self.passwdTF) {
         self.passwdTF = [UITextField new];
         self.passwdTF.placeholder = @"请输入您的登陆密码";
-//        self.passwdTF.text = @"123456";
+        self.passwdTF.text = @"123456";
         self.passwdTF.borderStyle = UITextBorderStyleRoundedRect;
 //        self.passwdTF.keyboardType = UIKeyboardTypeNumberPad;
         self.passwdTF.font = [UIFont systemFontOfSize:15.0f];
