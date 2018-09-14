@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
         self.accountTF.placeholder = @"请输入您的手机号码/会员编号";
 //        self.accountTF.text = @"15814099327";
 //        self.accountTF.text = @"13407065418";   // 子会员
-//        self.accountTF.text = @"15179676384";
+        self.accountTF.text = @"15179676384";
 //        self.accountTF.text = @"18033446838";
 //        self.accountTF.text = @"17063893998";
         if (params[@"phone"]) {
@@ -382,19 +382,20 @@ typedef NS_ENUM(NSInteger, CPLoginType){
                                message:@"登陆成功"
                                 finish:^(BOOL finished) {
                                     DDLogInfo(@"------------------------------");
-                                    CPShopTabBarController *tbVC = (CPShopTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-                                    [tbVC initializedBaseViewControllersFor:result.Typeid];
-//                                    if ([CPUserInfoModel shareInstance].isShop) {
-//                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeShop];
-//                                    } else {
-//                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeAssistant];
-//                                    }
-                                    
-                                    [weakSelf.navigationController popViewControllerAnimated:NO];
-                                        [tbVC setSelectedIndex:0];
-//                                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+                                    [weakSelf back];
+//                                    CPShopTabBarController *tbVC = (CPShopTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+//                                    [tbVC initializedBaseViewControllersFor:result.Typeid];
+////                                    if ([CPUserInfoModel shareInstance].isShop) {
+////                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeShop];
+////                                    } else {
+////                                        [tbVC initializedBaseViewControllersFor:CPTabVCTypeAssistant];
+////                                    }
+//
+//                                    [weakSelf.navigationController popViewControllerAnimated:NO];
 //                                        [tbVC setSelectedIndex:0];
-//                                    }];
+////                                    [weakSelf dismissViewControllerAnimated:YES completion:^{
+////                                        [tbVC setSelectedIndex:0];
+////                                    }];
                                 }];
     
     [self loadUserDetailInfo];

@@ -13,6 +13,7 @@
 #import "CPMemeberOrderCell.h"
 #import "CPMemberOrderDetailVC.h"
 #import "CPWebVC.h"
+#import "ZCOrderListHeaderView.h"
 
 @interface CPMemeberOrderVC ()
 
@@ -60,7 +61,7 @@
 
 #pragma mark - view
 - (void)setupUI {
-    self.tabbarView.dataArray = @[@"在途",@"已签收"];
+    self.tabbarView.dataArray = @[@"在途",@"已签收",@"待处理订单"];
     
     [self.dataTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.tabbarView.mas_bottom);
@@ -74,8 +75,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {return self.dataArray.count;};
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {return 1;};
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {return 200;};
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {return 30;};
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {return 30.0f;};
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {return 30 * 2;};
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {return 8;};
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *cellIdentify = @"CPMemeberOrderCell";
@@ -115,41 +116,56 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     NSString *headerIdentifier = @"headerIdentifier";
     
-    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
-    CPLabel *titleLB = [header.contentView viewWithTag:CPBASETAG];
+    ZCOrderListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
     if (nil == header) {
-        header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerIdentifier];
+        header = [[ZCOrderListHeaderView alloc] initWithReuseIdentifier:headerIdentifier];
         header.contentView.backgroundColor = UIColor.whiteColor;
-        
-        titleLB = [CPLabel new];
-        titleLB.tag = CPBASETAG;
-        [header.contentView addSubview:titleLB];
-        [titleLB mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(0);
-            make.left.mas_equalTo(cellSpaceOffset);
-            make.right.mas_equalTo(-cellSpaceOffset);
-            make.bottom.mas_equalTo(0);
-        }];
-        
-        UIView *sepLine = [UIView new];
-        sepLine.backgroundColor = CPBoardColor;
-        
-        [header.contentView addSubview:sepLine];
-        [sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(0);
-            make.right.mas_equalTo(0);
-            make.bottom.mas_equalTo(0);
-            make.height.mas_equalTo(.5);
-        }];
-        
     }
     
     CPShopOrderDetailModel *model = self.dataArray[section];
-
-    titleLB.text = [NSString stringWithFormat:@"交易订单号：%@",model.ordersn];
+    header.model = model;
     
     return header;
 }
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    NSString *headerIdentifier = @"headerIdentifier";
+//
+//    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdentifier];
+//    CPLabel *titleLB = [header.contentView viewWithTag:CPBASETAG];
+//    if (nil == header) {
+//        header = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerIdentifier];
+//        header.contentView.backgroundColor = UIColor.whiteColor;
+//
+//        titleLB = [CPLabel new];
+//        titleLB.tag = CPBASETAG;
+//        [header.contentView addSubview:titleLB];
+//        [titleLB mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(0);
+//            make.left.mas_equalTo(cellSpaceOffset);
+//            make.right.mas_equalTo(-cellSpaceOffset);
+//            make.bottom.mas_equalTo(0);
+//        }];
+//
+//        UIView *sepLine = [UIView new];
+//        sepLine.backgroundColor = CPBoardColor;
+//
+//        [header.contentView addSubview:sepLine];
+//        [sepLine mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.mas_equalTo(0);
+//            make.right.mas_equalTo(0);
+//            make.bottom.mas_equalTo(0);
+//            make.height.mas_equalTo(.5);
+//        }];
+//
+//    }
+//
+//    CPShopOrderDetailModel *model = self.dataArray[section];
+//
+//    titleLB.text = [NSString stringWithFormat:@"交易订单号：%@",model.ordersn];
+//
+//    return header;
+//}
 
 //- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 //    NSString *footerIdentifier = @"footerIdentifier";

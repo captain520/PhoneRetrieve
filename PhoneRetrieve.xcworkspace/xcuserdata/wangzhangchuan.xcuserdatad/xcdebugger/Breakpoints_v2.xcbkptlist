@@ -51,13 +51,13 @@
                   symbolName = "-[CPQuoteManager flowIndex]"
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangzhangchuan/Documents/GitHub/PhoneRetrieve/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
-                  timestampString = "557311323.1404231"
+                  urlString = "file:///Users/wangzhangchuan/Documents/GitHub/MemberManager/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
+                  timestampString = "558599889.4443769"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -66,13 +66,13 @@
                   symbolName = "-[CPQuoteManager setFlowIndex:]"
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangzhangchuan/Documents/GitHub/PhoneRetrieve/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
-                  timestampString = "557311323.142814"
+                  urlString = "file:///Users/wangzhangchuan/Documents/GitHub/MemberManager/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
+                  timestampString = "558599889.446892"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "35">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -1,16 +1,15 @@
 //
 //  ViewController.h
-//  V44Demo
+//  MemberManager
 //
-//  Created by wangzhangchuan on 2018/1/8.
-//  Copyright © 2018年 wangzhangchuan. All rights reserved.
+//  Created by 王璋传 on 2018/9/12.
+//  Copyright © 2018年 王璋传. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "CPBaseTableVC.h"
+#import "ZCBaseVC.h"
 
-@interface ViewController : CPBaseTableVC
-
+@interface ViewController : ZCBaseVC
 
 @end
 

@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>PYAB74WE9Q.com.johnholdsworth.InjectionBundle</string>
+	<string>Q6C42F4665.com.johnholdsworth.InjectionBundle</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>PYAB74WE9Q.com.johnholdsworth.InjectionBundle</string>
+		<string>Q6C42F4665.com.johnholdsworth.InjectionBundle</string>
 	</array>
 </dict>
 </plist>

@@ -45,6 +45,9 @@
 #import "CPRegistParam.h"
 #import "CPMemberQuoteManager.h"
 
+#import "ZCLabel.h"
+#import "ZCButton.h"
+
 #ifdef DEBUG
 
 static const int ddLogLevel = DDLogLevelInfo;
@@ -73,6 +76,8 @@ static const int ddLogLevel = DDLogLevelError;
 
 #define SCREENWIDTH         ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT        ([UIScreen mainScreen].bounds.size.height)
+#define STATUSBAR_HEIGHT   ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define SPACE_OFFSET_F      (16)
 
 #define CPImage(x)          [UIImage imageNamed:x]
 #define CPUrl(x)            [NSURL URLWithString:x]
